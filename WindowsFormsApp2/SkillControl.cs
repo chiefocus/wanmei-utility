@@ -7,6 +7,7 @@ namespace WindowsFormsApp2
     public partial class SkillControl : UserControl
     {
         public bool Enabled { get; set; }
+        public bool Selected { get; set; } = true;
         public Skill RowData { get; set; }
         public DateTime StartOn { get; set; }
         public int Interval { get; set; }
@@ -20,6 +21,8 @@ namespace WindowsFormsApp2
         public SkillControl(Skill row, Timer timer)
         {
             InitializeComponent();
+            this.textBox2.Text = row.Interval.ToString();
+            //this.textBox3.Text = Selected ? "✔" : ""; //✗ ✓ ✕ ✔ √
 
             this.Dock = DockStyle.Top;
 
@@ -27,7 +30,8 @@ namespace WindowsFormsApp2
             Timer1.Tick += new System.EventHandler(this.timer1_Tick);
 
             this.RowData = row;
-            this.button1.Text = RowData.Interval == 0 ? RowData.Name : $"{RowData.Name}({RowData.Interval})";//row.Button1Text;
+            //this.button1.Text = RowData.Interval == 0 ? RowData.Name : $"{RowData.Name}({RowData.Interval})";//row.Button1Text;
+            this.button1.Text = RowData.Name;//row.Button1Text;
             this.button2.Text = row.Reset;
             this.textBox1.Text = row.Description;
             this.Interval = row.Interval;
@@ -56,19 +60,35 @@ namespace WindowsFormsApp2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            StartOn = DateTime.Now;
-            Enabled = true;
-            this.textBox1.Visible = false;
-            this.label1.Text = Interval != 0 ? $"{Interval}" : "00:00:00";
-            this.label1.Visible = true;
+            //StartOn = DateTime.Now;
+            //Enabled = true;
+            //this.textBox1.Visible = false;
+            //this.label1.Text = Interval != 0 ? $"{Interval}" : "00:00:00";
+            //this.label1.Visible = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Enabled = false;
-            this.label1.Visible = false;
-            this.textBox1.Visible = true;
-            this.textBox1.Text = this.Description;
+            this.Enabled = !Enabled;
+            if (Enabled)
+            {
+                StartOn = DateTime.Now;
+                this.textBox1.Visible = false;
+                this.label1.Text = Interval != 0 ? $"{Interval}" : "00:00:00";
+                this.label1.Visible = true;
+            }
+            else
+            {
+                this.label1.Visible = false;
+                this.textBox1.Visible = true;
+                this.textBox1.Text = this.Description;
+            }
+        }
+
+        private void textBox3_Click(object sender, EventArgs e)
+        {
+            Selected = !Selected;
+            //this.textBox3.Text = Selected ? "✔" : ""; //✗ ✓ ✕ ✔ √
         }
     }
 }
