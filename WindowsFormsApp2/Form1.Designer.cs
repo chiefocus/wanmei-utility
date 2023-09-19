@@ -122,6 +122,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Name = "Form1";
             this.Padding = new System.Windows.Forms.Padding(5, 5, 0, 0);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

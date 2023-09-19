@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using WindowsFormsApp2.Models;
@@ -11,9 +12,23 @@ namespace WindowsFormsApp2
 {
     public partial class Form1 : Form
     {
+        readonly KeyboardHook hook = new KeyboardHook();
+
         public Form1()
         {
             InitializeComponent();
+
+            // register the event that is fired after the key press.
+            hook.KeyPressed += new EventHandler<KeyPressedEventArgs>(hook_KeyPressed);
+            // register the control + alt + F12 combination as hot key.
+            //hook.RegisterHotKey(WindowsFormsApp2.ModifierKeys.Control | WindowsFormsApp2.ModifierKeys.Alt, Keys.F12);
+            hook.RegisterHotKey(WindowsFormsApp2.ModifierKeys.None, Keys.NumPad1);
+        }
+
+        private void hook_KeyPressed(object sender, KeyPressedEventArgs e)
+        {
+            // show the keys pressed in a label.
+            this.Text = e.Modifier.ToString() + " + " + e.Key.ToString();
         }
 
         public static readonly List<Instance> _instances = new List<Instance>();
@@ -136,6 +151,11 @@ namespace WindowsFormsApp2
         private void btnReset_Click(object sender, EventArgs e)
         {
             Reset();
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+
         }
     }
 }
