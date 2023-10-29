@@ -93,6 +93,8 @@ namespace WindowsFormsApp2
         private void timer1_Tick(object sender, EventArgs e)
         {
             this.textBox1.Text = DateTime.Now.ToString("HH:mm:ss");
+            
+            this.button1.Visible = SkillControls.Any();
         }
 
         private void Reset()
