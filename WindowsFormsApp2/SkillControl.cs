@@ -11,6 +11,7 @@ namespace WindowsFormsApp2
         public DateTime StartOn { get; set; }
         public int Interval { get; set; }
         public string Description { get; set; }
+        public int Flag { get; set; }
         public System.Windows.Forms.Timer Timer1 { get; set; }
 
         public SkillControl()
@@ -31,6 +32,7 @@ namespace WindowsFormsApp2
             this.button2.Text = row.Reset;
             this.textBox1.Text = row.Description;
             this.Interval = row.Interval;
+            this.Flag = row.Flag;
             this.Tag = row.Interval;
             this.Description = row.Description;
         }
@@ -56,11 +58,16 @@ namespace WindowsFormsApp2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            StartOn = DateTime.Now;
-            Enabled = true;
-            this.textBox1.Visible = false;
-            this.label1.Text = Interval != 0 ? $"{Interval}" : "00:00:00";
-            this.label1.Visible = true;
+            OnClick(this);
+        }
+
+        public void OnClick(SkillControl skillControl)
+        {
+            skillControl.StartOn = DateTime.Now;
+            skillControl.Enabled = true;
+            skillControl.textBox1.Visible = false;
+            skillControl.label1.Text = Interval != 0 ? $"{Interval}" : "00:00:00";
+            skillControl.label1.Visible = true;
         }
 
         private void button2_Click(object sender, EventArgs e)

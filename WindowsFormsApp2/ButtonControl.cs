@@ -20,7 +20,7 @@ namespace WindowsFormsApp2
 
         public Timer Timer { get; set; }
 
-        public Form RootForm { get; set; }
+        public Form1 RootForm { get; set; }
 
         public ButtonControl()
         {
@@ -64,6 +64,7 @@ namespace WindowsFormsApp2
         }
         private void ToDrawSkills(Boss boss)
         {
+            RootForm.SkillControls.Clear();
             this.RootForm.Text = $"{Instance?.Name} >> {Boss?.Name}";// button1.Text;
             this.DrawSkills.Controls.Clear();
 
@@ -71,6 +72,11 @@ namespace WindowsFormsApp2
             {
                 var skillBtn = new SkillControl(skill, Timer);
                 this.DrawSkills.Controls.Add(skillBtn);
+
+                if (skill.Flag == 0)
+                {
+                    RootForm.SkillControls.Add(skillBtn);
+                }
             }
         }
     }

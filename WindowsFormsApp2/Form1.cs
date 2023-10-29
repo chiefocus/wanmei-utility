@@ -16,6 +16,8 @@ namespace WindowsFormsApp2
             InitializeComponent();
         }
 
+        public List<SkillControl> SkillControls { get; set; } = new List<SkillControl>();
+
         public static readonly List<Instance> _instances = new List<Instance>();
 
         private static void InitInstances()
@@ -51,6 +53,7 @@ namespace WindowsFormsApp2
                             Name = s.Attribute("n").Value,
                             Interval = int.Parse(s.Attribute("i").Value),
                             Description = s.Attribute("d").Value,
+                            Flag = int.Parse(s.Attribute("f")?.Value ?? "1"),
                         };
                         boss.Skills.Add(skill);
                     }
@@ -85,10 +88,6 @@ namespace WindowsFormsApp2
             }
 
             Reset();
-
-            //this.panel3.Visible = false;
-            //this.panel3.Enabled = false;
-            //this.panel3.Height = 0;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -136,6 +135,14 @@ namespace WindowsFormsApp2
         private void btnReset_Click(object sender, EventArgs e)
         {
             Reset();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            foreach (var skill in SkillControls)
+            {
+                skill.OnClick(skill);
+            }
         }
     }
 }

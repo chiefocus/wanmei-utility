@@ -9,5 +9,6 @@
         public string Label1Text { get; set; }
         public int Interval { get; set; }
         public string Description { get; set; }
+        public int Flag { get; set; } = 1;//0-开打计时,1-非开打计时
     }
 }
