@@ -37,10 +37,10 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(-1, 1);
+            this.button1.Location = new System.Drawing.Point(0, 1);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(98, 26);
+            this.button1.Size = new System.Drawing.Size(98, 30);
             this.button1.TabIndex = 0;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
@@ -52,7 +52,7 @@
             this.button2.Location = new System.Drawing.Point(98, 1);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(54, 26);
+            this.button2.Size = new System.Drawing.Size(54, 30);
             this.button2.TabIndex = 1;
             this.button2.Text = "button";
             this.button2.UseVisualStyleBackColor = true;
@@ -63,7 +63,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(153, 1);
+            this.label1.Location = new System.Drawing.Point(153, 3);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 24);
@@ -79,11 +79,11 @@
             this.textBox1.BackColor = System.Drawing.SystemColors.Control;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(156, 4);
+            this.textBox1.Location = new System.Drawing.Point(156, 8);
             this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(322, 17);
+            this.textBox1.Size = new System.Drawing.Size(322, 18);
             this.textBox1.TabIndex = 3;
             // 
             // SkillControl
@@ -96,7 +96,7 @@
             this.Controls.Add(this.textBox1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SkillControl";
-            this.Size = new System.Drawing.Size(481, 28);
+            this.Size = new System.Drawing.Size(481, 32);
             this.ResumeLayout(false);
             this.PerformLayout();
 
