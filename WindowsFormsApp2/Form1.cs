@@ -82,7 +82,7 @@ namespace WindowsFormsApp2
                     DrawSkills = this.panel2,
                     Timer = timer1,
                     RootForm = this,
-                    BackColor = Color.OrangeRed
+                    ForeColor = Color.OrangeRed,
                 };
                 this.flowLayoutPanel1.Controls.Add(instanceBtn);
             }
