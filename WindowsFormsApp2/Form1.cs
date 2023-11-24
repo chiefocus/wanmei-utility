@@ -64,36 +64,37 @@ namespace WindowsFormsApp2
             }
         }
 
-        //public
-
         private void Form1_Load(object sender, EventArgs e)
         {
-            InitInstances();
-
             this.timer1.Start();
 
-            foreach (var instance in _instances)
+            this.BeginInvoke(new Action(() =>
             {
-                var instanceBtn = new ButtonControl($"{instance.Name} >>")
-                {
-                    Type = DrawType.Boss,
-                    DrawBosses = this.flowLayoutPanel2,
-                    Instance = instance,
-                    DrawSkills = this.panel2,
-                    Timer = timer1,
-                    RootForm = this,
-                    ForeColor = Color.OrangeRed,
-                };
-                this.flowLayoutPanel1.Controls.Add(instanceBtn);
-            }
+                InitInstances();
 
-            Reset();
+                foreach (var instance in _instances)
+                {
+                    var instanceBtn = new ButtonControl($"{instance.Name} >>")
+                    {
+                        Type = DrawType.Boss,
+                        DrawBosses = this.flowLayoutPanel2,
+                        Instance = instance,
+                        DrawSkills = this.panel2,
+                        Timer = timer1,
+                        RootForm = this,
+                        ForeColor = Color.OrangeRed,
+                    };
+                    this.flowLayoutPanel1.Controls.Add(instanceBtn);
+                }
+
+                Reset();
+            }));
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             this.textBox1.Text = DateTime.Now.ToString("HH:mm:ss");
-            
+
             this.button1.Visible = SkillControls.Any();
         }
 
