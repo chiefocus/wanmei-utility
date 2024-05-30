@@ -62,12 +62,13 @@
             // 
             // label1
             // 
+            this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(153, 3);
+            this.label1.Location = new System.Drawing.Point(159, 4);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 24);
+            this.label1.Size = new System.Drawing.Size(40, 22);
             this.label1.TabIndex = 2;
             this.label1.Text = "lbl1";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -85,7 +86,7 @@
             this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(322, 18);
+            this.textBox1.Size = new System.Drawing.Size(315, 18);
             this.textBox1.TabIndex = 3;
             // 
             // SkillControl
