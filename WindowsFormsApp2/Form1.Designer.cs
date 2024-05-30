@@ -61,7 +61,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(151, 3);
+            this.button1.Location = new System.Drawing.Point(157, 3);
             this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(90, 25);
@@ -73,10 +73,10 @@
             // btnReset
             // 
             this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReset.Location = new System.Drawing.Point(98, 3);
+            this.btnReset.Location = new System.Drawing.Point(104, 3);
             this.btnReset.Margin = new System.Windows.Forms.Padding(2, 2, 2, 0);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(53, 25);
+            this.btnReset.Size = new System.Drawing.Size(51, 25);
             this.btnReset.TabIndex = 2;
             this.btnReset.Text = "重置";
             this.btnReset.UseVisualStyleBackColor = true;

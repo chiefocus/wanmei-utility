@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using WindowsFormsApp2.Models;
 
 namespace WindowsFormsApp2
@@ -35,6 +36,8 @@ namespace WindowsFormsApp2
             this.Flag = row.Flag;
             this.Tag = row.Interval;
             this.Description = row.Description;
+
+            toolTip1.SetToolTip(this.button1, row.Description);
         }
 
         private string GetLabelText()
