@@ -82,7 +82,7 @@ namespace WindowsFormsApp2
 
                 foreach (var instance in _instances)
                 {
-                    var instanceBtn = new ButtonControl($"{instance.Name} >>")
+                    var instanceBtn = new ButtonControl($"{instance.Name}")
                     {
                         Type = DrawType.Boss,
                         DrawBosses = this.flowLayoutPanel2,
@@ -140,7 +140,7 @@ namespace WindowsFormsApp2
                 this.flowLayoutPanel2.Controls.Add(bossBtn);
             }
 
-            this.Text = "计时器v2";
+            this.Text = "计时器 - HL";
         }
 
         private void btnReset_Click(object sender, EventArgs e)

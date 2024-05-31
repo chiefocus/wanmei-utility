@@ -55,16 +55,16 @@
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(336, 28);
+            this.panel1.Size = new System.Drawing.Size(336, 32);
             this.panel1.TabIndex = 0;
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(157, 3);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(176, 2);
             this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 25);
+            this.button1.Size = new System.Drawing.Size(90, 30);
             this.button1.TabIndex = 3;
             this.button1.Text = "开打计时";
             this.button1.UseVisualStyleBackColor = true;
@@ -72,11 +72,11 @@
             // 
             // btnReset
             // 
-            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReset.Location = new System.Drawing.Point(104, 3);
+            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.Location = new System.Drawing.Point(124, 1);
             this.btnReset.Margin = new System.Windows.Forms.Padding(2, 2, 2, 0);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(51, 25);
+            this.btnReset.Size = new System.Drawing.Size(51, 30);
             this.btnReset.TabIndex = 2;
             this.btnReset.Text = "重置";
             this.btnReset.UseVisualStyleBackColor = true;
@@ -86,22 +86,23 @@
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.Control;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Cursor = System.Windows.Forms.Cursors.No;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.ForeColor = System.Drawing.Color.Green;
-            this.textBox1.Location = new System.Drawing.Point(2, 2);
+            this.textBox1.Location = new System.Drawing.Point(2, 3);
             this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBox1.Size = new System.Drawing.Size(83, 22);
-            this.textBox1.TabIndex = 1;
+            this.textBox1.Size = new System.Drawing.Size(118, 24);
+            this.textBox1.TabIndex = 9999;
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoSize = true;
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 194);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 198);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(336, 0);
@@ -111,7 +112,7 @@
             // 
             this.flowLayoutPanel2.AutoSize = true;
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 194);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 198);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(336, 0);
@@ -121,7 +122,7 @@
             // 
             this.panel2.AutoScroll = true;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(3, 31);
+            this.panel2.Location = new System.Drawing.Point(3, 35);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(336, 163);
@@ -143,7 +144,7 @@
             this.Name = "Form1";
             this.Padding = new System.Windows.Forms.Padding(3, 3, 0, 0);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "计时器v2";
+            this.Text = "计时器 - HL";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
