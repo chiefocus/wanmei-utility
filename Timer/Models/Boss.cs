@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace WindowsFormsApp2.Models
+namespace Timer.Models
 {
     public class Boss
     {

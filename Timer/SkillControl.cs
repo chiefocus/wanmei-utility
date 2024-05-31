@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
-using WindowsFormsApp2.Models;
+using Timer.Models;
 
-namespace WindowsFormsApp2
+namespace Timer
 {
     public partial class SkillControl : UserControl
     {
@@ -19,7 +19,7 @@ namespace WindowsFormsApp2
         {
         }
 
-        public SkillControl(Skill row, Timer timer)
+        public SkillControl(Skill row, System.Windows.Forms.Timer timer)
         {
             InitializeComponent();
 

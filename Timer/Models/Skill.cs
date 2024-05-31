@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp2.Models
+﻿namespace Timer.Models
 {
     public class Skill
     {

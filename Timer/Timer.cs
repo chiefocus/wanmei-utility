@@ -5,13 +5,13 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using WindowsFormsApp2.Models;
+using Timer.Models;
 
-namespace WindowsFormsApp2
+namespace Timer
 {
-    public partial class Form1 : Form
+    public partial class Timer : Form
     {
-        public Form1()
+        public Timer()
         {
             InitializeComponent();
         }

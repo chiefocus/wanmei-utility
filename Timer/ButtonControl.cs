@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using WindowsFormsApp2.Models;
+using Timer.Models;
 
-namespace WindowsFormsApp2
+namespace Timer
 {
     public partial class ButtonControl : UserControl
     {
@@ -17,9 +17,9 @@ namespace WindowsFormsApp2
 
         public Control DrawSkills { get; set; }
 
-        public Timer Timer { get; set; }
+        public System.Windows.Forms.Timer Timer { get; set; }
 
-        public Form1 RootForm { get; set; }
+        public Timer RootForm { get; set; }
 
         public ButtonControl()
         {
