@@ -128,7 +128,7 @@
             this.panel2.Size = new System.Drawing.Size(336, 163);
             this.panel2.TabIndex = 0;
             // 
-            // Form1
+            // Timer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -141,7 +141,7 @@
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "Form1";
+            this.Name = "Timer";
             this.Padding = new System.Windows.Forms.Padding(3, 3, 0, 0);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "计时器 - HL";
