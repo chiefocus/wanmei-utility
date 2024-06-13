@@ -90,7 +90,7 @@ namespace Timer
                         DrawSkills = this.panel2,
                         Timer = timer1,
                         RootForm = this,
-                        ForeColor = Color.OrangeRed,
+                        ForeColor = Color.DarkMagenta,
                     };
                     this.flowLayoutPanel1.Controls.Add(instanceBtn);
                 }
