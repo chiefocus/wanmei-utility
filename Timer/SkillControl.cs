@@ -31,7 +31,7 @@ namespace Timer
             this.RowData = row;
             this.button1.Text = RowData.Interval == 0 ? RowData.Name : $"{RowData.Name}";//row.Button1Text;
             this.button2.Text = row.Reset;
-            this.textBox1.Text = row.Description?.Replace("W","");
+            this.textBox1.Text = row.Description;
             this.textBox2.Text = row.Interval == 0 ? "" : $"{row.Interval}";
             this.Interval = row.Interval;
             this.Flag = row.Flag;
