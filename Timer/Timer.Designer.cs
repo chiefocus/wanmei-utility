@@ -60,7 +60,7 @@
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("SimSun", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("SimHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(159, 2);
             this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 0);
             this.button1.Name = "button1";
@@ -72,7 +72,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.Font = new System.Drawing.Font("SimSun", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.Font = new System.Drawing.Font("SimHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReset.Location = new System.Drawing.Point(107, 2);
             this.btnReset.Margin = new System.Windows.Forms.Padding(2, 2, 2, 0);
             this.btnReset.Name = "btnReset";
@@ -87,7 +87,7 @@
             this.textBox1.BackColor = System.Drawing.SystemColors.Control;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Cursor = System.Windows.Forms.Cursors.No;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Font = new System.Drawing.Font("SimHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.ForeColor = System.Drawing.Color.Green;
             this.textBox1.Location = new System.Drawing.Point(2, 3);
             this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
