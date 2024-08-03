@@ -43,7 +43,7 @@
             this.button1.Location = new System.Drawing.Point(0, 1);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(82, 30);
+            this.button1.Size = new System.Drawing.Size(82, 32);
             this.button1.TabIndex = 0;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
@@ -55,7 +55,7 @@
             this.button2.Location = new System.Drawing.Point(107, 1);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(51, 30);
+            this.button2.Size = new System.Drawing.Size(51, 32);
             this.button2.TabIndex = 1;
             this.button2.Text = "button";
             this.button2.UseVisualStyleBackColor = true;
@@ -79,13 +79,13 @@
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.Control;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.SeaGreen;
-            this.textBox1.Location = new System.Drawing.Point(159, 8);
+            this.textBox1.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.Color.DarkGreen;
+            this.textBox1.Location = new System.Drawing.Point(159, 10);
             this.textBox1.Margin = new System.Windows.Forms.Padding(0);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(318, 18);
+            this.textBox1.Size = new System.Drawing.Size(318, 20);
             this.textBox1.TabIndex = 3;
             // 
             // textBox2
@@ -93,15 +93,15 @@
             this.textBox2.BackColor = System.Drawing.SystemColors.Control;
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.textBox2.ForeColor = System.Drawing.Color.Green;
-            this.textBox2.Location = new System.Drawing.Point(84, 8);
+            this.textBox2.ForeColor = System.Drawing.Color.DarkGreen;
+            this.textBox2.Location = new System.Drawing.Point(84, 9);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(21, 14);
             this.textBox2.TabIndex = 4;
             // 
             // SkillControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label1);
@@ -110,7 +110,7 @@
             this.Controls.Add(this.textBox1);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "SkillControl";
-            this.Size = new System.Drawing.Size(481, 32);
+            this.Size = new System.Drawing.Size(481, 35);
             this.ResumeLayout(false);
             this.PerformLayout();
 
