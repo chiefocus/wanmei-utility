@@ -38,7 +38,7 @@
             this.button1.Location = new System.Drawing.Point(0, 0);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(62, 32);
+            this.button1.Size = new System.Drawing.Size(63, 32);
             this.button1.TabIndex = 0;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
@@ -51,7 +51,7 @@
             this.Controls.Add(this.button1);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "ButtonControl";
-            this.Size = new System.Drawing.Size(61, 32);
+            this.Size = new System.Drawing.Size(62, 32);
             this.ResumeLayout(false);
 
         }

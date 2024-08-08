@@ -53,9 +53,9 @@
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(306, 32);
+            this.panel1.Size = new System.Drawing.Size(311, 32);
             this.panel1.TabIndex = 0;
             // 
             // button1
@@ -90,7 +90,7 @@
             this.textBox1.Font = new System.Drawing.Font("SimHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.ForeColor = System.Drawing.Color.Green;
             this.textBox1.Location = new System.Drawing.Point(2, 3);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -105,7 +105,7 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 195);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(306, 0);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(311, 0);
             this.flowLayoutPanel1.TabIndex = 10;
             // 
             // flowLayoutPanel2
@@ -115,7 +115,7 @@
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 195);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(306, 0);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(311, 0);
             this.flowLayoutPanel2.TabIndex = 20;
             // 
             // panel2
@@ -125,7 +125,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 32);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(306, 163);
+            this.panel2.Size = new System.Drawing.Size(311, 163);
             this.panel2.TabIndex = 0;
             // 
             // Timer
@@ -134,14 +134,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(306, 281);
+            this.ClientSize = new System.Drawing.Size(311, 281);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Timer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "计时器 - HL";
