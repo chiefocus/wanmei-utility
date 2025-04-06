@@ -5,10 +5,6 @@ VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stopwatch", "Stopwatch\Stopwatch.csproj", "{F2CA3133-071D-4ACE-94F3-C41D5950D4CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "WindowsFormsApp1\WindowsFormsApp1.csproj", "{8C5E7BD3-B222-4805-A098-DC5CC18A5446}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp3", "WindowsFormsApp3\WindowsFormsApp3.csproj", "{BADA5853-29B7-4A8B-B179-515A95C7871C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timer", "Timer\Timer.csproj", "{1902AAD1-E50D-43AE-A7C3-9C3D9B068200}"
 EndProject
 Global
@@ -21,14 +17,6 @@ Global
 		{F2CA3133-071D-4ACE-94F3-C41D5950D4CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2CA3133-071D-4ACE-94F3-C41D5950D4CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2CA3133-071D-4ACE-94F3-C41D5950D4CE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8C5E7BD3-B222-4805-A098-DC5CC18A5446}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8C5E7BD3-B222-4805-A098-DC5CC18A5446}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8C5E7BD3-B222-4805-A098-DC5CC18A5446}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8C5E7BD3-B222-4805-A098-DC5CC18A5446}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BADA5853-29B7-4A8B-B179-515A95C7871C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BADA5853-29B7-4A8B-B179-515A95C7871C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BADA5853-29B7-4A8B-B179-515A95C7871C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BADA5853-29B7-4A8B-B179-515A95C7871C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1902AAD1-E50D-43AE-A7C3-9C3D9B068200}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1902AAD1-E50D-43AE-A7C3-9C3D9B068200}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1902AAD1-E50D-43AE-A7C3-9C3D9B068200}.Release|Any CPU.ActiveCfg = Release|Any CPU
