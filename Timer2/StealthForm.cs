@@ -24,17 +24,33 @@ namespace Timer2
         private const int WS_EX_TOOLWINDOW = 0x00000080;
         private const int WS_EX_APPWINDOW = 0x00040000;
 
-        protected override void OnHandleCreated(EventArgs e)
+        //protected override void OnHandleCreated(EventArgs e)
+        //{
+        //    base.OnHandleCreated(e);
+        //    // 关键API调用：将窗体标记为“工具窗口”
+        //    SetWindowLong(this.Handle, GWL_EXSTYLE,
+        //        GetWindowLong(this.Handle, GWL_EXSTYLE) | WS_EX_TOOLWINDOW);
+        //}
+
+        protected override CreateParams CreateParams
         {
-            base.OnHandleCreated(e);
-            // 关键API调用：将窗体标记为“工具窗口”
-            SetWindowLong(this.Handle, GWL_EXSTYLE,
-                GetWindowLong(this.Handle, GWL_EXSTYLE) | WS_EX_TOOLWINDOW);
+            get
+            {
+                CreateParams cp = base.CreateParams;
+
+                // 加上 WS_EX_TOOLWINDOW（0x80）标志
+                cp.ExStyle |= 0x80;
+
+                // 移除 WS_EX_APPWINDOW（0x40000）标志（如果有）
+                cp.ExStyle &= ~0x40000;
+
+                return cp;
+            }
         }
 
         public StealthForm()
         {
-            this.ShowInTaskbar = false;
+            //this.ShowInTaskbar = false;
             InitializeComponent();
         }
 
