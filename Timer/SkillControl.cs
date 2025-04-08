@@ -25,6 +25,9 @@ namespace Timer
 
             this.Dock = DockStyle.Top;
 
+            this.label2.Visible = false; //Plus
+            this.label3.Visible = false; //Minus
+
             Timer1 = timer;
             Timer1.Tick += new System.EventHandler(this.timer1_Tick);
 
@@ -44,7 +47,9 @@ namespace Timer
         private string GetLabelText()
         {
             var escaped = DateTime.Now - StartOn;
-            return Interval != 0 ? $"{Interval - escaped.TotalSeconds % Interval:N0}" : $"{escaped.Hours:00}:{escaped.Minutes:00}:{escaped.Seconds:00}";
+            return Interval != 0
+                ? $"{Interval - escaped.TotalSeconds % Interval:N0}"
+                : $"{escaped.Hours:00}:{escaped.Minutes:00}:{escaped.Seconds:00}";
         }
 
         public void UpdateLabel()
@@ -72,6 +77,8 @@ namespace Timer
             skillControl.textBox1.Visible = false;
             skillControl.label1.Text = Interval != 0 ? $"{Interval}" : "00:00:00";
             skillControl.label1.Visible = true;
+            this.label2.Visible = true;
+            this.label3.Visible = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -80,6 +87,18 @@ namespace Timer
             this.label1.Visible = false;
             this.textBox1.Visible = true;
             this.textBox1.Text = this.Description;
+            this.label2.Visible = false;
+            this.label3.Visible = false;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            this.StartOn = StartOn.AddMilliseconds(1000);
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            this.StartOn = StartOn.AddMilliseconds(-1000);
         }
     }
 }
