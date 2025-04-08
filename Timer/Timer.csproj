@@ -50,6 +50,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Profile.cs" />
+    <Compile Include="StopwatchControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StopwatchControl.Designer.cs">
+      <DependentUpon>StopwatchControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Timer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +80,9 @@
     <Compile Include="ButtonControl.Designer.cs">
       <DependentUpon>ButtonControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="StopwatchControl.resx">
+      <DependentUpon>StopwatchControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Timer.resx">
       <DependentUpon>Timer.cs</DependentUpon>
     </EmbeddedResource>

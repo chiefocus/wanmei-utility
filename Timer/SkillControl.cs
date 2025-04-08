@@ -77,8 +77,8 @@ namespace Timer
             skillControl.textBox1.Visible = false;
             skillControl.label1.Text = Interval != 0 ? $"{Interval}" : "00:00:00";
             skillControl.label1.Visible = true;
-            this.label2.Visible = true;
-            this.label3.Visible = true;
+            this.label2.Visible = this.Interval != 0 && Timer.Profile.PlusFlag;
+            this.label3.Visible = this.Interval != 0 && Timer.Profile.MinusFlag;
         }
 
         private void button2_Click(object sender, EventArgs e)

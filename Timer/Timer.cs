@@ -25,6 +25,8 @@ namespace Timer
 
         public static readonly List<Instance> _instances = new List<Instance>();
 
+        public static Profile Profile = new Profile();
+
         private static void InitInstances()
         {
             if (File.Exists("wmapp.dat"))
@@ -34,6 +36,14 @@ namespace Timer
 
             var xmlRoot = XElement.Parse(_instancesXml);
             var hs = xmlRoot.Elements("h");
+
+            var u = xmlRoot.Element("u");
+
+            if (u != null)
+            {
+                Profile.PlusFlag = u.Attribute("p")?.Value == "1";
+                Profile.MinusFlag = u.Attribute("m")?.Value == "1";
+            }
 
             _instances.Clear();
 
