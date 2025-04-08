@@ -64,7 +64,11 @@ namespace Timer
         private void ToDrawSkills(Boss boss)
         {
             RootForm.SkillControls.Clear();
+<<<<<<< Updated upstream
             this.RootForm.Text = $"{Instance?.Name} -- {Boss?.Name}";// button1.Text;
+=======
+            this.RootForm.Text = $"{Instance?.Name} -- {Boss?.Name}";
+>>>>>>> Stashed changes
             this.DrawSkills.Controls.Clear();
 
             foreach (var skill in boss.Skills)

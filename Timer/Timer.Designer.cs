@@ -55,7 +55,11 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
+<<<<<<< Updated upstream
             this.panel1.Size = new System.Drawing.Size(304, 32);
+=======
+            this.panel1.Size = new System.Drawing.Size(294, 32);
+>>>>>>> Stashed changes
             this.panel1.TabIndex = 0;
             // 
             // button1
@@ -105,7 +109,11 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 195);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+<<<<<<< Updated upstream
             this.flowLayoutPanel1.Size = new System.Drawing.Size(304, 0);
+=======
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(294, 0);
+>>>>>>> Stashed changes
             this.flowLayoutPanel1.TabIndex = 10;
             // 
             // flowLayoutPanel2
@@ -115,7 +123,11 @@
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 195);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+<<<<<<< Updated upstream
             this.flowLayoutPanel2.Size = new System.Drawing.Size(304, 0);
+=======
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(294, 0);
+>>>>>>> Stashed changes
             this.flowLayoutPanel2.TabIndex = 20;
             // 
             // panel2
@@ -125,7 +137,11 @@
             this.panel2.Location = new System.Drawing.Point(0, 32);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
+<<<<<<< Updated upstream
             this.panel2.Size = new System.Drawing.Size(304, 163);
+=======
+            this.panel2.Size = new System.Drawing.Size(294, 163);
+>>>>>>> Stashed changes
             this.panel2.TabIndex = 0;
             // 
             // Timer
@@ -134,7 +150,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoSize = true;
+<<<<<<< Updated upstream
             this.ClientSize = new System.Drawing.Size(304, 281);
+=======
+            this.ClientSize = new System.Drawing.Size(294, 317);
+>>>>>>> Stashed changes
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel2);

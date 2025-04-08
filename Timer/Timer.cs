@@ -16,7 +16,7 @@ namespace Timer
             InitializeComponent();
             Rectangle res = Screen.PrimaryScreen.Bounds;
             this.StartPosition = FormStartPosition.Manual;
-            this.Location = new Point(res.Right - this.Width, res.Height / 2);
+            this.Location = new Point(res.Right - this.Width, res.Height / 2 - 200);
         }
 
         protected override CreateParams CreateParams
