@@ -134,12 +134,12 @@ namespace Timer
 
         private void label2_Click(object sender, EventArgs e)
         {
-            this.StartOn = StartOn.AddMilliseconds(1000);
+            this.StartOn = StartOn.AddMilliseconds(Timer.Profile.Offset);
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
-            this.StartOn = StartOn.AddMilliseconds(-1000);
+            this.StartOn = StartOn.AddMilliseconds(-Timer.Profile.Offset);
         }
     }
 }

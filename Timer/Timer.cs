@@ -44,6 +44,7 @@ namespace Timer
                 Profile.PlusFlag = u.Attribute("p")?.Value == "1";
                 Profile.MinusFlag = u.Attribute("m")?.Value == "1";
                 Profile.MillisecondsFlag = u.Attribute("ms")?.Value == "1";
+                Profile.Offset = int.Parse(u.Attribute("o")?.Value ?? "1000");
             }
 
             _instances.Clear();

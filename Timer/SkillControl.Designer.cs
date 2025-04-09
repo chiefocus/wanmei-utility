@@ -95,7 +95,7 @@ namespace Timer
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label2.Location = new System.Drawing.Point(220, 3);
+            this.label2.Location = new System.Drawing.Point(214, 3);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(31, 24);
             this.label2.TabIndex = 5;
@@ -107,7 +107,7 @@ namespace Timer
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label3.Location = new System.Drawing.Point(252, 3);
+            this.label3.Location = new System.Drawing.Point(247, 3);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(31, 24);
             this.label3.TabIndex = 6;
