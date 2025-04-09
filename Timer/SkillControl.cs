@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using Timer.Models;
@@ -17,6 +18,8 @@ namespace Timer
         public bool Clickable { get; set; }
         public System.Windows.Forms.Timer Timer1 { get; set; }
 
+        private Point _stopwatchControlOriginalLocation;
+
         private Stopwatch _stopwatch;
 
         public SkillControl()
@@ -28,6 +31,8 @@ namespace Timer
             InitializeComponent();
 
             this.Dock = DockStyle.Top;
+
+            _stopwatchControlOriginalLocation = this.stopwatchControl1.Location;
 
             this.stopwatchControl1.Visible = false;
 
@@ -97,6 +102,12 @@ namespace Timer
                 this.label1.Visible = false;
                 this.label2.Visible = Timer.Profile.PlusFlag;
                 this.label3.Visible = Timer.Profile.MinusFlag;
+
+                if (Interval >= 100)
+                {
+                    this.stopwatchControl1.Location = new Point(_stopwatchControlOriginalLocation.X + 12,
+                        _stopwatchControlOriginalLocation.Y);
+                }
             }
 
             if (Interval == 0)

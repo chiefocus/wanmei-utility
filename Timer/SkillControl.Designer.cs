@@ -72,7 +72,7 @@ namespace Timer
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("SimHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.ForeColor = System.Drawing.Color.DarkGreen;
-            this.textBox1.Location = new System.Drawing.Point(174, 10);
+            this.textBox1.Location = new System.Drawing.Point(163, 10);
             this.textBox1.Margin = new System.Windows.Forms.Padding(0);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
@@ -116,7 +116,7 @@ namespace Timer
             // 
             // stopwatchControl1
             // 
-            this.stopwatchControl1.Location = new System.Drawing.Point(157, 6);
+            this.stopwatchControl1.Location = new System.Drawing.Point(147, 6);
             this.stopwatchControl1.Name = "stopwatchControl1";
             this.stopwatchControl1.Size = new System.Drawing.Size(63, 21);
             this.stopwatchControl1.TabIndex = 7;
@@ -128,20 +128,20 @@ namespace Timer
             this.label1.ForeColor = System.Drawing.Color.Red;
             this.label1.Location = new System.Drawing.Point(163, 6);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 21);
+            this.label1.Size = new System.Drawing.Size(54, 21);
             this.label1.TabIndex = 8;
-            this.label1.Text = "label1";
+            this.label1.Text = "1111";
             // 
             // SkillControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.stopwatchControl1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Margin = new System.Windows.Forms.Padding(0);
