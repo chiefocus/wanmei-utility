@@ -43,6 +43,7 @@ namespace Timer
             {
                 Profile.PlusFlag = u.Attribute("p")?.Value == "1";
                 Profile.MinusFlag = u.Attribute("m")?.Value == "1";
+                Profile.MillisecondsFlag = u.Attribute("ms")?.Value == "1";
             }
 
             _instances.Clear();
@@ -73,6 +74,7 @@ namespace Timer
                             Interval = int.Parse(s.Attribute("i").Value),
                             Description = s.Attribute("d").Value,
                             Flag = int.Parse(s.Attribute("f")?.Value ?? "1"),
+                            Clickable = s.Attribute("c")?.Value != "0"
                         };
                         boss.Skills.Add(skill);
                     }

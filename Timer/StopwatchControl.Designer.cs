@@ -43,14 +43,16 @@
             this.label1.Size = new System.Drawing.Size(43, 21);
             this.label1.TabIndex = 0;
             this.label1.Text = "111";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label2.Location = new System.Drawing.Point(43, 8);
+            this.label2.Font = new System.Drawing.Font("SimHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.Location = new System.Drawing.Point(38, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(13, 13);
+            this.label2.Size = new System.Drawing.Size(11, 11);
             this.label2.TabIndex = 1;
             this.label2.Text = "2";
             // 
