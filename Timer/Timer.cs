@@ -29,9 +29,9 @@ namespace Timer
 
         private static void InitInstances()
         {
-            if (File.Exists("wmapp.dat"))
+            if (File.Exists("wmappdata"))
             {
-                _instancesXml = File.ReadAllText("wmapp.dat");
+                _instancesXml = File.ReadAllText("wmappdata");
             }
 
             var xmlRoot = XElement.Parse(_instancesXml);
