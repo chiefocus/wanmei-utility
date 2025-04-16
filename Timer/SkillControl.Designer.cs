@@ -68,15 +68,15 @@ namespace Timer
             // 
             // textBox1
             // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.BackColor = System.Drawing.SystemColors.Control;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("SimHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.ForeColor = System.Drawing.Color.DarkGreen;
-            this.textBox1.Location = new System.Drawing.Point(163, 10);
+            this.textBox1.Location = new System.Drawing.Point(349, 10);
             this.textBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(297, 20);
+            this.textBox1.Size = new System.Drawing.Size(132, 15);
             this.textBox1.TabIndex = 3;
             // 
             // textBox2
@@ -95,7 +95,7 @@ namespace Timer
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label2.Location = new System.Drawing.Point(214, 3);
+            this.label2.Location = new System.Drawing.Point(207, 3);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(31, 24);
             this.label2.TabIndex = 5;
@@ -107,7 +107,7 @@ namespace Timer
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label3.Location = new System.Drawing.Point(247, 3);
+            this.label3.Location = new System.Drawing.Point(238, 3);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(31, 24);
             this.label3.TabIndex = 6;
@@ -116,9 +116,9 @@ namespace Timer
             // 
             // stopwatchControl1
             // 
-            this.stopwatchControl1.Location = new System.Drawing.Point(147, 6);
+            this.stopwatchControl1.Location = new System.Drawing.Point(157, 6);
             this.stopwatchControl1.Name = "stopwatchControl1";
-            this.stopwatchControl1.Size = new System.Drawing.Size(63, 21);
+            this.stopwatchControl1.Size = new System.Drawing.Size(50, 21);
             this.stopwatchControl1.TabIndex = 7;
             // 
             // label1
@@ -126,7 +126,7 @@ namespace Timer
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("SimHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(163, 6);
+            this.label1.Location = new System.Drawing.Point(162, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 21);
             this.label1.TabIndex = 8;

@@ -103,11 +103,11 @@ namespace Timer
                 this.label2.Visible = Timer.Profile.PlusFlag;
                 this.label3.Visible = Timer.Profile.MinusFlag;
 
-                if (Interval >= 100)
-                {
-                    this.stopwatchControl1.Location = new Point(_stopwatchControlOriginalLocation.X + 12,
-                        _stopwatchControlOriginalLocation.Y);
-                }
+                //if (Interval >= 100)
+                //{
+                //    this.stopwatchControl1.Location = new Point(_stopwatchControlOriginalLocation.X + 12,
+                //        _stopwatchControlOriginalLocation.Y);
+                //}
             }
 
             if (Interval == 0)
