@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using System.Xml.Schema;
 using Timer.Models;
 
 namespace Timer
@@ -31,63 +30,67 @@ namespace Timer
 
         private static void InitInstances()
         {
-            if (File.Exists(_dataFile))
+            try
             {
-                _instancesXml = File.ReadAllText(_dataFile);
-            }
-
-            var xmlRoot = XElement.Parse(_instancesXml);
-            var hs = xmlRoot.Elements("h");
-
-            var u = xmlRoot.Element("u");
-
-            if (u != null)
-            {
-                Profile.PlusFlag = u.Attribute("p")?.Value == "1";
-                Profile.MinusFlag = u.Attribute("m")?.Value == "1";
-                Profile.MillisecondsFlag = u.Attribute("ms")?.Value == "1";
-                Profile.Offset = int.Parse(u.Attribute("o")?.Value ?? "1000");
-            }
-
-            _instances.Clear();
-
-            foreach (var h in hs)
-            {
-                var instance = new Instance()
+                if (File.Exists(_dataFile))
                 {
-                    Name = h.Attribute("n").Value
-                };
-
-                var bs = h.Elements("b");
-                foreach (var b in bs)
-                {
-                    var boss = new Boss()
-                    {
-                        InstanceName = instance.Name,
-                        Name = b.Attribute("n").Value
-                    };
-                    var ss = b.Elements("s");
-                    foreach (var s in ss)
-                    {
-                        var skill = new Skill()
-                        {
-                            InstanceName = instance.Name,
-                            BossName = boss.Name,
-                            Name = s.Attribute("n").Value,
-                            Interval = int.Parse(s.Attribute("i").Value),
-                            Description = s.Attribute("d").Value,
-                            Flag = int.Parse(s.Attribute("f")?.Value ?? "1"),
-                            Clickable = s.Attribute("c")?.Value != "0"
-                        };
-                        boss.Skills.Add(skill);
-                    }
-                    boss.Skills.Reverse();
-
-                    instance.Bosses.Add(boss);
+                    _instancesXml = File.ReadAllText(_dataFile);
                 }
 
-                _instances.Add(instance);
+                var xmlRoot = XElement.Parse(_instancesXml);
+                var hs = xmlRoot.Elements("h");
+
+                var u = xmlRoot.Element("u");
+
+                if (u != null)
+                {
+                    Profile.PlusFlag = u.Attribute("p")?.Value == "1";
+                    Profile.MinusFlag = u.Attribute("m")?.Value == "1";
+                    Profile.MillisecondsFlag = u.Attribute("ms")?.Value == "1";
+                    Profile.Offset = int.Parse(u.Attribute("o")?.Value ?? "1000");
+                }
+
+                _instances.Clear();
+
+                foreach (var h in hs)
+                {
+                    var instance = new Instance()
+                    {
+                        Name = h.Attribute("n").Value
+                    };
+
+                    var bs = h.Elements("b");
+                    foreach (var b in bs)
+                    {
+                        var boss = new Boss()
+                        {
+                            InstanceName = instance.Name,
+                            Name = b.Attribute("n").Value
+                        };
+                        var ss = b.Elements("s");
+                        foreach (var s in ss)
+                        {
+                            var skill = new Skill()
+                            {
+                                InstanceName = instance.Name,
+                                BossName = boss.Name,
+                                Name = s.Attribute("n").Value,
+                                Interval = int.Parse(s.Attribute("i").Value),
+                                Description = s.Attribute("d").Value,
+                                Flag = int.Parse(s.Attribute("f")?.Value ?? "1"),
+                                Clickable = s.Attribute("c")?.Value != "0"
+                            };
+                            boss.Skills.Add(skill);
+                        }
+                        boss.Skills.Reverse();
+
+                        instance.Bosses.Add(boss);
+                    }
+
+                    _instances.Add(instance);
+                }
             }
+            catch { }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -134,11 +137,18 @@ namespace Timer
             if (!isH3)
             {
                 var skill = new Skill();
+
                 var skillrow1 = new SkillControl(skill, timer1);
                 var skillrow2 = new SkillControl(skill, timer1);
                 var skillrow3 = new SkillControl(skill, timer1);
                 var skillrow4 = new SkillControl(skill, timer1);
                 var skillrow5 = new SkillControl(skill, timer1);
+
+                this.SkillControls.Add(skillrow1);
+                this.SkillControls.Add(skillrow2);
+                this.SkillControls.Add(skillrow3);
+                this.SkillControls.Add(skillrow4);
+                this.SkillControls.Add(skillrow5);
 
                 this.panel2.Controls.Add(skillrow1);
                 this.panel2.Controls.Add(skillrow2);

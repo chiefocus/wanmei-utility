@@ -60,11 +60,11 @@
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("SimHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(157, 2);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 0);
+            this.button1.Font = new System.Drawing.Font("SimHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(162, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 30);
+            this.button1.Size = new System.Drawing.Size(64, 30);
             this.button1.TabIndex = 3;
             this.button1.Text = "开打计时";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -73,13 +73,13 @@
             // 
             // btnReset
             // 
-            this.btnReset.Font = new System.Drawing.Font("SimHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReset.Location = new System.Drawing.Point(105, 2);
-            this.btnReset.Margin = new System.Windows.Forms.Padding(2, 2, 2, 0);
+            this.btnReset.Font = new System.Drawing.Font("SimHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.Location = new System.Drawing.Point(110, 2);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(0);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(51, 30);
             this.btnReset.TabIndex = 2;
-            this.btnReset.Text = "重置";
+            this.btnReset.Text = "自定义";
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
