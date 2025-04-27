@@ -66,6 +66,11 @@ namespace Timer
 
                     this.stopwatchControl1.Seconds = (int)ts.TotalSeconds;
                     this.stopwatchControl1.Milliseconds = ts.Milliseconds / 100;
+
+                    if (interval >= 100 && ts.TotalSeconds < 100)
+                    {
+                        this.stopwatchControl1.Location = _stopwatchControlOriginalLocation;
+                    }
                 }
             }
         }
@@ -101,7 +106,7 @@ namespace Timer
 
                 if (interval >= 100)
                 {
-                    this.stopwatchControl1.Location = new Point(_stopwatchControlOriginalLocation.X + 12,
+                    this.stopwatchControl1.Location = new Point(_stopwatchControlOriginalLocation.X + 10,
                         _stopwatchControlOriginalLocation.Y);
                 }
             }

@@ -118,7 +118,7 @@ namespace Timer
             // 
             this.stopwatchControl1.Location = new System.Drawing.Point(150, 6);
             this.stopwatchControl1.Name = "stopwatchControl1";
-            this.stopwatchControl1.Size = new System.Drawing.Size(40, 21);
+            this.stopwatchControl1.Size = new System.Drawing.Size(45, 21);
             this.stopwatchControl1.TabIndex = 7;
             // 
             // label1
