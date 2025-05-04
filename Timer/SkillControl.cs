@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Timer.Models;
 
@@ -8,7 +9,7 @@ namespace Timer
     public partial class SkillControl : UserControl
     {
         public bool Enabled { get; set; }
-        public Skill RowData { get; set; }
+        public Skill Skill { get; set; }
         public DateTime StartOn { get; set; }
         public int Interval { get; set; }
         public string Description { get; set; }
@@ -18,11 +19,7 @@ namespace Timer
 
         private Point _stopwatchControlOriginalLocation;
 
-        public SkillControl()
-        {
-        }
-
-        public SkillControl(Skill row, System.Windows.Forms.Timer timer)
+        public SkillControl(Skill skill, System.Windows.Forms.Timer timer)
         {
             InitializeComponent();
 
@@ -39,18 +36,18 @@ namespace Timer
             Timer1 = timer;
             Timer1.Tick += new System.EventHandler(this.timer1_Tick);
 
-            this.RowData = row;
-            this.button1.Text = RowData.Interval == 0 ? RowData.Name : $"{RowData.Name}";//row.Button1Text;
-            this.button2.Text = row.Reset;
-            this.textBox1.Text = row.Description;
-            this.textBox2.Text = row.Interval == 0 ? "" : $"{row.Interval}";
-            this.Interval = row.Interval;
-            this.Flag = row.Flag;
-            this.Clickable = row.Clickable;
-            this.Tag = row.Interval;
-            this.Description = row.Description;
+            this.Skill = skill;
+            this.button1.Text = Skill.Interval == 0 ? Skill.Name : $"{Skill.Name}";//row.Button1Text;
+            this.button2.Text = skill.Reset;
+            this.textBox1.Text = skill.Description;
+            this.textBox2.Text = skill.Interval == 0 ? "" : $"{skill.Interval}";
+            this.Interval = skill.Interval;
+            this.Flag = skill.Flag;
+            this.Clickable = skill.Clickable;
+            this.Tag = skill.Interval;
+            this.Description = skill.Description;
 
-            toolTip1.SetToolTip(this.button1, row.Description);
+            toolTip1.SetToolTip(this.button1, skill.Description);
         }
 
         public void UpdateLabel()

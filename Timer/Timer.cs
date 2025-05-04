@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using Timer.Models;
@@ -11,12 +12,22 @@ namespace Timer
 {
     public partial class Timer : Form
     {
+        [DllImport("user32.dll")]
+        private static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
+
+        [DllImport("user32.dll")]
+        private static extern bool UnregisterHotKey(IntPtr hWnd, int id);
+
+        private const uint MOD_ALT = 0x0001;
+
         public Timer()
         {
             InitializeComponent();
             Rectangle res = Screen.PrimaryScreen.Bounds;
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(res.Right - this.Width, res.Height / 2 - 200);
+
+            Application.ApplicationExit += OnAppExit;
         }
 
         private static readonly string _dataFile = "wmapp.dat";
@@ -68,8 +79,10 @@ namespace Timer
                             Name = b.Attribute("n").Value
                         };
                         var ss = b.Elements("s");
+                        int vkIndex = 0;
                         foreach (var s in ss)
                         {
+                            int key = 49 + vkIndex;
                             var skill = new Skill()
                             {
                                 InstanceName = instance.Name,
@@ -78,9 +91,12 @@ namespace Timer
                                 Interval = int.Parse(s.Attribute("i").Value),
                                 Description = s.Attribute("d").Value,
                                 Flag = int.Parse(s.Attribute("f")?.Value ?? "1"),
-                                Clickable = s.Attribute("c")?.Value != "0"
+                                Clickable = s.Attribute("c")?.Value != "0",
+                                Id = key,
+                                VirtualKey = (uint)key
                             };
                             boss.Skills.Add(skill);
+                            vkIndex++;
                         }
                         boss.Skills.Reverse();
 
@@ -124,7 +140,7 @@ namespace Timer
         {
             this.textBox1.Text = DateTime.Now.ToString("HH:mm:ss");
 
-            this.button1.Visible = SkillControls.Any();
+            this.button1.Visible = SkillControls.Any(s => s.Skill.Flag == 0);
         }
 
         private void Reset(bool isH3 = false)
@@ -133,28 +149,27 @@ namespace Timer
             this.flowLayoutPanel2.Controls.Clear();
 
             var instance = _instances.First();
+            this.SkillControls.Clear();
 
             if (!isH3)
             {
-                var skill = new Skill();
+                var skillControl1 = new SkillControl(new Skill() { Id = 53, VirtualKey = 53 }, timer1);
+                var skillControl2 = new SkillControl(new Skill() { Id = 52, VirtualKey = 52 }, timer1);
+                var skillControl3 = new SkillControl(new Skill() { Id = 51, VirtualKey = 51 }, timer1);
+                var skillControl4 = new SkillControl(new Skill() { Id = 50, VirtualKey = 50 }, timer1);
+                var skillControl5 = new SkillControl(new Skill() { Id = 49, VirtualKey = 49 }, timer1);
 
-                var skillrow1 = new SkillControl(skill, timer1);
-                var skillrow2 = new SkillControl(skill, timer1);
-                var skillrow3 = new SkillControl(skill, timer1);
-                var skillrow4 = new SkillControl(skill, timer1);
-                var skillrow5 = new SkillControl(skill, timer1);
+                this.SkillControls.Add(skillControl1);
+                this.SkillControls.Add(skillControl2);
+                this.SkillControls.Add(skillControl3);
+                this.SkillControls.Add(skillControl4);
+                this.SkillControls.Add(skillControl5);
 
-                this.SkillControls.Add(skillrow1);
-                this.SkillControls.Add(skillrow2);
-                this.SkillControls.Add(skillrow3);
-                this.SkillControls.Add(skillrow4);
-                this.SkillControls.Add(skillrow5);
-
-                this.panel2.Controls.Add(skillrow1);
-                this.panel2.Controls.Add(skillrow2);
-                this.panel2.Controls.Add(skillrow3);
-                this.panel2.Controls.Add(skillrow4);
-                this.panel2.Controls.Add(skillrow5);
+                this.panel2.Controls.Add(skillControl1);
+                this.panel2.Controls.Add(skillControl2);
+                this.panel2.Controls.Add(skillControl3);
+                this.panel2.Controls.Add(skillControl4);
+                this.panel2.Controls.Add(skillControl5);
 
                 this.Text = "计时器 -- 后浪专用";
             }
@@ -164,18 +179,15 @@ namespace Timer
 
                 foreach (var skill in boss.Skills)
                 {
-                    this.SkillControls.Clear();
                     var skillControl = new SkillControl(skill, timer1);
                     this.panel2.Controls.Add(skillControl);
-
-                    if (skill.Flag == 0)
-                    {
-                        this.SkillControls.Add(skillControl);
-                    }
+                    this.SkillControls.Add(skillControl);
                 }
 
                 this.Text = $"{instance?.Name} -- {boss?.Name}";
             }
+
+            RegisterAllHotKeys();
 
             foreach (var boss in instance.Bosses)
             {
@@ -200,10 +212,64 @@ namespace Timer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            foreach (var skill in SkillControls)
+            var skillControls = SkillControls
+                .Where(s => s.Skill.Flag == 0);
+
+            foreach (var skill in skillControls)
             {
                 skill.OnClick(skill);
             }
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            var keys = SkillControls.Select(s => s.Skill.Id);
+            UnregisterAllHotKeys(keys);
+            base.OnFormClosing(e);
+        }
+
+        private void OnAppExit(object sender, EventArgs e)
+        {
+            var keys = SkillControls.Select(s => s.Skill.Id);
+            UnregisterAllHotKeys(keys);
+        }
+
+        private void UnregisterAllHotKeys(IEnumerable<int> keys)
+        {
+            foreach (var key in keys)
+            {
+                try
+                {
+                    UnregisterHotKey(this.Handle, key);
+                }
+                catch { }
+            }
+        }
+
+        public void RegisterAllHotKeys()
+        {
+            var keys = SkillControls.Select(s => s.Skill.Id);
+            UnregisterAllHotKeys(keys);
+            foreach (var key in keys)
+            {
+                try
+                {
+                    RegisterHotKey(this.Handle, key, MOD_ALT, (uint)key);
+                }
+                catch { }
+            }
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            const int WM_HOTKEY = 0x0312;
+            if (m.Msg == WM_HOTKEY)
+            {
+                int id = m.WParam.ToInt32();
+                var skillControl = SkillControls.FirstOrDefault(s => s.Skill.Id == id);
+                skillControl?.button1.PerformClick();
+            }
+            base.WndProc(ref m);
         }
     }
 }

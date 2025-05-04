@@ -10,5 +10,7 @@
         public string Description { get; set; }
         public int Flag { get; set; } = 1;//0-开打计时,1-非开打计时
         public bool Clickable { get; set; } = true; //该技能是否可点击计时
+        public int Id { get; set; }
+        public uint VirtualKey { get; set; }
     }
 }

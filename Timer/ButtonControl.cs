@@ -33,7 +33,6 @@ namespace Timer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //this.button1
             if (Type == DrawType.Boss && Instance?.Bosses != null)
             {
                 this.DrawBosses.Controls.Clear();
@@ -61,6 +60,7 @@ namespace Timer
                 ToDrawSkills(Boss);
             }
         }
+
         private void ToDrawSkills(Boss boss)
         {
             RootForm.SkillControls.Clear();
@@ -69,14 +69,12 @@ namespace Timer
 
             foreach (var skill in boss.Skills)
             {
-                var skillBtn = new SkillControl(skill, Timer);
-                this.DrawSkills.Controls.Add(skillBtn);
-
-                if (skill.Flag == 0)
-                {
-                    RootForm.SkillControls.Add(skillBtn);
-                }
+                var skillControl = new SkillControl(skill, Timer);
+                this.DrawSkills.Controls.Add(skillControl);
+                RootForm.SkillControls.Add(skillControl);
             }
+
+            RootForm.RegisterAllHotKeys();
         }
     }
 
