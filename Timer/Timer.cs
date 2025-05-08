@@ -153,11 +153,11 @@ namespace Timer
 
             if (!isH3)
             {
-                var skillControl1 = new SkillControl(new Skill() { Id = 53, VirtualKey = 53 }, timer1);
-                var skillControl2 = new SkillControl(new Skill() { Id = 52, VirtualKey = 52 }, timer1);
-                var skillControl3 = new SkillControl(new Skill() { Id = 51, VirtualKey = 51 }, timer1);
-                var skillControl4 = new SkillControl(new Skill() { Id = 50, VirtualKey = 50 }, timer1);
-                var skillControl5 = new SkillControl(new Skill() { Id = 49, VirtualKey = 49 }, timer1);
+                var skillControl1 = new SkillControl(new Skill() { Id = 53, VirtualKey = 53, Flag = 0 }, timer1);
+                var skillControl2 = new SkillControl(new Skill() { Id = 52, VirtualKey = 52, Flag = 0 }, timer1);
+                var skillControl3 = new SkillControl(new Skill() { Id = 51, VirtualKey = 51, Flag = 0 }, timer1);
+                var skillControl4 = new SkillControl(new Skill() { Id = 50, VirtualKey = 50, Flag = 0 }, timer1);
+                var skillControl5 = new SkillControl(new Skill() { Id = 49, VirtualKey = 49, Flag = 0 }, timer1);
 
                 this.SkillControls.Add(skillControl1);
                 this.SkillControls.Add(skillControl2);
