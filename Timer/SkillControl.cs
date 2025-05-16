@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Timer.Models;
 
@@ -18,6 +18,8 @@ namespace Timer
         public System.Windows.Forms.Timer Timer1 { get; set; }
 
         private Point _stopwatchControlOriginalLocation;
+        private Stopwatch _stopwatch;
+        private int _currentCycle = 0;
 
         public SkillControl(Skill skill, System.Windows.Forms.Timer timer)
         {
@@ -48,26 +50,23 @@ namespace Timer
             this.Description = skill.Description;
 
             toolTip1.SetToolTip(this.button1, skill.Description);
+
+            _stopwatch = new Stopwatch();
         }
 
         public void UpdateLabel()
         {
-            var interval = GetInterval(this.textBox2.Text);
-
-            if (Enabled)
+            if (Enabled && Interval > 0)
             {
-                if (interval != 0)
+                var elapsedSeconds = _stopwatch.Elapsed.TotalSeconds;
+                var remaining = Math.Max(0, Interval - (elapsedSeconds % Interval));
+
+                this.stopwatchControl1.Seconds = (int)remaining;
+                this.stopwatchControl1.Milliseconds = (int)(remaining * 10) % 10;
+
+                if (Interval >= 100 && remaining < 100)
                 {
-                    var escaped = DateTime.Now - StartOn;
-                    var ts = TimeSpan.FromSeconds(interval - escaped.TotalSeconds % interval);
-
-                    this.stopwatchControl1.Seconds = (int)ts.TotalSeconds;
-                    this.stopwatchControl1.Milliseconds = ts.Milliseconds / 100;
-
-                    if (interval >= 100 && ts.TotalSeconds < 100)
-                    {
-                        this.stopwatchControl1.Location = _stopwatchControlOriginalLocation;
-                    }
+                    this.stopwatchControl1.Location = _stopwatchControlOriginalLocation;
                 }
             }
         }
@@ -87,21 +86,21 @@ namespace Timer
 
         public void OnClick(SkillControl skillControl)
         {
+            _stopwatch.Restart();
+
             skillControl.Enabled = true;
             skillControl.textBox1.Visible = false;
 
-            var interval = GetInterval(this.textBox2.Text);
-
-            if (interval != 0)
+            if (Interval > 0)
             {
                 skillControl.StartOn = DateTime.Now;
                 skillControl.stopwatchControl1.Visible = true;
-                skillControl.stopwatchControl1.Seconds = GetInterval(this.textBox2.Text);
+                skillControl.stopwatchControl1.Seconds = Interval;
                 this.label1.Visible = false;
                 this.label2.Visible = Timer.Profile.PlusFlag;
                 this.label3.Visible = Timer.Profile.MinusFlag;
 
-                if (interval >= 100)
+                if (Interval >= 100)
                 {
                     this.stopwatchControl1.Location = new Point(_stopwatchControlOriginalLocation.X + 10,
                         _stopwatchControlOriginalLocation.Y);
@@ -139,6 +138,11 @@ namespace Timer
                 return r;
             }
             return 0;
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            this.Interval = GetInterval(textBox2.Text);
         }
     }
 }
