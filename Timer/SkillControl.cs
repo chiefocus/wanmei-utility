@@ -63,14 +63,10 @@ namespace Timer
                 this.stopwatchControl1.Seconds = (int)remaining;
                 this.stopwatchControl1.Milliseconds = (int)(remaining * 10) % 10;
 
-                if (Interval >= 100 && remaining < 100)
+                if (Interval >= 100)
                 {
-                    this.stopwatchControl1.Location = _stopwatchControlOriginalLocation;
-                }
-                else
-                {
-                    this.stopwatchControl1.Location = new Point(_stopwatchControlOriginalLocation.X + 10,
-                        _stopwatchControlOriginalLocation.Y);
+                    this.stopwatchControl1.Location = remaining < 100 ? _stopwatchControlOriginalLocation
+                        : new Point(_stopwatchControlOriginalLocation.X + 10, _stopwatchControlOriginalLocation.Y);
                 }
             }
         }
