@@ -10,7 +10,6 @@ namespace Timer
     {
         public bool Enabled { get; set; }
         public Skill Skill { get; set; }
-        public DateTime StartOn { get; set; }
         public int Interval { get; set; }
         public string Description { get; set; }
         public int Flag { get; set; }
@@ -19,7 +18,7 @@ namespace Timer
 
         private Point _stopwatchControlOriginalLocation;
         private Stopwatch _stopwatch;
-        private int _currentCycle = 0;
+        private double _offsetMilliseconds = 0.0;
 
         public SkillControl(Skill skill, System.Windows.Forms.Timer timer)
         {
@@ -58,7 +57,7 @@ namespace Timer
         {
             if (Enabled && Interval > 0)
             {
-                var elapsedSeconds = _stopwatch.Elapsed.TotalSeconds;
+                var elapsedSeconds = _stopwatch.Elapsed.TotalSeconds - _offsetMilliseconds / 1000;
                 var remaining = Math.Max(0, Interval - (elapsedSeconds % Interval));
 
                 this.stopwatchControl1.Seconds = (int)remaining;
@@ -67,6 +66,11 @@ namespace Timer
                 if (Interval >= 100 && remaining < 100)
                 {
                     this.stopwatchControl1.Location = _stopwatchControlOriginalLocation;
+                }
+                else
+                {
+                    this.stopwatchControl1.Location = new Point(_stopwatchControlOriginalLocation.X + 10,
+                        _stopwatchControlOriginalLocation.Y);
                 }
             }
         }
@@ -87,13 +91,13 @@ namespace Timer
         public void OnClick(SkillControl skillControl)
         {
             _stopwatch.Restart();
+            _offsetMilliseconds = 0.0;
 
             skillControl.Enabled = true;
             skillControl.textBox1.Visible = false;
 
             if (Interval > 0)
             {
-                skillControl.StartOn = DateTime.Now;
                 skillControl.stopwatchControl1.Visible = true;
                 skillControl.stopwatchControl1.Seconds = Interval;
                 this.label1.Visible = false;
@@ -121,12 +125,12 @@ namespace Timer
 
         private void label2_Click(object sender, EventArgs e)
         {
-            this.StartOn = StartOn.AddMilliseconds(Timer.Profile.Offset);
+            _offsetMilliseconds += Timer.Profile.Offset;
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
-            this.StartOn = StartOn.AddMilliseconds(-Timer.Profile.Offset);
+            _offsetMilliseconds -= Timer.Profile.Offset;
         }
 
         private static int GetInterval(string s)
