@@ -202,6 +202,7 @@ namespace Timer
                     RootForm = this
                 };
                 this.flowLayoutPanel2.Controls.Add(bossBtn);
+                this.flowLayoutPanel2.Controls[0].Focus();
             }
         }
 
