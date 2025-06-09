@@ -113,6 +113,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="UpdateVersion.ps1" />
     <None Include="wmapp.dat">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -124,4 +125,7 @@
     <Content Include="timer.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>powershell -ExecutionPolicy Bypass -File "$(ProjectDir)UpdateVersion.ps1"</PreBuildEvent>
+  </PropertyGroup>
 </Project>
