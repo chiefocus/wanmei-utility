@@ -171,7 +171,7 @@ namespace Timer
                 this.panel2.Controls.Add(skillControl4);
                 this.panel2.Controls.Add(skillControl5);
 
-                this.Text = "计时器 -- 后浪专用";
+                this.Text = "计时器 - 后浪专用";
             }
             else
             {
@@ -184,7 +184,7 @@ namespace Timer
                     this.SkillControls.Add(skillControl);
                 }
 
-                this.Text = $"{instance?.Name} -- {boss?.Name}";
+                this.Text = $"{instance?.Name} - {boss?.Name}";
             }
 
             RegisterAllHotKeys();

@@ -64,7 +64,7 @@ namespace Timer
         private void ToDrawSkills(Boss boss)
         {
             RootForm.SkillControls.Clear();
-            this.RootForm.Text = $"{Instance?.Name} -- {Boss?.Name}";
+            this.RootForm.Text = $"{Instance?.Name} - {Boss?.Name}";
             this.DrawSkills.Controls.Clear();
 
             foreach (var skill in boss.Skills)

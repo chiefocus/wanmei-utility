@@ -43,7 +43,7 @@
             this.label1.Size = new System.Drawing.Size(43, 21);
             this.label1.TabIndex = 0;
             this.label1.Text = "111";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label2
             // 

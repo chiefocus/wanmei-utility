@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Drawing;
 using System.Windows.Forms;
 using Timer.Models;
 
@@ -16,7 +15,6 @@ namespace Timer
         public bool Clickable { get; set; }
         public System.Windows.Forms.Timer Timer1 { get; set; }
 
-        private Point _stopwatchControlOriginalLocation;
         private Stopwatch _stopwatch;
         private double _offsetMilliseconds = 0.0;
 
@@ -25,9 +23,6 @@ namespace Timer
             InitializeComponent();
 
             this.Dock = DockStyle.Top;
-
-            _stopwatchControlOriginalLocation = this.stopwatchControl1.Location;
-
             this.stopwatchControl1.Visible = false;
 
             this.label1.Visible = false; //后浪专用计时
@@ -62,12 +57,6 @@ namespace Timer
 
                 this.stopwatchControl1.Seconds = (int)remaining;
                 this.stopwatchControl1.Milliseconds = (int)(remaining * 10) % 10;
-
-                if (Interval >= 100)
-                {
-                    this.stopwatchControl1.Location = remaining < 100 ? _stopwatchControlOriginalLocation
-                        : new Point(_stopwatchControlOriginalLocation.X + 10, _stopwatchControlOriginalLocation.Y);
-                }
             }
         }
 
@@ -99,12 +88,6 @@ namespace Timer
                 this.label1.Visible = false;
                 this.label2.Visible = Timer.Profile.PlusFlag;
                 this.label3.Visible = Timer.Profile.MinusFlag;
-
-                if (Interval >= 100)
-                {
-                    this.stopwatchControl1.Location = new Point(_stopwatchControlOriginalLocation.X + 10,
-                        _stopwatchControlOriginalLocation.Y);
-                }
             }
         }
 

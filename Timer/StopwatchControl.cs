@@ -1,24 +1,25 @@
 ﻿using System.Drawing;
-using System.Drawing.Text;
 using System.Windows.Forms;
 
 namespace Timer
 {
     public partial class StopwatchControl : UserControl
     {
+        private static readonly int ALERT_SEC = 7;
+
         public int Seconds
         {
             set
             {
-                this.label1.ForeColor = value < 5 ? Color.Red : _secondsOriginalColor;
-                this.label1.Text = $"{value,3}";
+                this.label1.ForeColor = value < ALERT_SEC ? Color.Red : _secondsOriginalColor;
+                this.label1.Text = $"{value}";
             }
         }
         public int Milliseconds
         {
             set
             {
-                this.label2.ForeColor = int.Parse(this.label1.Text) < 5 ? Color.Red : _millisecondsOriginalColor;
+                this.label2.ForeColor = int.Parse(this.label1.Text) < ALERT_SEC ? Color.Red : _millisecondsOriginalColor;
                 this.label2.Text = value.ToString();
             }
         }
