@@ -39,7 +39,6 @@ namespace Timer
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.stopwatchControl1 = new StopwatchControl();
-            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -122,23 +121,11 @@ namespace Timer
             this.stopwatchControl1.Size = new System.Drawing.Size(45, 21);
             this.stopwatchControl1.TabIndex = 7;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("SimHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(165, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 21);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "111";
-            // 
             // SkillControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.stopwatchControl1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -163,6 +150,5 @@ namespace Timer
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private StopwatchControl stopwatchControl1;
-        private System.Windows.Forms.Label label1;
     }
 }

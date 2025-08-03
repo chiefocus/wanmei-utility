@@ -25,7 +25,6 @@ namespace Timer
             this.Dock = DockStyle.Top;
             this.stopwatchControl1.Visible = false;
 
-            this.label1.Visible = false; //后浪专用计时
             this.label2.Visible = false; //Plus
             this.label3.Visible = false; //Minus
 
@@ -85,7 +84,6 @@ namespace Timer
             {
                 skillControl.stopwatchControl1.Visible = true;
                 skillControl.stopwatchControl1.Seconds = Interval;
-                this.label1.Visible = false;
                 this.label2.Visible = Timer.Profile.PlusFlag;
                 this.label3.Visible = Timer.Profile.MinusFlag;
             }
@@ -97,7 +95,6 @@ namespace Timer
             this.stopwatchControl1.Visible = false;
             this.textBox1.Visible = true;
             this.textBox1.Text = this.Description;
-            this.label1.Visible = false;
             this.label2.Visible = false;
             this.label3.Visible = false;
         }
