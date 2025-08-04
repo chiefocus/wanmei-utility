@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1902AAD1-E50D-43AE-A7C3-9C3D9B068200}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Timer</RootNamespace>
+    <RootNamespace>TimerUtility</RootNamespace>
     <AssemblyName>Timer</AssemblyName>
     <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -53,11 +53,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Profile.cs" />
-    <Compile Include="StopwatchControl.cs">
+    <Compile Include="StopwatchDisplay.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="StopwatchControl.Designer.cs">
-      <DependentUpon>StopwatchControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Timer.cs">
       <SubType>Form</SubType>
@@ -82,9 +79,6 @@
     <Compile Include="ButtonControl.Designer.cs">
       <DependentUpon>ButtonControl.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="StopwatchControl.resx">
-      <DependentUpon>StopwatchControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Timer.resx">
       <DependentUpon>Timer.cs</DependentUpon>
     </EmbeddedResource>

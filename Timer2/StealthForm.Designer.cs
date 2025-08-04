@@ -1,4 +1,4 @@
-﻿namespace Timer2
+﻿namespace TimerUtility2
 {
     partial class StealthForm
     {

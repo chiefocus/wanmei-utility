@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows.Forms;
-using Timer.Models;
+using TimerUtility.Models;
 
-namespace Timer
+namespace TimerUtility
 {
     public partial class SkillControl : UserControl
     {
@@ -23,7 +23,7 @@ namespace Timer
             InitializeComponent();
 
             this.Dock = DockStyle.Top;
-            this.stopwatchControl1.Visible = false;
+            this.stopwatchDisplay1.Visible = false;
 
             this.label2.Visible = false; //Plus
             this.label3.Visible = false; //Minus
@@ -54,8 +54,8 @@ namespace Timer
                 var elapsedSeconds = _stopwatch.Elapsed.TotalSeconds - _offsetMilliseconds / 1000;
                 var remaining = Math.Max(0, Interval - (elapsedSeconds % Interval));
 
-                this.stopwatchControl1.Seconds = (int)remaining;
-                this.stopwatchControl1.Milliseconds = (int)(remaining * 10) % 10;
+                this.stopwatchDisplay1.Seconds = (int)remaining;
+                this.stopwatchDisplay1.Milliseconds = (int)(remaining * 10) % 10;
             }
         }
 
@@ -82,8 +82,8 @@ namespace Timer
 
             if (Interval > 0)
             {
-                skillControl.stopwatchControl1.Visible = true;
-                skillControl.stopwatchControl1.Seconds = Interval;
+                skillControl.stopwatchDisplay1.Visible = true;
+                skillControl.stopwatchDisplay1.Seconds = Interval;
                 this.label2.Visible = Timer.Profile.PlusFlag;
                 this.label3.Visible = Timer.Profile.MinusFlag;
             }
@@ -92,7 +92,7 @@ namespace Timer
         private void button2_Click(object sender, EventArgs e)
         {
             this.Enabled = false;
-            this.stopwatchControl1.Visible = false;
+            this.stopwatchDisplay1.Visible = false;
             this.textBox1.Visible = true;
             this.textBox1.Text = this.Description;
             this.label2.Visible = false;

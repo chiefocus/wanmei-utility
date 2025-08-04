@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using Timer.Models;
+using TimerUtility.Models;
 
-namespace Timer
+namespace TimerUtility
 {
     public partial class ButtonControl : UserControl
     {

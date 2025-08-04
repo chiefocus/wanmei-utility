@@ -6,9 +6,9 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using Timer.Models;
+using TimerUtility.Models;
 
-namespace Timer
+namespace TimerUtility
 {
     public partial class Timer : Form
     {

@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Windows.Forms;
 
-namespace Timer
+namespace TimerUtility
 {
     internal static class Program
     {

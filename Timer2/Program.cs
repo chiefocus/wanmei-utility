@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Timer2
+namespace TimerUtility2
 {
     internal static class Program
     {

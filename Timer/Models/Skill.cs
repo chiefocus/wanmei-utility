@@ -1,4 +1,4 @@
-﻿namespace Timer.Models
+﻿namespace TimerUtility.Models
 {
     public class Skill
     {

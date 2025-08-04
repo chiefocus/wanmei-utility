@@ -1,4 +1,4 @@
-﻿namespace Timer
+﻿namespace TimerUtility
 {
     partial class ButtonControl
     {

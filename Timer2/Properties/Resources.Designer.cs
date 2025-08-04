@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Timer2.Properties
+namespace TimerUtility2.Properties
 {
 
 

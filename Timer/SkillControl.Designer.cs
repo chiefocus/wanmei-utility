@@ -1,6 +1,6 @@
-﻿using Timer;
+﻿using TimerUtility;
 
-namespace Timer
+namespace TimerUtility
 {
     partial class SkillControl
     {
@@ -38,7 +38,7 @@ namespace Timer
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.stopwatchControl1 = new StopwatchControl();
+            this.stopwatchDisplay1 = new TimerUtility.StopwatchDisplay();
             this.SuspendLayout();
             // 
             // button1
@@ -95,7 +95,7 @@ namespace Timer
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label2.Location = new System.Drawing.Point(208, 3);
+            this.label2.Location = new System.Drawing.Point(213, 3);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(31, 24);
             this.label2.TabIndex = 5;
@@ -107,26 +107,29 @@ namespace Timer
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label3.Location = new System.Drawing.Point(236, 3);
+            this.label3.Location = new System.Drawing.Point(242, 3);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(31, 24);
             this.label3.TabIndex = 6;
             this.label3.Text = "➖";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // stopwatchControl1
+            // stopwatchDisplay1
             // 
-            this.stopwatchControl1.Location = new System.Drawing.Point(160, 6);
-            this.stopwatchControl1.Name = "stopwatchControl1";
-            this.stopwatchControl1.Size = new System.Drawing.Size(45, 21);
-            this.stopwatchControl1.TabIndex = 7;
+            this.stopwatchDisplay1.FontMain = new System.Drawing.Font("SimHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.stopwatchDisplay1.FontSub = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stopwatchDisplay1.ForeColorMain = System.Drawing.Color.Red;
+            this.stopwatchDisplay1.Location = new System.Drawing.Point(165, 5);
+            this.stopwatchDisplay1.Name = "stopwatchDisplay1";
+            this.stopwatchDisplay1.Size = new System.Drawing.Size(45, 26);
+            this.stopwatchDisplay1.TabIndex = 8;
             // 
             // SkillControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.stopwatchDisplay1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.stopwatchControl1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox2);
@@ -149,6 +152,6 @@ namespace Timer
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private StopwatchControl stopwatchControl1;
+        private StopwatchDisplay stopwatchDisplay1;
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Timer.Models
+namespace TimerUtility.Models
 {
     public class Instance
     {
