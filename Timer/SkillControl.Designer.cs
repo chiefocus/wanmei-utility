@@ -123,6 +123,7 @@ namespace TimerUtility
             this.stopwatchDisplay1.Name = "stopwatchDisplay1";
             this.stopwatchDisplay1.Size = new System.Drawing.Size(45, 26);
             this.stopwatchDisplay1.TabIndex = 8;
+            this.stopwatchDisplay1.DoubleClick += new System.EventHandler(this.stopwatchDisplay1_DoubleClick);
             // 
             // SkillControl
             // 

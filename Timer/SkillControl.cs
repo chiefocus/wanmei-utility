@@ -124,5 +124,10 @@ namespace TimerUtility
         {
             this.Interval = GetInterval(textBox2.Text);
         }
+
+        private void stopwatchDisplay1_DoubleClick(object sender, EventArgs e)
+        {
+            Timer.Profile.MillisecondsFlag = !Timer.Profile.MillisecondsFlag;
+        }
     }
 }
