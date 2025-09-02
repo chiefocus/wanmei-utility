@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows.Forms;
 using TimerUtility.Models;
 
@@ -32,7 +33,7 @@ namespace TimerUtility
             Timer1.Tick += new System.EventHandler(this.timer1_Tick);
 
             this.Skill = skill;
-            this.button1.Text = Skill.Interval == 0 ? Skill.Name : $"{Skill.Name}";//row.Button1Text;
+            this.button1.Text = Skill.Interval == 0 ? Skill.Name : $"{Skill.Name}";
             this.button2.Text = skill.Reset;
             this.textBox1.Text = skill.Description;
             this.textBox2.Text = skill.Interval == 0 ? "" : $"{skill.Interval}";
@@ -84,8 +85,8 @@ namespace TimerUtility
             {
                 skillControl.stopwatchDisplay1.Visible = true;
                 skillControl.stopwatchDisplay1.Seconds = Interval;
-                this.label2.Visible = Timer.Profile.PlusFlag;
-                this.label3.Visible = Timer.Profile.MinusFlag;
+                this.label2.Visible = Timer.Settings.Profile.PlusFlag;
+                this.label3.Visible = Timer.Settings.Profile.MinusFlag;
             }
         }
 
@@ -101,12 +102,12 @@ namespace TimerUtility
 
         private void label2_Click(object sender, EventArgs e)
         {
-            _offsetMilliseconds += Timer.Profile.Offset;
+            _offsetMilliseconds += Timer.Settings.Profile.Offset;
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
-            _offsetMilliseconds -= Timer.Profile.Offset;
+            _offsetMilliseconds -= Timer.Settings.Profile.Offset;
         }
 
         private static int GetInterval(string s)
@@ -123,11 +124,23 @@ namespace TimerUtility
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             this.Interval = GetInterval(textBox2.Text);
+
+            foreach (var instance in Timer.Settings.Instances)
+            {
+                foreach (var boss in instance.Bosses)
+                {
+                    var skill = boss.Skills.FirstOrDefault(s => s.Name.Equals(Skill.Name));
+                    if (skill != null)
+                    {
+                        skill.Interval = this.Interval;
+                    }
+                }
+            }
         }
 
         private void stopwatchDisplay1_DoubleClick(object sender, EventArgs e)
         {
-            Timer.Profile.MillisecondsFlag = !Timer.Profile.MillisecondsFlag;
+            Timer.Settings.Profile.MillisecondsFlag = !Timer.Settings.Profile.MillisecondsFlag;
         }
     }
 }
