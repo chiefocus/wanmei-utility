@@ -46,8 +46,7 @@ namespace TimerUtility
             TextRenderer.DrawText(e.Graphics, mainText, FontMain, new Point(0, 0), ForeColorMain,
                 TextFormatFlags.NoPadding | TextFormatFlags.NoClipping);
 
-            var millisecondsFlag = Timer.Settings?.Profile?.MillisecondsFlag;
-            if (millisecondsFlag.HasValue && millisecondsFlag.Value)
+            if (Timer.Profile.MillisecondsFlag)
             {
                 Size subSize = TextRenderer.MeasureText(subText, FontSub, Size.Empty, TextFormatFlags.NoPadding);
                 int subX = mainSize.Width - subSize.Width / 3 - 5;
@@ -55,6 +54,18 @@ namespace TimerUtility
                 TextRenderer.DrawText(e.Graphics, subText, FontSub, new Point(subX, subY), ForeColorMain,
                 TextFormatFlags.NoPadding | TextFormatFlags.NoClipping);
             }
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // StopwatchDisplay
+            // 
+            this.Name = "StopwatchDisplay";
+            this.Size = new System.Drawing.Size(111, 30);
+            this.ResumeLayout(false);
+
         }
     }
 }
