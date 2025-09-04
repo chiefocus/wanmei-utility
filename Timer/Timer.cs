@@ -64,6 +64,16 @@ namespace TimerUtility
                         boss.Skills.Reverse();
                     }
                 }
+
+                int vki = 0;
+                foreach (var skill in Settings.UserDefinedBoss.Skills)
+                {
+                    int key = 49 + vki;
+                    skill.Id = key;
+                    skill.VirtualKey = (uint)key;
+                    vki++;
+                }
+                Settings.UserDefinedBoss.Skills.Reverse();
             }
             catch { }
         }
@@ -91,70 +101,49 @@ namespace TimerUtility
                     this.flowLayoutPanel1.Controls.Add(instanceBtn);
                 }
 
-                Reset(true);
+                LoadDefaultBoss(Settings.Instances.First(), Settings.Instances.First().Bosses.First());
             }));
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             this.textBox1.Text = DateTime.Now.ToString("HH:mm:ss");
-
             this.button1.Visible = SkillControls.Any(s => s.Skill.Flag == 0);
         }
 
-        private void Reset(bool isH3 = false)
+        private void LoadDefaultBoss(Instance defaultInstance, Boss defaultBoss)
         {
             this.panel2.Controls.Clear();
-            this.flowLayoutPanel2.Controls.Clear();
-
-            var instance = Settings.Instances.First();
             this.SkillControls.Clear();
 
-            if (!isH3)
+            foreach (var skill in defaultBoss.Skills)
             {
-                var skillControl1 = new SkillControl(new Skill() { Id = 53, VirtualKey = 53, Flag = 0 }, timer1);
-                var skillControl2 = new SkillControl(new Skill() { Id = 52, VirtualKey = 52, Flag = 0 }, timer1);
-                var skillControl3 = new SkillControl(new Skill() { Id = 51, VirtualKey = 51, Flag = 0 }, timer1);
-                var skillControl4 = new SkillControl(new Skill() { Id = 50, VirtualKey = 50, Flag = 0 }, timer1);
-                var skillControl5 = new SkillControl(new Skill() { Id = 49, VirtualKey = 49, Flag = 0 }, timer1);
-
-                this.SkillControls.Add(skillControl1);
-                this.SkillControls.Add(skillControl2);
-                this.SkillControls.Add(skillControl3);
-                this.SkillControls.Add(skillControl4);
-                this.SkillControls.Add(skillControl5);
-
-                this.panel2.Controls.Add(skillControl1);
-                this.panel2.Controls.Add(skillControl2);
-                this.panel2.Controls.Add(skillControl3);
-                this.panel2.Controls.Add(skillControl4);
-                this.panel2.Controls.Add(skillControl5);
-
-                this.Text = "计时器 - 后浪专用";
+                skill.InstanceName = defaultInstance?.Name ?? Settings.UserDefinedBoss?.Name;
+                skill.BossName = defaultBoss.Name;
+                var skillControl = new SkillControl(skill, timer1);
+                this.panel2.Controls.Add(skillControl);
+                this.SkillControls.Add(skillControl);
             }
-            else
-            {
-                var boss = instance.Bosses.First();
-
-                foreach (var skill in boss.Skills)
-                {
-                    var skillControl = new SkillControl(skill, timer1);
-                    this.panel2.Controls.Add(skillControl);
-                    this.SkillControls.Add(skillControl);
-                }
-
-                this.Text = $"{instance?.Name} - {boss?.Name}";
-            }
+            this.Text = $"{Settings.UserDefinedBoss?.Name} - 后浪专用";
 
             RegisterAllHotKeys();
 
-            foreach (var boss in instance.Bosses)
+            if (defaultInstance == null)
             {
+                return;
+            }
+
+            this.Text = $"{defaultInstance?.Name} - {defaultBoss?.Name}";
+            this.flowLayoutPanel2.Controls.Clear();
+
+            foreach (var boss in defaultInstance.Bosses)
+            {
+                boss.InstanceName = defaultInstance.Name;
                 var bossBtn = new ButtonControl(boss.Name)
                 {
                     Type = DrawType.Skill,
                     DrawBosses = this.flowLayoutPanel2,
-                    Instance = instance,
+                    Instance = defaultInstance,
                     Boss = boss,
                     DrawSkills = this.panel2,
                     Timer = this.timer1,
@@ -167,7 +156,7 @@ namespace TimerUtility
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            Reset();
+            LoadDefaultBoss(null, Settings.UserDefinedBoss);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -204,6 +193,7 @@ namespace TimerUtility
                     boss.Skills.Reverse();
                 }
             }
+            Settings.UserDefinedBoss.Skills.Reverse();
             var settingsXml = Settings.SerializeToString();
             File.WriteAllText(DataFile, settingsXml);
         }

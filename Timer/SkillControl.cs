@@ -125,16 +125,15 @@ namespace TimerUtility
         {
             this.Interval = GetInterval(textBox2.Text);
 
-            foreach (var instance in Timer.Settings.Instances)
+            if (int.Parse(this.textBox2.Text) != Skill.Interval)
             {
-                foreach (var boss in instance.Bosses)
-                {
-                    var skill = boss.Skills.FirstOrDefault(s => s.Name.Equals(Skill.Name));
-                    if (skill != null)
-                    {
-                        skill.Interval = this.Interval;
-                    }
-                }
+                var skill = Timer.Settings.Instances.FirstOrDefault(i => i.Name.Equals(Skill.InstanceName))
+                    ?.Bosses.FirstOrDefault(b => b.Name.Equals(Skill.BossName))
+                    ?.Skills.FirstOrDefault(s => s.Name.Equals(Skill.Name))
+                    ?? Timer.Settings.UserDefinedBoss.Skills.FirstOrDefault(s => s.Name.Equals(Skill.Name));
+
+                if (skill != null)
+                    skill.Interval = this.Interval;
             }
         }
 

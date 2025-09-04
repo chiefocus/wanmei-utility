@@ -69,6 +69,8 @@ namespace TimerUtility
 
             foreach (var skill in boss.Skills)
             {
+                skill.InstanceName = Instance.Name;
+                skill.BossName = boss.Name;
                 var skillControl = new SkillControl(skill, Timer);
                 this.DrawSkills.Controls.Add(skillControl);
                 RootForm.SkillControls.Add(skillControl);

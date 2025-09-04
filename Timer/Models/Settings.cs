@@ -11,6 +11,9 @@ namespace TimerUtility.Models
 
         [XmlElement("h")]
         public List<Instance> Instances { get; set; } = new List<Instance>();
+
+        [XmlElement("udb")]
+        public Boss UserDefinedBoss { get; set; } = new Boss();
     }
 
     public class Profile
@@ -98,7 +101,7 @@ namespace TimerUtility.Models
         public string Description { get; set; }
 
         [XmlIgnore]
-        public int Flag { get; set; } = 1;
+        public int Flag { get; set; } = 1; //是否开打计时
 
         [XmlIgnore]
         public bool Clickable { get; set; } = true;
