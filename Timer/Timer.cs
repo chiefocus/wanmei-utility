@@ -186,16 +186,19 @@ namespace TimerUtility
 
         private void SaveSettings()
         {
-            foreach (var instance in Settings.Instances)
+            if (Settings.Profile.Preservable)
             {
-                foreach (var boss in instance.Bosses)
+                foreach (var instance in Settings.Instances)
                 {
-                    boss.Skills.Reverse();
+                    foreach (var boss in instance.Bosses)
+                    {
+                        boss.Skills.Reverse();
+                    }
                 }
+                Settings.UserDefinedBoss.Skills.Reverse();
+                var settingsXml = Settings.SerializeToString();
+                File.WriteAllText(DataFile, settingsXml);
             }
-            Settings.UserDefinedBoss.Skills.Reverse();
-            var settingsXml = Settings.SerializeToString();
-            File.WriteAllText(DataFile, settingsXml);
         }
 
         private void UnregisterAllHotKeys(IEnumerable<int> keys)

@@ -7,7 +7,7 @@ namespace TimerUtility.Models
     public class Settings
     {
         [XmlElement("u")]
-        public Profile Profile { get; set; }
+        public Profile Profile { get; set; } = new Profile();
 
         [XmlElement("h")]
         public List<Instance> Instances { get; set; } = new List<Instance>();
@@ -56,6 +56,16 @@ namespace TimerUtility.Models
         {
             get => Offset.ToString();
             set => Offset = int.TryParse(value, out int result) ? result : 1000;
+        }
+
+        [XmlIgnore]
+        public bool Preservable { get; set; } = false;
+
+        [XmlAttribute("s")]
+        public string PreservableStr
+        {
+            get => Preservable ? "1" : "0";
+            set => Preservable = value == "1";
         }
     }
 
