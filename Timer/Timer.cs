@@ -90,10 +90,10 @@ namespace TimerUtility
                 {
                     var instanceBtn = new ButtonControl($"{instance.Name}")
                     {
-                        Type = DrawType.Boss,
-                        DrawBosses = this.flowLayoutPanel2,
+                        Type = ButtonType.Boss,
+                        Bosses = this.flowLayoutPanel2,
                         Instance = instance,
-                        DrawSkills = this.panel2,
+                        Skills = this.panel2,
                         Timer = timer1,
                         RootForm = this,
                         ForeColor = Color.DarkMagenta,
@@ -141,11 +141,11 @@ namespace TimerUtility
                 boss.InstanceName = defaultInstance.Name;
                 var bossBtn = new ButtonControl(boss.Name)
                 {
-                    Type = DrawType.Skill,
-                    DrawBosses = this.flowLayoutPanel2,
+                    Type = ButtonType.Skill,
+                    Bosses = this.flowLayoutPanel2,
                     Instance = defaultInstance,
                     Boss = boss,
-                    DrawSkills = this.panel2,
+                    Skills = this.panel2,
                     Timer = this.timer1,
                     RootForm = this
                 };

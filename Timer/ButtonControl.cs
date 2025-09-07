@@ -7,24 +7,20 @@ namespace TimerUtility
 {
     public partial class ButtonControl : UserControl
     {
-        public DrawType Type { get; set; } //标识是副本还是boss
+        public ButtonType Type { get; set; } //标识是副本还是boss
 
         public Boss Boss { get; set; }
 
         public Instance Instance { get; set; }
 
-        public Control DrawBosses { get; set; }
+        public Control Bosses { get; set; }
 
-        public Control DrawSkills { get; set; }
+        public Control Skills { get; set; }
 
         public System.Windows.Forms.Timer Timer { get; set; }
 
         public Timer RootForm { get; set; }
 
-        public ButtonControl()
-        {
-            InitializeComponent();
-        }
         public ButtonControl(string text)
         {
             InitializeComponent();
@@ -33,29 +29,29 @@ namespace TimerUtility
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (Type == DrawType.Boss && Instance?.Bosses != null)
+            if (Type == ButtonType.Boss && Instance?.Bosses?.Count > 0)
             {
-                this.DrawBosses.Controls.Clear();
+                this.Bosses.Controls.Clear();
 
                 foreach (var boss in Instance.Bosses)
                 {
                     var bossBtn = new ButtonControl(boss.Name)
                     {
-                        Type = DrawType.Skill,
+                        Type = ButtonType.Skill,
                         Instance = Instance,
                         Boss = boss,
-                        DrawSkills = DrawSkills,
+                        Skills = Skills,
                         Timer = Timer,
                         RootForm = RootForm
                     };
-                    this.DrawBosses.Controls.Add(bossBtn);
+                    this.Bosses.Controls.Add(bossBtn);
                 }
 
                 this.Boss = Instance.Bosses.First();
                 ToDrawSkills(this.Boss);
             }
 
-            if (Type == DrawType.Skill && Boss?.Skills != null)
+            if (Type == ButtonType.Skill && Boss?.Skills?.Count > 0)
             {
                 ToDrawSkills(Boss);
             }
@@ -65,14 +61,14 @@ namespace TimerUtility
         {
             RootForm.SkillControls.Clear();
             this.RootForm.Text = $"{Instance?.Name} - {Boss?.Name}";
-            this.DrawSkills.Controls.Clear();
+            this.Skills.Controls.Clear();
 
             foreach (var skill in boss.Skills)
             {
                 skill.InstanceName = Instance.Name;
                 skill.BossName = boss.Name;
                 var skillControl = new SkillControl(skill, Timer);
-                this.DrawSkills.Controls.Add(skillControl);
+                this.Skills.Controls.Add(skillControl);
                 RootForm.SkillControls.Add(skillControl);
             }
 
@@ -80,7 +76,7 @@ namespace TimerUtility
         }
     }
 
-    public enum DrawType
+    public enum ButtonType
     {
         Unknown,
         Boss,

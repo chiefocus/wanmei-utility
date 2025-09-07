@@ -124,13 +124,9 @@ namespace TimerUtility
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             this.Interval = GetInterval(textBox2.Text);
-            var skill = Timer.Settings.Instances.FirstOrDefault(i => i.Name.Equals(Skill.InstanceName))
-                ?.Bosses.FirstOrDefault(b => b.Name.Equals(Skill.BossName))
-                ?.Skills.FirstOrDefault(s => s.Name.Equals(Skill.Name))
-                ?? Timer.Settings.UserDefinedBoss.Skills.FirstOrDefault(s => s.Name.Equals(Skill.Name));
 
-            if (skill != null)
-                skill.Interval = this.Interval;
+            if (targetSkill != null)
+                targetSkill.Interval = this.Interval;
         }
 
         private void stopwatchDisplay1_DoubleClick(object sender, EventArgs e)
@@ -140,13 +136,15 @@ namespace TimerUtility
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            var skill = Timer.Settings.Instances.FirstOrDefault(i => i.Name.Equals(Skill.InstanceName))
-               ?.Bosses.FirstOrDefault(b => b.Name.Equals(Skill.BossName))
-               ?.Skills.FirstOrDefault(s => s.Name.Equals(Skill.Name))
-               ?? Timer.Settings.UserDefinedBoss.Skills.FirstOrDefault(s => s.Name.Equals(Skill.Name));
-
-            if (skill != null)
-                skill.Description = this.textBox1.Text;
+            if (targetSkill != null)
+                targetSkill.Description = this.textBox1.Text;
         }
+
+        private Skill targetSkill =>
+            Timer.Settings.Instances.FirstOrDefault(i => i.Name.Equals(Skill.InstanceName))
+            ?.Bosses.FirstOrDefault(b => b.Name.Equals(Skill.BossName))
+            ?.Skills.FirstOrDefault(s => s.Name.Equals(Skill.Name))
+            ?? Timer.Settings.UserDefinedBoss.Skills.FirstOrDefault(s => s.Name.Equals(Skill.Name));
+
     }
 }
