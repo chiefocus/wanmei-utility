@@ -73,9 +73,8 @@ namespace TimerUtility
             this.textBox1.ForeColor = System.Drawing.Color.DarkGreen;
             this.textBox1.Location = new System.Drawing.Point(165, 12);
             this.textBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(297, 15);
+            this.textBox1.Size = new System.Drawing.Size(297, 13);
             this.textBox1.TabIndex = 3;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
