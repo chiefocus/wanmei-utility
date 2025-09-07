@@ -46,7 +46,7 @@
     
     mimetype: application/x-microsoft.net.object.binary.base64
     value   : The object must be serialized with 
-            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
     
     mimetype: application/x-microsoft.net.object.soap.base64
@@ -60,6 +60,7 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
@@ -68,9 +69,10 @@
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="name" use="required" type="xsd:string" />
               <xsd:attribute name="type" type="xsd:string" />
               <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
@@ -85,9 +87,10 @@
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
                 <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
               <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
               <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
@@ -109,9 +112,12 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Settings" xml:space="preserve">
+    <value>&lt;r&gt;&lt;u p="0" m="0" ms="0" o="1000" s="0"/&gt;&lt;h n="黄3"&gt;&lt;b n="圣母"&gt;&lt;s n="减攻速" i="30" d="280 仙224 魔238"/&gt;&lt;s n="减吟唱" i="20" d="175 仙140 魔148.75"/&gt;&lt;s n="群攻" i="20" d="175 仙140 魔148.75"/&gt;&lt;/b&gt;&lt;b n="小铁"&gt;&lt;s n="破甲" i="20" d="320 仙256 魔272"/&gt;&lt;s n="巨力" i="30" d="200 仙160 魔170"/&gt;&lt;s n="大群" i="20" d="120 仙96 魔102"/&gt;&lt;/b&gt;&lt;b n="子纯"&gt;&lt;s n="封印" i="20" d="450 仙360 魔382.5"/&gt;&lt;s n="群晕" i="20" d="300 仙240 魔255"/&gt;&lt;s n="流血" i="20" d="150 仙120 魔127.5"/&gt;&lt;/b&gt;&lt;b n="仓力"&gt;&lt;s n="流血" i="30" d="450 仙360 魔382.5"/&gt;&lt;s n="群晕" i="20" d="250 仙200 魔212.5"/&gt;&lt;s n="大群1" i="20" d="150 仙120 魔127.5"/&gt;&lt;s n="大群2" i="20" d="125"/&gt;&lt;/b&gt;&lt;b n="天地"&gt;&lt;s n="驱逐" i="60" d="540 仙432 魔459"/&gt;&lt;s n="吸元" i="45" d="420 仙336 魔357"/&gt;&lt;s n="木毒" i="35" d="300 仙240 魔255"/&gt;&lt;s n="群晕" i="30" d="180 仙144 魔153"/&gt;&lt;s n="大群" i="55" d="150 仙120 魔127.5"/&gt;&lt;/b&gt;&lt;/h&gt;&lt;h n="黄2"&gt;&lt;b n="神武罗"&gt;&lt;s n="固伤" i="30" d="开打计时" f="0"/&gt;&lt;/b&gt;&lt;b n="猴子"&gt;&lt;s n="扇形大" i="45" d="开打计时" f="0"/&gt;&lt;s n="巨力" i="60" d="开打计时" f="0"/&gt;&lt;/b&gt;&lt;b n="狗"&gt;&lt;s n="群晕" i="0" d="每掉25%血群晕"/&gt;&lt;s n="吸蓝" i="20" d="开打计时" f="0"/&gt;&lt;/b&gt;&lt;b n="十方"&gt;&lt;s n="流血" i="45" d="250 仙200 魔212.5"/&gt;&lt;s n="群减血" i="30" d="开打计时" f="0"/&gt;&lt;/b&gt;&lt;b n="罗刹"&gt;&lt;s n="单体封印" i="45" d="50%血开始计时"/&gt;&lt;s n="单体落雷" i="35" d="开打计时" f="0"/&gt;&lt;s n="金系群攻" i="15" d="开打计时" f="0"/&gt;&lt;/b&gt;&lt;/h&gt;&lt;h n="黄1"&gt;&lt;b n="鼓神"&gt;&lt;s n="封印" i="0" d="身上有减唱可立马T封印" c="0"/&gt;&lt;s n="全屏攻击" i="600" d="开打计时，每600秒" f="0"/&gt;&lt;s n="近战群晕" i="20" d="开打计时" f="0"/&gt;&lt;/b&gt;&lt;b n="古蛇"&gt;&lt;s n="单大毒" i="20" d="开打计时" f="0"/&gt;&lt;s n="群小毒" i="15" d="开打计时" f="0"/&gt;&lt;/b&gt;&lt;b n="圣金甲"&gt;&lt;s n="6K固伤" i="60" d="开打计时" f="0"/&gt;&lt;s n="乱仇恨" i="15" d="开打计时" f="0"/&gt;&lt;/b&gt;&lt;b n="怒目"&gt;&lt;s n="狂暴" i="30" d="50%血开始计时"/&gt;&lt;s n="近战群晕" i="35" d="开打计时" f="0"/&gt;&lt;s n="扇形攻击" i="15" d="开打计时" f="0"/&gt;&lt;/b&gt;&lt;/h&gt;&lt;udb n="自定义"&gt;&lt;s n="计时1" i="15" d="" f="0"/&gt;&lt;s n="计时2" i="20" d="" f="0"/&gt;&lt;s n="计时3" i="30" d="" f="0"/&gt;&lt;s n="计时4" i="45" d="" f="0"/&gt;&lt;s n="计时5" i="60" d="" f="0"/&gt;&lt;/udb&gt;&lt;/r&gt;</value>
+  </data>
 </root>
