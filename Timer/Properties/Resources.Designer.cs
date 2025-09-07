@@ -59,14 +59,5 @@ namespace TimerUtility.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;r&gt;&lt;u p=&quot;0&quot; m=&quot;0&quot; ms=&quot;0&quot; o=&quot;1000&quot; s=&quot;0&quot;/&gt;&lt;h n=&quot;黄3&quot;&gt;&lt;b n=&quot;圣母&quot;&gt;&lt;s n=&quot;减攻速&quot; i=&quot;30&quot; d=&quot;280 仙224 魔238&quot;/&gt;&lt;s n=&quot;减吟唱&quot; i=&quot;20&quot; d=&quot;175 仙140 魔148.75&quot;/&gt;&lt;s n=&quot;群攻&quot; i=&quot;20&quot; d=&quot;175 仙140 魔148.75&quot;/&gt;&lt;/b&gt;&lt;b n=&quot;小铁&quot;&gt;&lt;s n=&quot;破甲&quot; i=&quot;20&quot; d=&quot;320 仙256 魔272&quot;/&gt;&lt;s n=&quot;巨力&quot; i=&quot;30&quot; d=&quot;200 仙160 魔170&quot;/&gt;&lt;s n=&quot;大群&quot; i=&quot;20&quot; d=&quot;120 仙96 魔102&quot;/&gt;&lt;/b&gt;&lt;b n=&quot;子纯&quot;&gt;&lt;s n=&quot;封印&quot; i=&quot;20&quot; d=&quot;450 仙360 魔382.5&quot;/&gt;&lt;s n=&quot;群晕&quot; i=&quot;20&quot; d=&quot;300 仙240 魔255&quot;/&gt;&lt;s n=&quot;流血&quot; i=&quot;20&quot; d=&quot;150 仙120 魔127.5&quot;/&gt;&lt;/b&gt;&lt;b n=&quot;仓力&quot;&gt;&lt;s n=&quot;流血&quot; i=&quot;30&quot; d=&quot;450 仙360 魔382.5&quot;/&gt;&lt;s n=&quot;群晕&quot; i=....
-        /// </summary>
-        internal static string Settings {
-            get {
-                return ResourceManager.GetString("Settings", resourceCulture);
-            }
-        }
     }
 }
