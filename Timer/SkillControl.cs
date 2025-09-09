@@ -75,7 +75,8 @@ namespace TimerUtility
 
         public void OnClick(SkillControl skillControl)
         {
-            _stopwatch.Restart();
+            _stopwatch.Reset();
+            _stopwatch.Start();
             _offsetMilliseconds = 0.0;
 
             skillControl.Enabled = true;
