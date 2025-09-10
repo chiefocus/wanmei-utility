@@ -238,5 +238,13 @@ namespace TimerUtility
             }
             base.WndProc(ref m);
         }
+
+        private void Timer_Resize(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                Timer.Settings.Profile.Preservable = true;
+            }
+        }
     }
 }
