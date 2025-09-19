@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Xml.Serialization;
 
 namespace TimerUtility.Models
@@ -67,6 +68,16 @@ namespace TimerUtility.Models
             get => Preservable ? "1" : "0";
             set => Preservable = value == "1";
         }
+
+        [XmlIgnore]
+        public bool Shortcutable { get; set; } = true;
+
+        [XmlAttribute("k")]
+        public string ShortcutableStr
+        {
+            get => Shortcutable ? "1" : "0";
+            set => Shortcutable = value == "1";
+        }
     }
 
     public class Instance
@@ -130,6 +141,7 @@ namespace TimerUtility.Models
         }
 
         [XmlAttribute("f")]
+        [DefaultValue("1")]
         public string FlagStr
         {
             get => Flag.ToString();
@@ -137,6 +149,7 @@ namespace TimerUtility.Models
         }
 
         [XmlAttribute("c")]
+        [DefaultValue("1")]
         public string ClickableStr
         {
             get => Clickable ? "1" : "0";

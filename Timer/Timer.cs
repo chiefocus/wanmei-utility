@@ -203,6 +203,9 @@ namespace TimerUtility
 
         private void UnregisterAllHotKeys(IEnumerable<int> keys)
         {
+            if (!Settings.Profile.Shortcutable)
+                return;
+
             foreach (var key in keys)
             {
                 try
@@ -215,6 +218,9 @@ namespace TimerUtility
 
         public void RegisterAllHotKeys()
         {
+            if (!Settings.Profile.Shortcutable)
+                return;
+
             var keys = SkillControls.Select(s => s.Skill.Id);
             UnregisterAllHotKeys(keys);
             foreach (var key in keys)
@@ -230,7 +236,7 @@ namespace TimerUtility
         protected override void WndProc(ref Message m)
         {
             const int WM_HOTKEY = 0x0312;
-            if (m.Msg == WM_HOTKEY)
+            if (m.Msg == WM_HOTKEY && Settings.Profile.Shortcutable)
             {
                 int id = m.WParam.ToInt32();
                 var skillControl = SkillControls.FirstOrDefault(s => s.Skill.Id == id);
