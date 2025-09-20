@@ -38,7 +38,7 @@ namespace TimerUtility
         public static Settings Settings = new Settings();
 
         private static readonly string defaultInstanceName = "黄3";
-        private static readonly string defaultBossName = "圣母";
+        private static readonly string defaultBossName = "小铁";
 
         private static void InitInstances()
         {
@@ -106,7 +106,7 @@ namespace TimerUtility
 
                 var defaultInstance = Settings.Instances.FirstOrDefault(i => defaultInstanceName.Equals(i.Name));
                 var deafaultBoss = defaultInstance.Bosses.FirstOrDefault(b => defaultBossName.Equals(b.Name));
-                LoadDefaultBoss(defaultInstance, Settings.Instances.First().Bosses.First());
+                LoadDefaultBoss(defaultInstance, deafaultBoss);
             }));
         }
 

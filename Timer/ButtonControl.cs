@@ -61,9 +61,9 @@ namespace TimerUtility
 
             if (Type == ButtonType.Boss && Boss?.Skills?.Count > 0)
             {
+                ToDrawSkills(this.Boss);
                 RootForm.flowLayoutPanel1.Controls.OfType<RadioButton>()
                     .FirstOrDefault(i => i.Text.Equals(this.Instance.Name)).Checked = true;
-                ToDrawSkills(this.Boss);
             }
         }
 
