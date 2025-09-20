@@ -72,10 +72,7 @@
       <DependentUpon>SkillControl.cs</DependentUpon>
     </Compile>
     <Compile Include="ButtonControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ButtonControl.Designer.cs">
-      <DependentUpon>ButtonControl.cs</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <EmbeddedResource Include="Timer.resx">
       <DependentUpon>Timer.cs</DependentUpon>
@@ -92,9 +89,6 @@
     </Compile>
     <EmbeddedResource Include="SkillControl.resx">
       <DependentUpon>SkillControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ButtonControl.resx">
-      <DependentUpon>ButtonControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

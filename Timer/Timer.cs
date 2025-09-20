@@ -37,6 +37,9 @@ namespace TimerUtility
 
         public static Settings Settings = new Settings();
 
+        private static readonly string defaultInstanceName = "黄3";
+        private static readonly string defaultBossName = "圣母";
+
         private static void InitInstances()
         {
             try
@@ -90,7 +93,7 @@ namespace TimerUtility
                 {
                     var instanceBtn = new ButtonControl($"{instance.Name}")
                     {
-                        Type = ButtonType.Boss,
+                        Type = ButtonType.Instance,
                         Bosses = this.flowLayoutPanel2,
                         Instance = instance,
                         Skills = this.panel2,
@@ -101,7 +104,9 @@ namespace TimerUtility
                     this.flowLayoutPanel1.Controls.Add(instanceBtn);
                 }
 
-                LoadDefaultBoss(Settings.Instances.First(), Settings.Instances.First().Bosses.First());
+                var defaultInstance = Settings.Instances.FirstOrDefault(i => defaultInstanceName.Equals(i.Name));
+                var deafaultBoss = defaultInstance.Bosses.FirstOrDefault(b => defaultBossName.Equals(b.Name));
+                LoadDefaultBoss(defaultInstance, Settings.Instances.First().Bosses.First());
             }));
         }
 
@@ -141,7 +146,7 @@ namespace TimerUtility
                 boss.InstanceName = defaultInstance.Name;
                 var bossBtn = new ButtonControl(boss.Name)
                 {
-                    Type = ButtonType.Skill,
+                    Type = ButtonType.Boss,
                     Bosses = this.flowLayoutPanel2,
                     Instance = defaultInstance,
                     Boss = boss,
@@ -150,13 +155,26 @@ namespace TimerUtility
                     RootForm = this
                 };
                 this.flowLayoutPanel2.Controls.Add(bossBtn);
-                this.flowLayoutPanel2.Controls[0].Focus();
             }
+            this.flowLayoutPanel1.Controls.OfType<RadioButton>()
+                .FirstOrDefault(b => defaultInstanceName.Equals(b.Text)).Checked = true;
+            this.flowLayoutPanel2.Controls.OfType<RadioButton>()
+                .FirstOrDefault(b => defaultBossName.Equals(b.Text)).Checked = true;
         }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
             LoadDefaultBoss(null, Settings.UserDefinedBoss);
+            foreach (var control in this.flowLayoutPanel1.Controls)
+            {
+                if (control is RadioButton rb)
+                    rb.Checked = false;
+            }
+            foreach (var control in this.flowLayoutPanel2.Controls)
+            {
+                if (control is RadioButton rb)
+                    rb.Checked = false;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

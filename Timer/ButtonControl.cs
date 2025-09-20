@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using TimerUtility.Models;
 
 namespace TimerUtility
 {
-    public partial class ButtonControl : UserControl
+    public class ButtonControl : RadioButton
     {
         public ButtonType Type { get; set; } //标识是副本还是boss
 
@@ -23,13 +24,19 @@ namespace TimerUtility
 
         public ButtonControl(string text)
         {
-            InitializeComponent();
-            this.button1.Text = text;
+            this.Text = text;
+            this.Appearance = Appearance.Button;
+            this.Font = new Font("SimHei", 11.25F);
+            this.Margin = new Padding(0);
+            this.Size = new Size(93, 32);
+            this.TextAlign = ContentAlignment.MiddleCenter;
+
+            this.Click += new EventHandler(this.button1_Click);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (Type == ButtonType.Boss && Instance?.Bosses?.Count > 0)
+            if (Type == ButtonType.Instance && Instance?.Bosses?.Count > 0)
             {
                 this.Bosses.Controls.Clear();
 
@@ -37,7 +44,7 @@ namespace TimerUtility
                 {
                     var bossBtn = new ButtonControl(boss.Name)
                     {
-                        Type = ButtonType.Skill,
+                        Type = ButtonType.Boss,
                         Instance = Instance,
                         Boss = boss,
                         Skills = Skills,
@@ -48,12 +55,15 @@ namespace TimerUtility
                 }
 
                 this.Boss = Instance.Bosses.First();
+                this.Bosses.Controls.OfType<RadioButton>().FirstOrDefault().Checked = true;
                 ToDrawSkills(this.Boss);
             }
 
-            if (Type == ButtonType.Skill && Boss?.Skills?.Count > 0)
+            if (Type == ButtonType.Boss && Boss?.Skills?.Count > 0)
             {
-                ToDrawSkills(Boss);
+                RootForm.flowLayoutPanel1.Controls.OfType<RadioButton>()
+                    .FirstOrDefault(i => i.Text.Equals(this.Instance.Name)).Checked = true;
+                ToDrawSkills(this.Boss);
             }
         }
 
@@ -79,7 +89,7 @@ namespace TimerUtility
     public enum ButtonType
     {
         Unknown,
-        Boss,
-        Skill
+        Instance,
+        Boss
     }
 }
