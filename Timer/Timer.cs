@@ -31,14 +31,13 @@ namespace TimerUtility
         }
 
         private static readonly string DataFile = "wmapp.dat";
-        private static string InstancesXml = "<r><u p=\"0\" m=\"0\" ms=\"0\" o=\"1000\" s=\"0\"/><h n=\"黄3\"><b n=\"圣母\"><s n=\"减攻速\" i=\"30\" d=\"280 仙224 魔238\"/><s n=\"减吟唱\" i=\"20\" d=\"175 仙140 魔148.75\"/><s n=\"群攻\" i=\"20\" d=\"175 仙140 魔148.75\"/></b><b n=\"小铁\"><s n=\"破甲\" i=\"20\" d=\"320 仙256 魔272\"/><s n=\"巨力\" i=\"30\" d=\"200 仙160 魔170\"/><s n=\"大群\" i=\"20\" d=\"120 仙96 魔102\"/></b><b n=\"子纯\"><s n=\"封印\" i=\"20\" d=\"450 仙360 魔382.5\"/><s n=\"群晕\" i=\"20\" d=\"300 仙240 魔255\"/><s n=\"流血\" i=\"20\" d=\"150 仙120 魔127.5\"/></b><b n=\"仓力\"><s n=\"流血\" i=\"30\" d=\"450 仙360 魔382.5\"/><s n=\"群晕\" i=\"20\" d=\"250 仙200 魔212.5\"/><s n=\"大群1\" i=\"20\" d=\"150 仙120 魔127.5\"/><s n=\"大群2\" i=\"20\" d=\"125\"/></b><b n=\"天地\"><s n=\"驱逐\" i=\"60\" d=\"540 仙432 魔459\"/><s n=\"吸元\" i=\"45\" d=\"420 仙336 魔357\"/><s n=\"木毒\" i=\"35\" d=\"300 仙240 魔255\"/><s n=\"群晕\" i=\"30\" d=\"180 仙144 魔153\"/><s n=\"大群\" i=\"55\" d=\"150 仙120 魔127.5\"/></b></h><h n=\"黄2\"><b n=\"神武罗\"><s n=\"固伤\" i=\"30\" d=\"开打计时\" f=\"0\"/></b><b n=\"猴子\"><s n=\"扇形大\" i=\"45\" d=\"开打计时\" f=\"0\"/><s n=\"巨力\" i=\"60\" d=\"开打计时\" f=\"0\"/></b><b n=\"狗\"><s n=\"群晕\" i=\"0\" d=\"每掉25%血群晕\" c=\"0\"/><s n=\"吸蓝\" i=\"20\" d=\"开打计时\" f=\"0\"/></b><b n=\"十方\"><s n=\"流血\" i=\"45\" d=\"250 仙200 魔212.5\"/><s n=\"群减血\" i=\"30\" d=\"开打计时\" f=\"0\"/></b><b n=\"罗刹\"><s n=\"单体封印\" i=\"45\" d=\"50%血开始计时\"/><s n=\"单体落雷\" i=\"35\" d=\"开打计时\" f=\"0\"/><s n=\"金系群攻\" i=\"15\" d=\"开打计时\" f=\"0\"/></b></h><h n=\"黄1\"><b n=\"鼓神\"><s n=\"封印\" i=\"0\" d=\"身上有减唱可立马T封印\" c=\"0\"/><s n=\"全屏攻击\" i=\"600\" d=\"开打计时，每600秒\" f=\"0\"/><s n=\"近战群晕\" i=\"20\" d=\"开打计时\" f=\"0\"/></b><b n=\"古蛇\"><s n=\"单大毒\" i=\"20\" d=\"开打计时\" f=\"0\"/><s n=\"群小毒\" i=\"15\" d=\"开打计时\" f=\"0\"/></b><b n=\"圣金甲\"><s n=\"6K固伤\" i=\"60\" d=\"开打计时\" f=\"0\"/><s n=\"乱仇恨\" i=\"15\" d=\"开打计时\" f=\"0\"/></b><b n=\"怒目\"><s n=\"狂暴\" i=\"30\" d=\"50%血开始计时\"/><s n=\"近战群晕\" i=\"35\" d=\"开打计时\" f=\"0\"/><s n=\"扇形攻击\" i=\"15\" d=\"开打计时\" f=\"0\"/></b></h><udb n=\"自定义\"><s n=\"计时1\" i=\"15\" d=\"\" f=\"0\"/><s n=\"计时2\" i=\"20\" d=\"\" f=\"0\"/><s n=\"计时3\" i=\"30\" d=\"\" f=\"0\"/><s n=\"计时4\" i=\"45\" d=\"\" f=\"0\"/><s n=\"计时5\" i=\"60\" d=\"\" f=\"0\"/></udb></r>";
+        private static string InstancesXml = "<r><u p=\"1\" m=\"1\" ms=\"0\" o=\"1000\" s=\"1\" k=\"1\" /><h n=\"黄3\" df=\"1\"><b n=\"圣母\" df=\"1\"><s n=\"减攻速\" d=\"280 仙224 魔235.2\" i=\"30\" /><s n=\"减吟唱\" d=\"175 仙140 魔147\" i=\"20\" /><s n=\"群攻\" d=\"175 仙140 魔147\" i=\"20\" /></b><b n=\"小铁\"><s n=\"破甲\" d=\"320 仙256 魔268.8\" i=\"20\" /><s n=\"巨力\" d=\"200 仙160 魔168\" i=\"30\" /><s n=\"大群\" d=\"120 仙96 魔100.8\" i=\"20\" /></b><b n=\"子纯\"><s n=\"封印\" d=\"450 仙360 魔378\" i=\"20\" /><s n=\"群晕\" d=\"300 仙240 魔252\" i=\"20\" /><s n=\"流血\" d=\"150 仙120 魔126\" i=\"20\" /></b><b n=\"仓力\"><s n=\"流血\" d=\"450 仙360 魔378\" i=\"30\" /><s n=\"群晕\" d=\"250 仙200 魔210\" i=\"20\" /><s n=\"清仇恨\" d=\"250 仙200 魔210\" i=\"90\" /><s n=\"大群1\" d=\"150 仙120 魔126\" i=\"20\" /><s n=\"大群2\" d=\"125 仙100 魔105\" i=\"20\" /></b><b n=\"天地\"><s n=\"驱逐\" d=\"540 仙432 魔453.6\" i=\"60\" /><s n=\"吸元\" d=\"420 仙336 魔352.8\" i=\"45\" /><s n=\"木毒\" d=\"300 仙240 魔252\" i=\"35\" /><s n=\"群晕\" d=\"180 仙144 魔151.2\" i=\"30\" /><s n=\"大群\" d=\"150 仙120 魔126\" i=\"55\" /></b></h><h n=\"黄2\"><b n=\"神武罗\"><s n=\"固伤\" d=\"开打计时\" i=\"30\" f=\"0\" /></b><b n=\"猴子\"><s n=\"扇形大\" d=\"开打计时\" i=\"45\" f=\"0\" /><s n=\"巨力\" d=\"开打计时\" i=\"60\" f=\"0\" /></b><b n=\"狗\"><s n=\"群晕\" d=\"每掉25%血群晕\" i=\"0\" c=\"0\" /><s n=\"吸蓝\" d=\"开打计时\" i=\"20\" f=\"0\" /></b><b n=\"十方\"><s n=\"流血\" d=\"250 仙200 魔210\" i=\"45\" /><s n=\"群减血\" d=\"开打计时\" i=\"30\" f=\"0\" /></b><b n=\"罗刹\"><s n=\"单体封印\" d=\"50%血开始计时\" i=\"45\" /><s n=\"单体落雷\" d=\"开打计时\" i=\"35\" f=\"0\" /><s n=\"金系群攻\" d=\"开打计时\" i=\"15\" f=\"0\" /></b></h><h n=\"黄1\"><b n=\"鼓神\"><s n=\"封印\" d=\"身上有减唱可立马T封印\" i=\"0\" c=\"0\" /><s n=\"全屏攻击\" d=\"开打计时，每600秒\" i=\"600\" f=\"0\" /><s n=\"近战群晕\" d=\"开打计时\" i=\"20\" f=\"0\" /></b><b n=\"古蛇\"><s n=\"单大毒\" d=\"开打计时\" i=\"20\" f=\"0\" /><s n=\"群小毒\" d=\"开打计时\" i=\"15\" f=\"0\" /></b><b n=\"圣金甲\"><s n=\"6K固伤\" d=\"开打计时\" i=\"60\" f=\"0\" /><s n=\"乱仇恨\" d=\"开打计时\" i=\"15\" f=\"0\" /></b><b n=\"怒目\"><s n=\"狂暴\" d=\"50%血开始计时\" i=\"30\" /><s n=\"近战群晕\" d=\"开打计时\" i=\"35\" f=\"0\" /><s n=\"扇形攻击\" d=\"开打计时\" i=\"15\" f=\"0\" /></b></h><udb n=\"自定义\"><s n=\"计时1\" d=\"\" i=\"15\" f=\"0\" /><s n=\"计时2\" d=\"\" i=\"20\" f=\"0\" /><s n=\"计时3\" d=\"\" i=\"30\" f=\"0\" /><s n=\"计时4\" d=\"\" i=\"45\" f=\"0\" /><s n=\"计时5\" d=\"\" i=\"60\" f=\"0\" /></udb></r>";
 
         public List<SkillControl> SkillControls { get; set; } = new List<SkillControl>();
 
         public static Settings Settings = new Settings();
-
-        private static readonly string defaultInstanceName = "黄3";
-        private static readonly string defaultBossName = "圣母";
+        private static Instance defaultInstance;
+        private static Boss defaultBoss;
 
         private static void InitInstances()
         {
@@ -50,7 +49,12 @@ namespace TimerUtility
                 }
 
                 var xmlRoot = XElement.Parse(InstancesXml);
-                Settings = xmlRoot.Deserialize<Settings>();
+
+                {
+                    Settings = xmlRoot.Deserialize<Settings>();
+                    defaultInstance = Settings.Instances.FirstOrDefault(i => i.Default) ?? Settings.Instances.FirstOrDefault();
+                    defaultBoss = defaultInstance.Bosses.FirstOrDefault(b => b.Default) ?? defaultInstance.Bosses.FirstOrDefault();
+                }
 
                 foreach (var instance in Settings.Instances)
                 {
@@ -104,9 +108,7 @@ namespace TimerUtility
                     this.flowLayoutPanel1.Controls.Add(instanceBtn);
                 }
 
-                var defaultInstance = Settings.Instances.FirstOrDefault(i => defaultInstanceName.Equals(i.Name));
-                var deafaultBoss = defaultInstance.Bosses.FirstOrDefault(b => defaultBossName.Equals(b.Name));
-                LoadDefaultBoss(defaultInstance, deafaultBoss);
+                LoadDefaultBoss(defaultInstance, defaultBoss);
             }));
         }
 
@@ -157,9 +159,9 @@ namespace TimerUtility
                 this.flowLayoutPanel2.Controls.Add(bossBtn);
             }
             this.flowLayoutPanel1.Controls.OfType<RadioButton>()
-                .FirstOrDefault(b => defaultInstanceName.Equals(b.Text)).Checked = true;
+                .FirstOrDefault(b => defaultInstance.Name.Equals(b.Text)).Checked = true;
             this.flowLayoutPanel2.Controls.OfType<RadioButton>()
-                .FirstOrDefault(b => defaultBossName.Equals(b.Text)).Checked = true;
+                .FirstOrDefault(b => defaultBoss.Name.Equals(b.Text)).Checked = true;
         }
 
         private void btnReset_Click(object sender, EventArgs e)

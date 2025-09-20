@@ -87,6 +87,17 @@ namespace TimerUtility.Models
 
         [XmlElement("b")]
         public List<Boss> Bosses { get; set; } = new List<Boss>();
+
+        [XmlIgnore]
+        public bool Default { get; set; }
+
+        [XmlAttribute("df")]
+        [DefaultValue("0")]
+        public string DefaultStr
+        {
+            get => Default ? "1" : "0";
+            set => Default = value == "1";
+        }
     }
 
     public class Boss
@@ -99,6 +110,17 @@ namespace TimerUtility.Models
 
         [XmlElement("s")]
         public List<Skill> Skills { get; set; } = new List<Skill>();
+
+        [XmlIgnore]
+        public bool Default { get; set; }
+
+        [XmlAttribute("df")]
+        [DefaultValue("0")]
+        public string DefaultStr
+        {
+            get => Default ? "1" : "0";
+            set => Default = value == "1";
+        }
     }
 
     public class Skill
