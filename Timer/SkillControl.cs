@@ -125,19 +125,26 @@ namespace TimerUtility
         {
             this.Interval = GetInterval(textBox2.Text);
 
-            if (targetSkill != null)
+            if (targetSkill != null && targetSkill.Interval != this.Interval)
+            {
                 targetSkill.Interval = this.Interval;
+                Timer.SettingsChanged = true;
+            }
         }
 
         private void stopwatchDisplay1_DoubleClick(object sender, EventArgs e)
         {
             Timer.Settings.Profile.MillisecondsFlag = !Timer.Settings.Profile.MillisecondsFlag;
+            Timer.SettingsChanged = true;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (targetSkill != null)
+            if (targetSkill != null && targetSkill.Description != this.textBox1.Text)
+            {
                 targetSkill.Description = this.textBox1.Text;
+                Timer.SettingsChanged = true;
+            }
         }
 
         private Skill targetSkill =>

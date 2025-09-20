@@ -36,6 +36,8 @@ namespace TimerUtility
         public List<SkillControl> SkillControls { get; set; } = new List<SkillControl>();
 
         public static Settings Settings = new Settings();
+        public static bool SettingsChanged = false;
+
         private static Instance defaultInstance;
         private static Boss defaultBoss;
 
@@ -206,7 +208,7 @@ namespace TimerUtility
 
         private void SaveSettings()
         {
-            if (Settings.Profile.Preservable)
+            if (Settings.Profile.Preservable && SettingsChanged)
             {
                 foreach (var instance in Settings.Instances)
                 {
