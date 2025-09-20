@@ -55,7 +55,7 @@
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(278, 32);
+            this.panel1.Size = new System.Drawing.Size(290, 32);
             this.panel1.TabIndex = 0;
             // 
             // button1
@@ -89,16 +89,16 @@
             this.textBox1.BackColor = System.Drawing.SystemColors.Control;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Cursor = System.Windows.Forms.Cursors.No;
-            this.textBox1.Font = new System.Drawing.Font("SimHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Font = new System.Drawing.Font("SimHei", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox1.ForeColor = System.Drawing.Color.Green;
-            this.textBox1.Location = new System.Drawing.Point(2, 5);
+            this.textBox1.Location = new System.Drawing.Point(4, 7);
             this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBox1.Size = new System.Drawing.Size(89, 24);
+            this.textBox1.Size = new System.Drawing.Size(85, 23);
             this.textBox1.TabIndex = 9999;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // flowLayoutPanel1
             // 
@@ -107,7 +107,7 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 198);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(278, 0);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(290, 0);
             this.flowLayoutPanel1.TabIndex = 10;
             // 
             // flowLayoutPanel2
@@ -117,7 +117,7 @@
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 198);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(278, 0);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(290, 0);
             this.flowLayoutPanel2.TabIndex = 20;
             // 
             // panel2
@@ -127,7 +127,7 @@
             this.panel2.Location = new System.Drawing.Point(3, 35);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(278, 163);
+            this.panel2.Size = new System.Drawing.Size(290, 163);
             this.panel2.TabIndex = 0;
             // 
             // Timer
