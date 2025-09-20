@@ -80,6 +80,7 @@
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(51, 30);
             this.btnReset.TabIndex = 2;
+            this.btnReset.TabStop = false;
             this.btnReset.Text = "自定义";
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
