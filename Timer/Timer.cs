@@ -255,15 +255,28 @@ namespace TimerUtility
             }
         }
 
+        const int WM_HOTKEY = 0x0312;
+        const int WM_NCLBUTTONDBLCLK = 0x00A3;
+
         protected override void WndProc(ref Message m)
         {
-            const int WM_HOTKEY = 0x0312;
             if (m.Msg == WM_HOTKEY && Settings.Profile.Shortcutable)
             {
                 int id = m.WParam.ToInt32();
                 var skillControl = SkillControls.FirstOrDefault(s => s.Skill.Id == id);
                 skillControl?.button1.PerformClick();
             }
+
+            if (m.Msg == WM_NCLBUTTONDBLCLK)
+            {
+                const int HTCAPTION = 2;
+                int hitTest = m.WParam.ToInt32();
+                if (hitTest == HTCAPTION)
+                {
+                    MessageBox.Show("兽丶神作品，特供后浪！！！", "完美计时器", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+
             base.WndProc(ref m);
         }
 
