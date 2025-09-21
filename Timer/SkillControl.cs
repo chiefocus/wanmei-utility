@@ -88,6 +88,16 @@ namespace TimerUtility
                 this.label2.Visible = Timer.Settings.Profile.PlusFlag;
                 this.label3.Visible = Timer.Settings.Profile.MinusFlag;
             }
+
+            if (!string.IsNullOrEmpty(Skill.Affiliate))
+            {
+                var control = Timer.SkillControls.FirstOrDefault(s => s.Skill.Name.Equals(Skill.Affiliate));
+                if (control != null && !control.Enabled)
+                {
+                    control.button1.PerformClick();
+                }
+            }
+
         }
 
         private void button2_Click(object sender, EventArgs e)

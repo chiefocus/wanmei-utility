@@ -74,7 +74,7 @@ namespace TimerUtility
 
         private void ToDrawSkills(Boss boss)
         {
-            RootForm.SkillControls.Clear();
+            TimerUtility.Timer.SkillControls.Clear();
             this.RootForm.Text = $"{Instance?.Name} - {Boss?.Name}";
             this.Skills.Controls.Clear();
 
@@ -84,7 +84,7 @@ namespace TimerUtility
                 skill.BossName = boss.Name;
                 var skillControl = new SkillControl(skill, Timer);
                 this.Skills.Controls.Add(skillControl);
-                RootForm.SkillControls.Add(skillControl);
+                TimerUtility.Timer.SkillControls.Add(skillControl);
             }
 
             RootForm.RegisterAllHotKeys();

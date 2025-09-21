@@ -177,5 +177,9 @@ namespace TimerUtility.Models
             get => Clickable ? "1" : "0";
             set => Clickable = value == "1";
         }
+
+        [XmlAttribute("a")]
+        [DefaultValue("")]
+        public string Affiliate { get; set; } = "";
     }
 }
