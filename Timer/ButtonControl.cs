@@ -38,6 +38,8 @@ namespace TimerUtility
         {
             if (Type == ButtonType.Instance && Instance?.Bosses?.Count > 0)
             {
+                var originalHeight = this.Bosses.Height;
+
                 this.Bosses.Controls.Clear();
 
                 foreach (var boss in Instance.Bosses)
@@ -53,6 +55,9 @@ namespace TimerUtility
                     };
                     this.Bosses.Controls.Add(bossBtn);
                 }
+
+                var newHeight = this.Bosses.Height;
+                RootForm.Height += newHeight - originalHeight;
 
                 this.Boss = Instance.Bosses.First();
                 this.Bosses.Controls.OfType<RadioButton>().FirstOrDefault().Checked = true;
