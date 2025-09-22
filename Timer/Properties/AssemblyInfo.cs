@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Timer")]
+[assembly: AssemblyTitle("WanmeiTimer")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Timer")]
+[assembly: AssemblyProduct("WanmeiTimer")]
 [assembly: AssemblyCopyright("奔涌吧ι后浪@2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

@@ -10,7 +10,7 @@ using TimerUtility.Models;
 
 namespace TimerUtility
 {
-    public partial class Timer : Form
+    public partial class WanmeiTimer : Form
     {
         [DllImport("user32.dll")]
         private static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
@@ -20,11 +20,11 @@ namespace TimerUtility
 
         private const uint MOD_ALT = 0x0001;
 
-        public Timer()
+        public WanmeiTimer()
         {
             InitializeComponent();
-            this.MaximumSize = new Size(785, 480);
-            this.MinimumSize = new Size(312, 310);
+            MaximumSize = new Size(785, 480);
+            MinimumSize = new Size(312, 310);
 
             Application.ApplicationExit += OnAppExit;
         }
@@ -37,8 +37,11 @@ namespace TimerUtility
         public static Settings Settings = new Settings();
         public static bool SettingsChanged = false;
 
-        private static Instance defaultInstance;
-        private static Boss defaultBoss;
+        public static Instance defaultInstance;
+        public static Boss defaultBoss;
+
+        public static ButtonControl ActiveInstanceControl;
+        public static ButtonControl ActiveBossControl;
 
         private static void InitInstances()
         {
@@ -53,75 +56,91 @@ namespace TimerUtility
 
                 {
                     Settings = xmlRoot.Deserialize<Settings>();
+
+                    foreach (var instance in Settings.Instances)
+                    {
+                        foreach (var boss in instance.Bosses)
+                        {
+                            boss.InstanceId = instance.Id;
+                            int vkIndex = 0;
+                            foreach (var skill in boss.Skills)
+                            {
+                                skill.InstanceId = instance.Id;
+                                skill.BossId = boss.Id;
+
+                                int key = 49 + vkIndex;
+                                skill.Key = key;
+                                skill.VirtualKey = (uint)key;
+                                vkIndex++;
+                            }
+
+                            boss.Skills.Reverse();
+                        }
+                    }
+
+                    int vki = 0;
+                    foreach (var skill in Settings.UserDefinedBoss.Skills)
+                    {
+                        int key = 49 + vki;
+                        skill.Key = key;
+                        skill.VirtualKey = (uint)key;
+                        vki++;
+                    }
+                    Settings.UserDefinedBoss.Skills.Reverse();
+
                     defaultInstance = Settings.Instances.FirstOrDefault(i => i.Default) ?? Settings.Instances.FirstOrDefault();
                     defaultBoss = defaultInstance.Bosses.FirstOrDefault(b => b.Default) ?? defaultInstance.Bosses.FirstOrDefault();
                 }
-
-                foreach (var instance in Settings.Instances)
-                {
-                    foreach (var boss in instance.Bosses)
-                    {
-                        int vkIndex = 0;
-                        foreach (var skill in boss.Skills)
-                        {
-                            int key = 49 + vkIndex;
-                            skill.Id = key;
-                            skill.VirtualKey = (uint)key;
-                            vkIndex++;
-                        }
-                        boss.Skills.Reverse();
-                    }
-                }
-
-                int vki = 0;
-                foreach (var skill in Settings.UserDefinedBoss.Skills)
-                {
-                    int key = 49 + vki;
-                    skill.Id = key;
-                    skill.VirtualKey = (uint)key;
-                    vki++;
-                }
-                Settings.UserDefinedBoss.Skills.Reverse();
             }
             catch { }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.timer1.Start();
+            timer1.Start();
 
-            this.BeginInvoke(new Action(() =>
+            BeginInvoke(new Action(() =>
             {
                 InitInstances();
+
+                if (Settings.Preference.Location != null)
+                    Location = Settings.Preference.Location.Value;
+
+                if (Settings.Preference.ClientSize != null)
+                    ClientSize = Settings.Preference.ClientSize.Value;
 
                 foreach (var instance in Settings.Instances)
                 {
                     var instanceBtn = new ButtonControl($"{instance.Name}")
                     {
                         Type = ButtonType.Instance,
-                        Bosses = this.flowLayoutPanel2,
+                        Bosses = flowLayoutPanel2,
                         Instance = instance,
-                        Skills = this.panel2,
+                        Skills = panel2,
                         Timer = timer1,
                         RootForm = this,
                         ForeColor = Color.DarkMagenta,
                     };
-                    this.flowLayoutPanel1.Controls.Add(instanceBtn);
+                    flowLayoutPanel1.Controls.Add(instanceBtn);
                 }
 
-                LoadDefaultBoss(defaultInstance, defaultBoss);
+                var defaultInstanceButton = flowLayoutPanel1.Controls.OfType<ButtonControl>().FirstOrDefault(i => i.Instance.Id == defaultInstance.Id);
+                //var defaultBossButton = flowLayoutPanel2.Controls.OfType<ButtonControl>().FirstOrDefault(i => i.Instance.Id == defaultBoss.Id);
+                defaultInstanceButton?.PerformClick();
+                //defaultBossButton?.PerformClick();
+                //LoadDefaultBoss(defaultInstance, defaultBoss);
             }));
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            this.textBox1.Text = DateTime.Now.ToString("HH:mm:ss");
-            this.button1.Visible = SkillControls.Any(s => s.Skill.Flag == 0);
+            textBox1.Text = DateTime.Now.ToString("HH:mm:ss");
+            button1.Visible = SkillControls.Any(s => s.Skill.Flag == 0);
         }
 
         private void LoadDefaultBoss(Instance defaultInstance, Boss defaultBoss)
         {
-            this.panel2.Controls.Clear();
+            panel2.Controls.Clear();
             SkillControls.Clear();
 
             foreach (var skill in defaultBoss.Skills)
@@ -129,10 +148,10 @@ namespace TimerUtility
                 skill.InstanceName = defaultInstance?.Name ?? Settings.UserDefinedBoss?.Name;
                 skill.BossName = defaultBoss.Name;
                 var skillControl = new SkillControl(skill, timer1);
-                this.panel2.Controls.Add(skillControl);
+                panel2.Controls.Add(skillControl);
                 SkillControls.Add(skillControl);
             }
-            this.Text = $"{Settings.UserDefinedBoss?.Name} - 后浪专用";
+            Text = $"{Settings.UserDefinedBoss?.Name} - 后浪专用";
 
             RegisterAllHotKeys();
 
@@ -141,8 +160,8 @@ namespace TimerUtility
                 return;
             }
 
-            this.Text = $"{defaultInstance?.Name} - {defaultBoss?.Name}";
-            this.flowLayoutPanel2.Controls.Clear();
+            Text = $"{defaultInstance?.Name} - {defaultBoss?.Name}";
+            flowLayoutPanel2.Controls.Clear();
 
             foreach (var boss in defaultInstance.Bosses)
             {
@@ -150,33 +169,51 @@ namespace TimerUtility
                 var bossBtn = new ButtonControl(boss.Name)
                 {
                     Type = ButtonType.Boss,
-                    Bosses = this.flowLayoutPanel2,
+                    Bosses = flowLayoutPanel2,
                     Instance = defaultInstance,
                     Boss = boss,
-                    Skills = this.panel2,
-                    Timer = this.timer1,
+                    Skills = panel2,
+                    Timer = timer1,
                     RootForm = this
                 };
-                this.flowLayoutPanel2.Controls.Add(bossBtn);
+                flowLayoutPanel2.Controls.Add(bossBtn);
             }
-            this.flowLayoutPanel1.Controls.OfType<RadioButton>()
-                .FirstOrDefault(b => defaultInstance.Name.Equals(b.Text)).Checked = true;
-            this.flowLayoutPanel2.Controls.OfType<RadioButton>()
-                .FirstOrDefault(b => defaultBoss.Name.Equals(b.Text)).Checked = true;
+
+            flowLayoutPanel1.Controls.OfType<ButtonControl>()
+                .FirstOrDefault(b => defaultInstance.Id == b.Instance.Id).Checked = true;
+            flowLayoutPanel2.Controls.OfType<ButtonControl>()
+                .FirstOrDefault(b => defaultBoss.Id == b.Boss.Id).Checked = true;
         }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
             LoadDefaultBoss(null, Settings.UserDefinedBoss);
-            foreach (var control in this.flowLayoutPanel1.Controls)
+
+            //var defaultInstances = Settings.Instances.Where(i => i.Default);
+            //foreach (var instance in defaultInstances)
+            //{
+            //    SettingsChanged = true;
+            //    instance.Default = false;
+            //}
+
+            var checkedInstance = flowLayoutPanel1.Controls.OfType<ButtonControl>().Where(c => c.Checked).FirstOrDefault();
+            if (checkedInstance != null)
             {
-                if (control is RadioButton rb)
-                    rb.Checked = false;
+                checkedInstance.Checked = false;
             }
-            foreach (var control in this.flowLayoutPanel2.Controls)
+
+            //var defaultBosses = BossDic.Values.Where(i => i.Default);
+            //foreach (var boss in defaultBosses)
+            //{
+            //    SettingsChanged = true;
+
+            //    boss.Default = false;
+            //}
+
+            var checkedBoss = flowLayoutPanel2.Controls.OfType<ButtonControl>().Where(c => c.Checked).FirstOrDefault();
+            if (checkedBoss != null)
             {
-                if (control is RadioButton rb)
-                    rb.Checked = false;
+                checkedBoss.Checked = false;
             }
         }
 
@@ -193,14 +230,14 @@ namespace TimerUtility
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            var keys = SkillControls.Select(s => s.Skill.Id);
+            var keys = SkillControls.Select(s => s.Skill.Key);
             UnregisterAllHotKeys(keys);
             base.OnFormClosing(e);
         }
 
         private void OnAppExit(object sender, EventArgs e)
         {
-            var keys = SkillControls.Select(s => s.Skill.Id);
+            var keys = SkillControls.Select(s => s.Skill.Key);
             UnregisterAllHotKeys(keys);
             SaveSettings();
         }
@@ -231,7 +268,7 @@ namespace TimerUtility
             {
                 try
                 {
-                    UnregisterHotKey(this.Handle, key);
+                    UnregisterHotKey(Handle, key);
                 }
                 catch { }
             }
@@ -242,13 +279,13 @@ namespace TimerUtility
             if (!Settings.Profile.Shortcutable)
                 return;
 
-            var keys = SkillControls.Select(s => s.Skill.Id);
+            var keys = SkillControls.Select(s => s.Skill.Key);
             UnregisterAllHotKeys(keys);
             foreach (var key in keys)
             {
                 try
                 {
-                    RegisterHotKey(this.Handle, key, MOD_ALT, (uint)key);
+                    RegisterHotKey(Handle, key, MOD_ALT, (uint)key);
                 }
                 catch { }
             }
@@ -262,7 +299,7 @@ namespace TimerUtility
             if (m.Msg == WM_HOTKEY && Settings.Profile.Shortcutable)
             {
                 int id = m.WParam.ToInt32();
-                var skillControl = SkillControls.FirstOrDefault(s => s.Skill.Id == id);
+                var skillControl = SkillControls.FirstOrDefault(s => s.Skill.Key == id);
                 skillControl?.button1.PerformClick();
             }
 
@@ -277,6 +314,18 @@ namespace TimerUtility
             }
 
             base.WndProc(ref m);
+        }
+
+        private void Timer_LocationChanged(object sender, EventArgs e)
+        {
+            Settings.Preference.Location = Location;
+            SettingsChanged = true;
+        }
+
+        private void Timer_ResizeEnd(object sender, EventArgs e)
+        {
+            Settings.Preference.ClientSize = ClientSize;
+            SettingsChanged = true;
         }
     }
 }

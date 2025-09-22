@@ -1,6 +1,6 @@
 ﻿namespace TimerUtility
 {
-    partial class Timer
+    partial class WanmeiTimer
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Timer));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WanmeiTimer));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
@@ -55,7 +55,7 @@
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(290, 32);
+            this.panel1.Size = new System.Drawing.Size(289, 32);
             this.panel1.TabIndex = 0;
             // 
             // button1
@@ -109,7 +109,7 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 198);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(290, 0);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(289, 0);
             this.flowLayoutPanel1.TabIndex = 10;
             // 
             // flowLayoutPanel2
@@ -119,7 +119,7 @@
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 198);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(290, 0);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(289, 0);
             this.flowLayoutPanel2.TabIndex = 20;
             // 
             // panel2
@@ -129,14 +129,13 @@
             this.panel2.Location = new System.Drawing.Point(3, 35);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(290, 163);
+            this.panel2.Size = new System.Drawing.Size(289, 163);
             this.panel2.TabIndex = 0;
             // 
-            // Timer
+            // WanmeiTimer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = false;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(295, 305);
             this.Controls.Add(this.flowLayoutPanel2);
@@ -147,12 +146,14 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
-            this.Name = "Timer";
+            this.Name = "WanmeiTimer";
             this.Padding = new System.Windows.Forms.Padding(3);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "计时器 - 后浪专用";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.ResizeEnd += new System.EventHandler(this.Timer_ResizeEnd);
+            this.LocationChanged += new System.EventHandler(this.Timer_LocationChanged);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

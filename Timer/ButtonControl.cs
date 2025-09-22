@@ -20,27 +20,26 @@ namespace TimerUtility
 
         public System.Windows.Forms.Timer Timer { get; set; }
 
-        public Timer RootForm { get; set; }
+        public WanmeiTimer RootForm { get; set; }
 
         public ButtonControl(string text)
         {
-            this.Text = text;
-            this.Appearance = Appearance.Button;
-            this.Font = new Font("SimHei", 11.25F);
-            this.Margin = new Padding(1);
-            this.Size = new Size(93, 32);
-            this.TextAlign = ContentAlignment.MiddleCenter;
+            Text = text;
+            Appearance = Appearance.Button;
+            Font = new Font("SimHei", 11.25F);
+            Margin = new Padding(1);
+            Size = new Size(93, 32);
+            TextAlign = ContentAlignment.MiddleCenter;
 
-            this.Click += new EventHandler(this.button1_Click);
+            Click += new EventHandler(button1_Click);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             if (Type == ButtonType.Instance && Instance?.Bosses?.Count > 0)
             {
-                var originalHeight = this.Bosses.Height;
-
-                this.Bosses.Controls.Clear();
+                var originalHeight = Bosses.Height;
+                Bosses.Controls.Clear();
 
                 foreach (var boss in Instance.Bosses)
                 {
@@ -53,38 +52,55 @@ namespace TimerUtility
                         Timer = Timer,
                         RootForm = RootForm
                     };
-                    this.Bosses.Controls.Add(bossBtn);
+                    Bosses.Controls.Add(bossBtn);
                 }
 
-                var newHeight = this.Bosses.Height;
-                RootForm.Height += newHeight - originalHeight;
+                var newHeight = Bosses.Height;
+                //RootForm.Height += newHeight - originalHeight;
 
-                this.Boss = Instance.Bosses.First();
-                this.Bosses.Controls.OfType<RadioButton>().FirstOrDefault().Checked = true;
-                ToDrawSkills(this.Boss);
+                var preInstance = WanmeiTimer.ActiveInstanceControl?.Instance;
+                if (preInstance != null)
+                {
+                    WanmeiTimer.Settings.InstanceDic[preInstance.Id].Default = false;
+                    WanmeiTimer.SettingsChanged = preInstance.Id != Instance.Id;
+                }
+                WanmeiTimer.ActiveInstanceControl = this;
+                WanmeiTimer.Settings.InstanceDic[Instance.Id].Default = true;
+
+                var bossButtons = Bosses.Controls.OfType<ButtonControl>();
+                var defaultBossButton = bossButtons.FirstOrDefault(b => b.Boss.Id == WanmeiTimer.defaultBoss.Id) ?? bossButtons.FirstOrDefault();
+                defaultBossButton.PerformClick();
             }
 
             if (Type == ButtonType.Boss && Boss?.Skills?.Count > 0)
             {
-                ToDrawSkills(this.Boss);
-                RootForm.flowLayoutPanel1.Controls.OfType<RadioButton>()
-                    .FirstOrDefault(i => i.Text.Equals(this.Instance.Name)).Checked = true;
+                var preBoss = WanmeiTimer.ActiveBossControl?.Boss;
+                if (preBoss != null)
+                {
+                    WanmeiTimer.Settings.InstanceDic[preBoss.InstanceId].BossDic[preBoss.Id].Default = false;
+                    WanmeiTimer.SettingsChanged = preBoss.Id != Boss.Id;
+                }
+                WanmeiTimer.ActiveBossControl = this;
+                WanmeiTimer.Settings.InstanceDic[Instance.Id].BossDic[Boss.Id].Default = true;
+
+                RootForm.flowLayoutPanel1.Controls.OfType<ButtonControl>().FirstOrDefault(i => i.Instance.Id.Equals(Instance.Id)).Checked = true;
+                DrawSkills();
             }
         }
 
-        private void ToDrawSkills(Boss boss)
+        private void DrawSkills()
         {
-            TimerUtility.Timer.SkillControls.Clear();
-            this.RootForm.Text = $"{Instance?.Name} - {Boss?.Name}";
-            this.Skills.Controls.Clear();
+            WanmeiTimer.SkillControls.Clear();
+            RootForm.Text = $"{Instance?.Name} - {Boss?.Name}";
+            Skills.Controls.Clear();
 
-            foreach (var skill in boss.Skills)
+            foreach (var skill in Boss.Skills)
             {
                 skill.InstanceName = Instance.Name;
-                skill.BossName = boss.Name;
+                skill.BossName = Boss.Name;
                 var skillControl = new SkillControl(skill, Timer);
-                this.Skills.Controls.Add(skillControl);
-                TimerUtility.Timer.SkillControls.Add(skillControl);
+                Skills.Controls.Add(skillControl);
+                WanmeiTimer.SkillControls.Add(skillControl);
             }
 
             RootForm.RegisterAllHotKeys();

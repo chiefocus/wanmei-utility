@@ -46,7 +46,7 @@ namespace TimerUtility
             TextRenderer.DrawText(e.Graphics, mainText, FontMain, new Point(0, 0), ForeColorMain,
                 TextFormatFlags.NoPadding | TextFormatFlags.NoClipping);
 
-            var millisecondsFlag = Timer.Settings?.Profile?.MillisecondsFlag;
+            var millisecondsFlag = WanmeiTimer.Settings?.Profile?.MillisecondsFlag;
             if (millisecondsFlag.HasValue && millisecondsFlag.Value)
             {
                 Size subSize = TextRenderer.MeasureText(subText, FontSub, Size.Empty, TextFormatFlags.NoPadding);

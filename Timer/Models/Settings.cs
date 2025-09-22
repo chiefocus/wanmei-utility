@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
+using System.Linq;
 using System.Xml.Serialization;
 
 namespace TimerUtility.Models
@@ -7,14 +10,33 @@ namespace TimerUtility.Models
     [XmlRoot("r")]
     public class Settings
     {
+        public static readonly Guid UserDefinedBossId = new Guid("00000000-0000-0000-0000-000000000001");
+
         [XmlElement("u")]
         public Profile Profile { get; set; } = new Profile();
+
+        [XmlIgnore]
+        public Dictionary<Guid, Instance> InstanceDic => Instances.ToDictionary(k => k.Id, v => v);
 
         [XmlElement("h")]
         public List<Instance> Instances { get; set; } = new List<Instance>();
 
         [XmlElement("udb")]
-        public Boss UserDefinedBoss { get; set; } = new Boss();
+        public Boss UserDefinedBoss { get; set; } = new Boss() { Id = UserDefinedBossId };
+
+        [XmlElement("p")]
+        public Preference Preference { get; set; } = new Preference();
+    }
+
+    public class Preference
+    {
+        [XmlElement("l")]
+        [DefaultValue(null)]
+        public Point? Location { get; set; }
+        [XmlElement("s")]
+        [DefaultValue(null)]
+        public Size? ClientSize { get; set; }
+
     }
 
     public class Profile
@@ -82,8 +104,14 @@ namespace TimerUtility.Models
 
     public class Instance
     {
+        [XmlIgnore]
+        public Guid Id { get; set; } = Guid.NewGuid();
+
         [XmlAttribute("n")]
         public string Name { get; set; }
+
+        [XmlIgnore]
+        public Dictionary<Guid, Boss> BossDic => Bosses.ToDictionary(k => k.Id, v => v);
 
         [XmlElement("b")]
         public List<Boss> Bosses { get; set; } = new List<Boss>();
@@ -103,10 +131,19 @@ namespace TimerUtility.Models
     public class Boss
     {
         [XmlIgnore]
+        public Guid Id { get; set; } = Guid.NewGuid();
+
+        [XmlIgnore]
+        public Guid InstanceId { get; set; }
+
+        [XmlIgnore]
         public string InstanceName { get; set; }
 
         [XmlAttribute("n")]
         public string Name { get; set; }
+
+        [XmlIgnore]
+        public Dictionary<Guid, Skill> SkillDic => Skills.ToDictionary(k => k.Id, v => v);
 
         [XmlElement("s")]
         public List<Skill> Skills { get; set; } = new List<Skill>();
@@ -125,6 +162,15 @@ namespace TimerUtility.Models
 
     public class Skill
     {
+        [XmlIgnore]
+        public Guid Id { get; set; } = Guid.NewGuid();
+
+        [XmlIgnore]
+        public Guid BossId { get; set; }
+
+        [XmlIgnore]
+        public Guid InstanceId { get; set; }
+
         [XmlIgnore]
         public string InstanceName { get; set; }
 
@@ -150,7 +196,7 @@ namespace TimerUtility.Models
         public bool Clickable { get; set; } = true;
 
         [XmlIgnore]
-        public int Id { get; set; }
+        public int Key { get; set; }
 
         [XmlIgnore]
         public uint VirtualKey { get; set; }

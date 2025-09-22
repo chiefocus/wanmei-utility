@@ -85,13 +85,13 @@ namespace TimerUtility
             {
                 skillControl.stopwatchDisplay1.Visible = true;
                 skillControl.stopwatchDisplay1.Seconds = Interval;
-                this.label2.Visible = Timer.Settings.Profile.PlusFlag;
-                this.label3.Visible = Timer.Settings.Profile.MinusFlag;
+                this.label2.Visible = WanmeiTimer.Settings.Profile.PlusFlag;
+                this.label3.Visible = WanmeiTimer.Settings.Profile.MinusFlag;
             }
 
             if (!string.IsNullOrEmpty(Skill.Affiliate))
             {
-                var control = Timer.SkillControls.FirstOrDefault(s => s.Skill.Name.Equals(Skill.Affiliate));
+                var control = WanmeiTimer.SkillControls.FirstOrDefault(s => s.Skill.Name.Equals(Skill.Affiliate));
                 if (control != null && !control.Enabled)
                 {
                     control.button1.PerformClick();
@@ -112,12 +112,12 @@ namespace TimerUtility
 
         private void label2_Click(object sender, EventArgs e)
         {
-            _offsetMilliseconds += Timer.Settings.Profile.Offset;
+            _offsetMilliseconds += WanmeiTimer.Settings.Profile.Offset;
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
-            _offsetMilliseconds -= Timer.Settings.Profile.Offset;
+            _offsetMilliseconds -= WanmeiTimer.Settings.Profile.Offset;
         }
 
         private static int GetInterval(string s)
@@ -138,14 +138,14 @@ namespace TimerUtility
             if (targetSkill != null && targetSkill.Interval != this.Interval)
             {
                 targetSkill.Interval = this.Interval;
-                Timer.SettingsChanged = true;
+                WanmeiTimer.SettingsChanged = true;
             }
         }
 
         private void stopwatchDisplay1_DoubleClick(object sender, EventArgs e)
         {
-            Timer.Settings.Profile.MillisecondsFlag = !Timer.Settings.Profile.MillisecondsFlag;
-            Timer.SettingsChanged = true;
+            WanmeiTimer.Settings.Profile.MillisecondsFlag = !WanmeiTimer.Settings.Profile.MillisecondsFlag;
+            WanmeiTimer.SettingsChanged = true;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -153,15 +153,15 @@ namespace TimerUtility
             if (targetSkill != null && targetSkill.Description != this.textBox1.Text)
             {
                 targetSkill.Description = this.textBox1.Text;
-                Timer.SettingsChanged = true;
+                WanmeiTimer.SettingsChanged = true;
             }
         }
 
         private Skill targetSkill =>
-            Timer.Settings.Instances.FirstOrDefault(i => i.Name.Equals(Skill.InstanceName))
+            WanmeiTimer.Settings.Instances.FirstOrDefault(i => i.Name.Equals(Skill.InstanceName))
             ?.Bosses.FirstOrDefault(b => b.Name.Equals(Skill.BossName))
             ?.Skills.FirstOrDefault(s => s.Name.Equals(Skill.Name))
-            ?? Timer.Settings.UserDefinedBoss.Skills.FirstOrDefault(s => s.Name.Equals(Skill.Name));
+            ?? WanmeiTimer.Settings.UserDefinedBoss.Skills.FirstOrDefault(s => s.Name.Equals(Skill.Name));
 
     }
 }
