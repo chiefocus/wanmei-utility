@@ -138,7 +138,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = false;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(295, 298);
+            this.ClientSize = new System.Drawing.Size(295, 305);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel2);
