@@ -107,7 +107,7 @@
             this.flowLayoutPanel1.AutoSize = true;
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 198);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(290, 0);
             this.flowLayoutPanel1.TabIndex = 10;
@@ -117,7 +117,7 @@
             this.flowLayoutPanel2.AutoSize = true;
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 198);
-            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(290, 0);
             this.flowLayoutPanel2.TabIndex = 20;
@@ -127,7 +127,7 @@
             this.panel2.AutoScroll = true;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(3, 35);
-            this.panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(290, 163);
             this.panel2.TabIndex = 0;
@@ -136,9 +136,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
+            this.AutoScroll = false;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(308, 298);
+            this.ClientSize = new System.Drawing.Size(295, 298);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel2);
@@ -153,7 +153,6 @@
             this.Text = "计时器 - 后浪专用";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.Resize += new System.EventHandler(this.Timer_Resize);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

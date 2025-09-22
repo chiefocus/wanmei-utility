@@ -23,9 +23,8 @@ namespace TimerUtility
         public Timer()
         {
             InitializeComponent();
-            Rectangle res = Screen.PrimaryScreen.Bounds;
-            this.StartPosition = FormStartPosition.Manual;
-            this.Location = new Point(res.Right - this.Width, res.Height / 2 - 200);
+            this.MaximumSize = new Size(785, 480);
+            this.MinimumSize = new Size(312, 310);
 
             Application.ApplicationExit += OnAppExit;
         }
@@ -278,14 +277,6 @@ namespace TimerUtility
             }
 
             base.WndProc(ref m);
-        }
-
-        private void Timer_Resize(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Maximized)
-            {
-                Timer.Settings.Profile.Preservable = true;
-            }
         }
     }
 }

@@ -27,7 +27,7 @@ namespace TimerUtility
             this.Text = text;
             this.Appearance = Appearance.Button;
             this.Font = new Font("SimHei", 11.25F);
-            this.Margin = new Padding(0);
+            this.Margin = new Padding(1);
             this.Size = new Size(93, 32);
             this.TextAlign = ContentAlignment.MiddleCenter;
 
