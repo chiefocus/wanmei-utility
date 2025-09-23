@@ -152,8 +152,6 @@
             this.Text = "计时器 - 后浪专用";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.ResizeEnd += new System.EventHandler(this.Timer_ResizeEnd);
-            this.LocationChanged += new System.EventHandler(this.Timer_LocationChanged);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -170,7 +168,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnReset;
-        private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.Button button1;
     }
 }
 

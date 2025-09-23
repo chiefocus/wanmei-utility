@@ -63,6 +63,7 @@ namespace TimerUtility
             {
                 RootForm.flowLayoutPanel1.Controls.OfType<ButtonControl>().FirstOrDefault(i => i.Instance.Id.Equals(Instance.Id)).Checked = true;
                 DrawSkills();
+                RootForm.button1.Visible = Boss.Skills.Any(s => s.Flag == 0);
             }
         }
 

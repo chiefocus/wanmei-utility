@@ -129,7 +129,6 @@ namespace TimerUtility
         private void timer1_Tick(object sender, EventArgs e)
         {
             textBox1.Text = DateTime.Now.ToString("HH:mm:ss");
-            button1.Visible = SkillControls.Any(s => s.Skill.Flag == 0);
         }
 
         private void LoadUdfBoss()
@@ -242,8 +241,9 @@ namespace TimerUtility
             }
         }
 
-        const int WM_HOTKEY = 0x0312;
-        const int WM_NCLBUTTONDBLCLK = 0x00A3;
+        private const int WM_HOTKEY = 0x0312;
+        private const int WM_NCLBUTTONDBLCLK = 0x00A3;
+        private const int WM_EXITSIZEMOVE = 0x0232;
 
         protected override void WndProc(ref Message m)
         {
@@ -264,18 +264,17 @@ namespace TimerUtility
                 }
             }
 
+            if (m.Msg == WM_EXITSIZEMOVE)
+            {
+                HandleMoveOrResizeEnd();
+            }
+
             base.WndProc(ref m);
         }
 
-        private void Timer_LocationChanged(object sender, EventArgs e)
+        private void HandleMoveOrResizeEnd()
         {
-            SettingsChanged = Settings.Preference.Location != null
-                && Settings.Preference.Location != Location;
             Settings.Preference.Location = Location;
-        }
-
-        private void Timer_ResizeEnd(object sender, EventArgs e)
-        {
             Settings.Preference.ClientSize = ClientSize;
             SettingsChanged = true;
         }
