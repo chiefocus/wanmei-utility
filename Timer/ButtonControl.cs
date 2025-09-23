@@ -38,7 +38,6 @@ namespace TimerUtility
         {
             if (Type == ButtonType.Instance && Instance?.Bosses?.Count > 0)
             {
-                var originalHeight = Bosses.Height;
                 Bosses.Controls.Clear();
 
                 foreach (var boss in Instance.Bosses)
@@ -55,9 +54,6 @@ namespace TimerUtility
                     Bosses.Controls.Add(bossBtn);
                 }
 
-                var newHeight = Bosses.Height;
-                //RootForm.Height += newHeight - originalHeight;
-
                 var preInstance = WanmeiTimer.ActiveInstanceControl?.Instance;
                 if (preInstance != null)
                 {
@@ -68,7 +64,7 @@ namespace TimerUtility
                 WanmeiTimer.Settings.InstanceDic[Instance.Id].Default = true;
 
                 var bossButtons = Bosses.Controls.OfType<ButtonControl>();
-                var defaultBossButton = bossButtons.FirstOrDefault(b => b.Boss.Id == WanmeiTimer.defaultBoss.Id) ?? bossButtons.FirstOrDefault();
+                var defaultBossButton = bossButtons.FirstOrDefault(b => b.Boss.Id == WanmeiTimer.DefaultBoss.Id) ?? bossButtons.FirstOrDefault();
                 defaultBossButton.PerformClick();
             }
 
@@ -81,7 +77,9 @@ namespace TimerUtility
                     WanmeiTimer.SettingsChanged = preBoss.Id != Boss.Id;
                 }
                 WanmeiTimer.ActiveBossControl = this;
-                WanmeiTimer.Settings.InstanceDic[Instance.Id].BossDic[Boss.Id].Default = true;
+                var defaultBoss = WanmeiTimer.Settings.InstanceDic[Instance.Id].BossDic[Boss.Id];
+                defaultBoss.Default = true;
+                WanmeiTimer.DefaultBoss = defaultBoss;
 
                 RootForm.flowLayoutPanel1.Controls.OfType<ButtonControl>().FirstOrDefault(i => i.Instance.Id.Equals(Instance.Id)).Checked = true;
                 DrawSkills();

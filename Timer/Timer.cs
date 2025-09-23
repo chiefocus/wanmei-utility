@@ -37,8 +37,8 @@ namespace TimerUtility
         public static Settings Settings = new Settings();
         public static bool SettingsChanged = false;
 
-        public static Instance defaultInstance;
-        public static Boss defaultBoss;
+        public static Instance DefaultInstance;
+        public static Boss DefaultBoss;
 
         public static ButtonControl ActiveInstanceControl;
         public static ButtonControl ActiveBossControl;
@@ -88,8 +88,8 @@ namespace TimerUtility
                     }
                     Settings.UserDefinedBoss.Skills.Reverse();
 
-                    defaultInstance = Settings.Instances.FirstOrDefault(i => i.Default) ?? Settings.Instances.FirstOrDefault();
-                    defaultBoss = defaultInstance.Bosses.FirstOrDefault(b => b.Default) ?? defaultInstance.Bosses.FirstOrDefault();
+                    DefaultInstance = Settings.Instances.FirstOrDefault(i => i.Default) ?? Settings.Instances.FirstOrDefault();
+                    DefaultBoss = DefaultInstance.Bosses.FirstOrDefault(b => b.Default) ?? DefaultInstance.Bosses.FirstOrDefault();
                 }
             }
             catch { }
@@ -124,11 +124,8 @@ namespace TimerUtility
                     flowLayoutPanel1.Controls.Add(instanceBtn);
                 }
 
-                var defaultInstanceButton = flowLayoutPanel1.Controls.OfType<ButtonControl>().FirstOrDefault(i => i.Instance.Id == defaultInstance.Id);
-                //var defaultBossButton = flowLayoutPanel2.Controls.OfType<ButtonControl>().FirstOrDefault(i => i.Instance.Id == defaultBoss.Id);
+                var defaultInstanceButton = flowLayoutPanel1.Controls.OfType<ButtonControl>().FirstOrDefault(i => i.Instance.Id == DefaultInstance.Id);
                 defaultInstanceButton?.PerformClick();
-                //defaultBossButton?.PerformClick();
-                //LoadDefaultBoss(defaultInstance, defaultBoss);
             }));
         }
 
@@ -138,15 +135,16 @@ namespace TimerUtility
             button1.Visible = SkillControls.Any(s => s.Skill.Flag == 0);
         }
 
-        private void LoadDefaultBoss(Instance defaultInstance, Boss defaultBoss)
+        private void LoadUdfBoss()
         {
+            var udfBoss = Settings.UserDefinedBoss;
             panel2.Controls.Clear();
             SkillControls.Clear();
 
-            foreach (var skill in defaultBoss.Skills)
+            foreach (var skill in udfBoss.Skills)
             {
-                skill.InstanceName = defaultInstance?.Name ?? Settings.UserDefinedBoss?.Name;
-                skill.BossName = defaultBoss.Name;
+                skill.InstanceName = Settings.UserDefinedBoss?.Name;
+                skill.BossName = udfBoss.Name;
                 var skillControl = new SkillControl(skill, timer1);
                 panel2.Controls.Add(skillControl);
                 SkillControls.Add(skillControl);
@@ -154,61 +152,17 @@ namespace TimerUtility
             Text = $"{Settings.UserDefinedBoss?.Name} - 后浪专用";
 
             RegisterAllHotKeys();
-
-            if (defaultInstance == null)
-            {
-                return;
-            }
-
-            Text = $"{defaultInstance?.Name} - {defaultBoss?.Name}";
-            flowLayoutPanel2.Controls.Clear();
-
-            foreach (var boss in defaultInstance.Bosses)
-            {
-                boss.InstanceName = defaultInstance.Name;
-                var bossBtn = new ButtonControl(boss.Name)
-                {
-                    Type = ButtonType.Boss,
-                    Bosses = flowLayoutPanel2,
-                    Instance = defaultInstance,
-                    Boss = boss,
-                    Skills = panel2,
-                    Timer = timer1,
-                    RootForm = this
-                };
-                flowLayoutPanel2.Controls.Add(bossBtn);
-            }
-
-            flowLayoutPanel1.Controls.OfType<ButtonControl>()
-                .FirstOrDefault(b => defaultInstance.Id == b.Instance.Id).Checked = true;
-            flowLayoutPanel2.Controls.OfType<ButtonControl>()
-                .FirstOrDefault(b => defaultBoss.Id == b.Boss.Id).Checked = true;
         }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            LoadDefaultBoss(null, Settings.UserDefinedBoss);
-
-            //var defaultInstances = Settings.Instances.Where(i => i.Default);
-            //foreach (var instance in defaultInstances)
-            //{
-            //    SettingsChanged = true;
-            //    instance.Default = false;
-            //}
+            LoadUdfBoss();
 
             var checkedInstance = flowLayoutPanel1.Controls.OfType<ButtonControl>().Where(c => c.Checked).FirstOrDefault();
             if (checkedInstance != null)
             {
                 checkedInstance.Checked = false;
             }
-
-            //var defaultBosses = BossDic.Values.Where(i => i.Default);
-            //foreach (var boss in defaultBosses)
-            //{
-            //    SettingsChanged = true;
-
-            //    boss.Default = false;
-            //}
 
             var checkedBoss = flowLayoutPanel2.Controls.OfType<ButtonControl>().Where(c => c.Checked).FirstOrDefault();
             if (checkedBoss != null)
