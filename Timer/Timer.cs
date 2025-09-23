@@ -40,9 +40,6 @@ namespace TimerUtility
         public static Instance DefaultInstance;
         public static Boss DefaultBoss;
 
-        public static ButtonControl ActiveInstanceControl;
-        public static ButtonControl ActiveBossControl;
-
         private static void InitInstances()
         {
             try
@@ -272,8 +269,9 @@ namespace TimerUtility
 
         private void Timer_LocationChanged(object sender, EventArgs e)
         {
+            SettingsChanged = Settings.Preference.Location != null
+                && Settings.Preference.Location != Location;
             Settings.Preference.Location = Location;
-            SettingsChanged = true;
         }
 
         private void Timer_ResizeEnd(object sender, EventArgs e)

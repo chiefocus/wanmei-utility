@@ -14,12 +14,12 @@ namespace TimerUtility
         public string Description { get; set; }
         public int Flag { get; set; }
         public bool Clickable { get; set; }
-        public System.Windows.Forms.Timer Timer1 { get; set; }
+        public Timer Timer1 { get; set; }
 
         private Stopwatch _stopwatch;
         private double _offsetMilliseconds = 0.0;
 
-        public SkillControl(Skill skill, System.Windows.Forms.Timer timer)
+        public SkillControl(Skill skill, Timer timer)
         {
             InitializeComponent();
 
@@ -30,7 +30,7 @@ namespace TimerUtility
             this.label3.Visible = false; //Minus
 
             Timer1 = timer;
-            Timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            Timer1.Tick += new EventHandler(this.timer1_Tick);
 
             this.Skill = skill;
             this.button1.Text = Skill.Interval == 0 ? Skill.Name : $"{Skill.Name}";
