@@ -30,120 +30,120 @@ namespace TimerUtility
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.stopwatchDisplay1 = new TimerUtility.StopwatchDisplay();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            button1 = new System.Windows.Forms.Button();
+            button2 = new System.Windows.Forms.Button();
+            textBox1 = new System.Windows.Forms.TextBox();
+            toolTip1 = new System.Windows.Forms.ToolTip(components);
+            textBox2 = new System.Windows.Forms.TextBox();
+            label2 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            stopwatchDisplay1 = new TimerUtility.StopwatchDisplay();
+            SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("SimHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Location = new System.Drawing.Point(0, 1);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(82, 32);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            button1.Font = new System.Drawing.Font("SimHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            button1.Location = new System.Drawing.Point(0, 1);
+            button1.Margin = new System.Windows.Forms.Padding(0);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(82, 32);
+            button1.TabIndex = 0;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += new System.EventHandler(button1_Click);
             // 
             // button2
             // 
-            this.button2.Font = new System.Drawing.Font("SimHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(110, 1);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(51, 32);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            button2.Font = new System.Drawing.Font("SimHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            button2.Location = new System.Drawing.Point(110, 1);
+            button2.Margin = new System.Windows.Forms.Padding(2);
+            button2.Name = "button2";
+            button2.Size = new System.Drawing.Size(51, 32);
+            button2.TabIndex = 1;
+            button2.Text = "button";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += new System.EventHandler(button2_Click);
             // 
             // textBox1
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("SimHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox1.ForeColor = System.Drawing.Color.DarkGreen;
-            this.textBox1.Location = new System.Drawing.Point(165, 11);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(297, 15);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            textBox1.BackColor = System.Drawing.SystemColors.Control;
+            textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            textBox1.Font = new System.Drawing.Font("SimHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            textBox1.ForeColor = System.Drawing.Color.DarkGreen;
+            textBox1.Location = new System.Drawing.Point(165, 11);
+            textBox1.Margin = new System.Windows.Forms.Padding(0);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new System.Drawing.Size(297, 15);
+            textBox1.TabIndex = 3;
+            textBox1.TextChanged += new System.EventHandler(textBox1_TextChanged);
             // 
             // textBox2
             // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("SimHei", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox2.ForeColor = System.Drawing.Color.DarkGreen;
-            this.textBox2.Location = new System.Drawing.Point(83, 11);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(1);
-            this.textBox2.MaxLength = 3;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(22, 15);
-            this.textBox2.TabIndex = 4;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            textBox2.BackColor = System.Drawing.SystemColors.Control;
+            textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            textBox2.Font = new System.Drawing.Font("SimHei", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            textBox2.ForeColor = System.Drawing.Color.DarkGreen;
+            textBox2.Location = new System.Drawing.Point(83, 11);
+            textBox2.Margin = new System.Windows.Forms.Padding(1);
+            textBox2.MaxLength = 3;
+            textBox2.Name = "textBox2";
+            textBox2.Size = new System.Drawing.Size(22, 15);
+            textBox2.TabIndex = 4;
+            textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            textBox2.TextChanged += new System.EventHandler(textBox2_TextChanged);
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label2.Location = new System.Drawing.Point(213, 3);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 24);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "➕";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            label2.AutoSize = true;
+            label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label2.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            label2.Location = new System.Drawing.Point(213, 3);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(31, 24);
+            label2.TabIndex = 5;
+            label2.Text = "➕";
+            label2.Click += new System.EventHandler(label2_Click);
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label3.Location = new System.Drawing.Point(242, 3);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(31, 24);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "➖";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            label3.AutoSize = true;
+            label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label3.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            label3.Location = new System.Drawing.Point(242, 3);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(31, 24);
+            label3.TabIndex = 6;
+            label3.Text = "➖";
+            label3.Click += new System.EventHandler(label3_Click);
             // 
             // stopwatchDisplay1
             // 
-            this.stopwatchDisplay1.FontMain = new System.Drawing.Font("SimHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.stopwatchDisplay1.FontSub = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stopwatchDisplay1.ForeColorMain = System.Drawing.Color.Red;
-            this.stopwatchDisplay1.Location = new System.Drawing.Point(165, 5);
-            this.stopwatchDisplay1.Name = "stopwatchDisplay1";
-            this.stopwatchDisplay1.Size = new System.Drawing.Size(45, 26);
-            this.stopwatchDisplay1.TabIndex = 8;
-            this.stopwatchDisplay1.DoubleClick += new System.EventHandler(this.stopwatchDisplay1_DoubleClick);
+            stopwatchDisplay1.FontMain = new System.Drawing.Font("SimHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            stopwatchDisplay1.FontSub = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            stopwatchDisplay1.ForeColorMain = System.Drawing.Color.Red;
+            stopwatchDisplay1.Location = new System.Drawing.Point(165, 5);
+            stopwatchDisplay1.Name = "stopwatchDisplay1";
+            stopwatchDisplay1.Size = new System.Drawing.Size(45, 26);
+            stopwatchDisplay1.TabIndex = 8;
+            stopwatchDisplay1.DoubleClick += new System.EventHandler(stopwatchDisplay1_DoubleClick);
             // 
             // SkillControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.stopwatchDisplay1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
-            this.Margin = new System.Windows.Forms.Padding(0);
-            this.Name = "SkillControl";
-            this.Size = new System.Drawing.Size(481, 35);
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            Controls.Add(stopwatchDisplay1);
+            Controls.Add(button2);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(textBox2);
+            Controls.Add(button1);
+            Controls.Add(textBox1);
+            Margin = new System.Windows.Forms.Padding(0);
+            Name = "SkillControl";
+            Size = new System.Drawing.Size(481, 35);
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 

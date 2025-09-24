@@ -174,7 +174,7 @@ namespace TimerUtility
 
             foreach (var skill in skillControls)
             {
-                skill.OnClick(skill);
+                skill.button1.PerformClick();
             }
         }
 

@@ -14,8 +14,8 @@ namespace TimerUtility2
     {
         public Form1()
         {
-            this.WindowState = FormWindowState.Maximized;
-            this.ShowInTaskbar = false;
+            WindowState = FormWindowState.Maximized;
+            ShowInTaskbar = false;
 
             InitializeComponent();
         }

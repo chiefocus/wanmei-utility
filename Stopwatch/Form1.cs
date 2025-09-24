@@ -94,8 +94,8 @@ namespace WindowsFormsApp2
             //RegisterHotKey(Handle, 100, 2, Keys.Space);
             //RegisterHotKey(Handle, 200, 2, Keys.B);//册2个热键,根据id值100,200来判断需要执行哪个函数
             //RegisterHotKey(Handle, 300, 0, Keys.NumPad0);
-            this.Left = Screen.PrimaryScreen.WorkingArea.Width - this.Width - 400;
-            this.Top = Screen.PrimaryScreen.WorkingArea.Height - this.Height - 200;
+            Left = Screen.PrimaryScreen.WorkingArea.Width - Width - 400;
+            Top = Screen.PrimaryScreen.WorkingArea.Height - Height - 200;
             button1.Text = "开始";
             button3.Text = "开始";
             button4.Text = "开始";
@@ -834,8 +834,8 @@ namespace WindowsFormsApp2
             //if (timeData1 < 10)
             //{
             //    Form2 f2 = new Form2(label1.Text.ToString());
-            //    this.AddOwnedForm(f2);
-            //    this.label1.Text = secondStr;
+            //    AddOwnedForm(f2);
+            //    label1.Text = secondStr;
             //    f2.Show();
             //}
             else

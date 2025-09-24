@@ -23,27 +23,27 @@ namespace TimerUtility
         {
             InitializeComponent();
 
-            this.Dock = DockStyle.Top;
-            this.stopwatchDisplay1.Visible = false;
+            Dock = DockStyle.Top;
+            stopwatchDisplay1.Visible = false;
 
-            this.label2.Visible = false; //Plus
-            this.label3.Visible = false; //Minus
+            label2.Visible = false; //Plus
+            label3.Visible = false; //Minus
 
             Timer1 = timer;
-            Timer1.Tick += new EventHandler(this.timer1_Tick);
+            Timer1.Tick += new EventHandler(timer1_Tick);
 
-            this.Skill = skill;
-            this.button1.Text = Skill.Interval == 0 ? Skill.Name : $"{Skill.Name}";
-            this.button2.Text = skill.Reset;
-            this.textBox1.Text = skill.Description;
-            this.textBox2.Text = skill.Interval == 0 ? "" : $"{skill.Interval}";
-            this.Interval = skill.Interval;
-            this.Flag = skill.Flag;
-            this.Clickable = skill.Clickable;
-            this.Tag = skill.Interval;
-            this.Description = skill.Description;
+            Skill = skill;
+            button1.Text = Skill.Interval == 0 ? Skill.Name : $"{Skill.Name}";
+            button2.Text = skill.Reset;
+            textBox1.Text = skill.Description;
+            textBox2.Text = skill.Interval == 0 ? "" : $"{skill.Interval}";
+            Interval = skill.Interval;
+            Flag = skill.Flag;
+            Clickable = skill.Clickable;
+            Tag = skill.Interval;
+            Description = skill.Description;
 
-            toolTip1.SetToolTip(this.button1, skill.Description);
+            toolTip1.SetToolTip(button1, skill.Description);
 
             _stopwatch = new Stopwatch();
         }
@@ -55,89 +55,66 @@ namespace TimerUtility
                 var elapsedSeconds = _stopwatch.Elapsed.TotalSeconds - _offsetMilliseconds / 1000;
                 var remaining = Math.Max(0, Interval - (elapsedSeconds % Interval));
 
-                this.stopwatchDisplay1.Seconds = (int)remaining;
-                this.stopwatchDisplay1.Milliseconds = (int)(remaining * 10) % 10;
+                stopwatchDisplay1.Seconds = (int)remaining;
+                stopwatchDisplay1.Milliseconds = (int)(remaining * 10) % 10;
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            UpdateLabel();
-        }
+        private void timer1_Tick(object sender, EventArgs e) => UpdateLabel();
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (Clickable)
-            {
-                OnClick(this);
-            }
+            var control = sender as Control;
+            Console.WriteLine(control.Text);
+
+            if (Clickable && Interval > 0) OnClick();
         }
 
-        public void OnClick(SkillControl skillControl)
+        private void OnClick()
         {
-            _stopwatch.Restart();
-            _offsetMilliseconds = 0.0;
-
-            skillControl.Enabled = true;
-            skillControl.textBox1.Visible = false;
-
-            if (Interval > 0)
-            {
-                skillControl.stopwatchDisplay1.Visible = true;
-                skillControl.stopwatchDisplay1.Seconds = Interval;
-                this.label2.Visible = WanmeiTimer.Settings.Profile.PlusFlag;
-                this.label3.Visible = WanmeiTimer.Settings.Profile.MinusFlag;
-            }
+            Enabled = true;
 
             if (!string.IsNullOrEmpty(Skill.Affiliate))
             {
-                var control = WanmeiTimer.SkillControls.FirstOrDefault(s => s.Skill.Name.Equals(Skill.Affiliate));
-                if (control != null && !control.Enabled)
+                var affiliate = WanmeiTimer.SkillControls.FirstOrDefault(s => s.Skill.Name.Equals(Skill.Affiliate));
+                if (affiliate != null && !affiliate.Enabled)
                 {
-                    control.button1.PerformClick();
+                    Console.WriteLine("affiliate");
+                    affiliate.BeginInvoke(new Action(() => affiliate.button1.PerformClick()));
                 }
             }
 
+            _stopwatch.Restart();
+            _offsetMilliseconds = 0.0;
+
+            textBox1.Visible = false;
+            stopwatchDisplay1.Visible = true;
+            stopwatchDisplay1.Seconds = Interval;
+            label2.Visible = WanmeiTimer.Settings.Profile.PlusFlag;
+            label3.Visible = WanmeiTimer.Settings.Profile.MinusFlag;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Enabled = false;
-            this.stopwatchDisplay1.Visible = false;
-            this.textBox1.Visible = true;
-            this.textBox1.Text = this.Description;
-            this.label2.Visible = false;
-            this.label3.Visible = false;
+            Enabled = false;
+            stopwatchDisplay1.Visible = false;
+            textBox1.Visible = true;
+            textBox1.Text = Description;
+            label2.Visible = false;
+            label3.Visible = false;
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-            _offsetMilliseconds += WanmeiTimer.Settings.Profile.Offset;
-        }
+        private void label2_Click(object sender, EventArgs e) => _offsetMilliseconds += WanmeiTimer.Settings.Profile.Offset;
+        private void label3_Click(object sender, EventArgs e) => _offsetMilliseconds -= WanmeiTimer.Settings.Profile.Offset;
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-            _offsetMilliseconds -= WanmeiTimer.Settings.Profile.Offset;
-        }
-
-        private static int GetInterval(string s)
-        {
-            if (!string.IsNullOrEmpty(s))
-            {
-                int r = 0;
-                int.TryParse(s, out r);
-                return r;
-            }
-            return 0;
-        }
+        private static int ParseInterval(string s) => int.TryParse(s, out var r) ? r : 0;
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            this.Interval = GetInterval(textBox2.Text);
-
-            if (targetSkill != null && targetSkill.Interval != this.Interval)
+            Interval = ParseInterval(textBox2.Text);
+            if (targetSkill != null && targetSkill.Interval != Interval)
             {
-                targetSkill.Interval = this.Interval;
+                targetSkill.Interval = Interval;
                 WanmeiTimer.SettingsChanged = true;
             }
         }
@@ -150,9 +127,9 @@ namespace TimerUtility
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (targetSkill != null && targetSkill.Description != this.textBox1.Text)
+            if (targetSkill != null && targetSkill.Description != textBox1.Text)
             {
-                targetSkill.Description = this.textBox1.Text;
+                targetSkill.Description = textBox1.Text;
                 WanmeiTimer.SettingsChanged = true;
             }
         }
@@ -162,6 +139,5 @@ namespace TimerUtility
             ?.Bosses.FirstOrDefault(b => b.Name.Equals(Skill.BossName))
             ?.Skills.FirstOrDefault(s => s.Name.Equals(Skill.Name))
             ?? WanmeiTimer.Settings.UserDefinedBoss.Skills.FirstOrDefault(s => s.Name.Equals(Skill.Name));
-
     }
 }

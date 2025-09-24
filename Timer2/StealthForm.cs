@@ -28,8 +28,8 @@ namespace TimerUtility2
         //{
         //    base.OnHandleCreated(e);
         //    // 关键API调用：将窗体标记为“工具窗口”
-        //    SetWindowLong(this.Handle, GWL_EXSTYLE,
-        //        GetWindowLong(this.Handle, GWL_EXSTYLE) | WS_EX_TOOLWINDOW);
+        //    SetWindowLong(Handle, GWL_EXSTYLE,
+        //        GetWindowLong(Handle, GWL_EXSTYLE) | WS_EX_TOOLWINDOW);
         //}
 
         protected override CreateParams CreateParams
@@ -50,13 +50,13 @@ namespace TimerUtility2
 
         public StealthForm()
         {
-            //this.ShowInTaskbar = false;
+            //ShowInTaskbar = false;
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.label1.Text = DateTime.Now.ToString();
+            label1.Text = DateTime.Now.ToString();
         }
     }
 }

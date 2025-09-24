@@ -9,7 +9,7 @@ namespace TimerUtility
         {
             set
             {
-                this.mainText = $"{value}";
+                mainText = $"{value}";
             }
         }
 
@@ -17,8 +17,8 @@ namespace TimerUtility
         {
             set
             {
-                this.subText = $".{value}";
-                this.Invalidate();
+                subText = $".{value}";
+                Invalidate();
             }
         }
 
@@ -32,15 +32,15 @@ namespace TimerUtility
 
         public StopwatchDisplay()
         {
-            this.AutoScaleMode = AutoScaleMode.Dpi;
-            this.DoubleBuffered = true;
-            this.ResizeRedraw = true;
+            AutoScaleMode = AutoScaleMode.Dpi;
+            DoubleBuffered = true;
+            ResizeRedraw = true;
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            e.Graphics.Clear(this.BackColor);
+            e.Graphics.Clear(BackColor);
 
             Size mainSize = TextRenderer.MeasureText(mainText, FontMain, Size.Empty, TextFormatFlags.NoPadding);
             TextRenderer.DrawText(e.Graphics, mainText, FontMain, new Point(0, 0), ForeColorMain,
