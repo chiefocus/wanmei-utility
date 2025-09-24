@@ -64,8 +64,6 @@ namespace TimerUtility
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var control = sender as Control;
-
             if (Clickable && Interval > 0) OnClick();
         }
 
