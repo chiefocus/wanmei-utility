@@ -65,7 +65,6 @@ namespace TimerUtility
         private void button1_Click(object sender, EventArgs e)
         {
             var control = sender as Control;
-            Console.WriteLine(control.Text);
 
             if (Clickable && Interval > 0) OnClick();
         }
@@ -79,7 +78,6 @@ namespace TimerUtility
                 var affiliate = WanmeiTimer.SkillControls.FirstOrDefault(s => s.Skill.Name.Equals(Skill.Affiliate));
                 if (affiliate != null && !affiliate.Enabled)
                 {
-                    Console.WriteLine("affiliate");
                     affiliate.BeginInvoke(new Action(() => affiliate.button1.PerformClick()));
                 }
             }
