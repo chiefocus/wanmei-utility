@@ -1,0 +1,22 @@
+﻿<Config>
+  <Style>
+    <CategoryButton Width="100" Height="40" BackColor="#87CEEB" FontName="Arial" FontSize="10" />
+    <GroupButton Width="120" Height="35" BackColor="#90EE90" FontName="微软雅黑" FontSize="9" />
+    <TimerButton Width="80" Height="30" BackColor="#FFD700" FontName="Consolas" FontSize="9" />
+  </Style>
+
+  <Category Name="运动">
+    <Group Name="跑步训练">
+      <Timer ButtonText="热身" CountdownSeconds="300" Description="慢跑热身 5 分钟" StartWith="加速" />
+      <Timer ButtonText="加速" CountdownSeconds="600" Description="快速跑 10 分钟" />
+      <Timer ButtonText="放松" CountdownSeconds="300" Description="放松拉伸 5 分钟" />
+    </Group>
+  </Category>
+
+  <Category Name="工作">
+    <Group Name="番茄钟">
+      <Timer ButtonText="专注" CountdownSeconds="1500" Description="专注工作 25 分钟" />
+      <Timer ButtonText="休息" CountdownSeconds="300" Description="休息 5 分钟" />
+    </Group>
+  </Category>
+</Config>
