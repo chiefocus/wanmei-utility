@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 namespace TimerUtility.Models
 {
     [XmlRoot("r")]
-    public class Settings
+    public class Config
     {
         public static readonly Guid UserDefinedBossId = new Guid("00000000-0000-0000-0000-000000000001");
 
@@ -179,7 +179,7 @@ namespace TimerUtility.Models
         public string Description { get; set; }
 
         [XmlIgnore]
-        public int Flag { get; set; } = 1; //是否开打计时
+        public bool Flag { get; set; } = false; //是否开打计时
 
         [XmlIgnore]
         public bool Clickable { get; set; } = true;
@@ -198,11 +198,11 @@ namespace TimerUtility.Models
         }
 
         [XmlAttribute("f")]
-        [DefaultValue("1")]
+        [DefaultValue("0")]
         public string FlagStr
         {
-            get => Flag.ToString();
-            set => Flag = int.TryParse(value, out int result) ? result : 1;
+            get => Flag ? "1" : "0";
+            set => Flag = value == "1";
         }
 
         [XmlAttribute("c")]

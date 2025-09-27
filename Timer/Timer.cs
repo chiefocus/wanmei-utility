@@ -33,7 +33,7 @@ namespace TimerUtility
         private static readonly string DataFile = "wmapp.dat";
         private static string InstancesXml = "<r><u p=\"1\" m=\"1\" ms=\"0\" o=\"1000\" s=\"1\" k=\"1\"/><h n=\"黄3\"><b n=\"圣母\" df=\"1\"><s n=\"减攻速\" d=\"280 仙224 魔235.2\" i=\"30\"/><s n=\"减吟唱\" d=\"175 仙140 魔147\" i=\"20\" a=\"群攻\"/><s n=\"群攻\" d=\"175 仙140 魔147\" i=\"20\" a=\"减吟唱\"/></b><b n=\"小铁\"><s n=\"破甲\" d=\"320 仙256 魔268.8\" i=\"20\"/><s n=\"巨力\" d=\"200 仙160 魔168\" i=\"30\"/><s n=\"大群\" d=\"120 仙96 魔100.8\" i=\"20\"/></b><b n=\"子纯\"><s n=\"封印\" d=\"450 仙360 魔378\" i=\"20\"/><s n=\"群晕\" d=\"300 仙240 魔252\" i=\"20\"/><s n=\"流血\" d=\"150 仙120 魔126\" i=\"20\"/></b><b n=\"仓力\"><s n=\"流血\" d=\"450 仙360 魔378\" i=\"30\"/><s n=\"群晕\" d=\"250 仙200 魔210\" i=\"20\" a=\"清仇恨\"/><s n=\"清仇恨\" d=\"250 仙200 魔210\" i=\"90\" a=\"群晕\"/><s n=\"大群1\" d=\"150 仙120 魔126\" i=\"20\"/><s n=\"大群2\" d=\"125 仙100 魔105\" i=\"20\"/></b><b n=\"天地\"><s n=\"驱逐\" d=\"540 仙432 魔453.6\" i=\"60\"/><s n=\"吸元\" d=\"420 仙336 魔352.8\" i=\"45\"/><s n=\"木毒\" d=\"300 仙240 魔252\" i=\"35\"/><s n=\"群晕\" d=\"180 仙144 魔151.2\" i=\"30\"/><s n=\"大群\" d=\"150 仙120 魔126\" i=\"55\"/></b></h><h n=\"黄2\"><b n=\"神武罗\"><s n=\"固伤\" d=\"开打计时\" i=\"30\" f=\"0\"/></b><b n=\"猴子\"><s n=\"扇形大\" d=\"开打计时\" i=\"45\" f=\"0\"/><s n=\"巨力\" d=\"开打计时\" i=\"60\" f=\"0\"/></b><b n=\"狗\"><s n=\"群晕\" d=\"每掉25%血群晕\" i=\"0\" c=\"0\"/><s n=\"吸蓝\" d=\"开打计时\" i=\"20\" f=\"0\"/></b><b n=\"十方\"><s n=\"流血\" d=\"250 仙200 魔210\" i=\"45\"/><s n=\"群减血\" d=\"开打计时\" i=\"30\" f=\"0\"/></b><b n=\"罗刹\"><s n=\"单体封印\" d=\"50%血开始计时\" i=\"45\"/><s n=\"单体落雷\" d=\"开打计时\" i=\"35\" f=\"0\"/><s n=\"金系群攻\" d=\"开打计时\" i=\"15\" f=\"0\"/></b></h><h n=\"黄1\"><b n=\"鼓神\"><s n=\"封印\" d=\"身上有减唱可立马T封印\" i=\"0\" c=\"0\"/><s n=\"全屏攻击\" d=\"开打计时，每600秒\" i=\"600\" f=\"0\"/><s n=\"近战群晕\" d=\"开打计时\" i=\"20\" f=\"0\"/></b><b n=\"古蛇\"><s n=\"单大毒\" d=\"开打计时\" i=\"20\" f=\"0\"/><s n=\"群小毒\" d=\"开打计时\" i=\"15\" f=\"0\"/></b><b n=\"圣金甲\"><s n=\"6000固伤\" d=\"开打计时\" i=\"60\" f=\"0\"/><s n=\"乱仇恨\" d=\"开打计时\" i=\"15\" f=\"0\"/></b><b n=\"怒目\"><s n=\"狂暴\" d=\"50%血开始计时\" i=\"30\"/><s n=\"近战群晕\" d=\"开打计时\" i=\"35\" f=\"0\"/><s n=\"扇形攻击\" d=\"开打计时\" i=\"15\" f=\"0\"/></b></h><udb n=\"自定义\"><s n=\"计时1\" d=\"\" i=\"15\" f=\"0\"/><s n=\"计时2\" d=\"\" i=\"20\" f=\"0\"/><s n=\"计时3\" d=\"\" i=\"30\" f=\"0\"/><s n=\"计时4\" d=\"\" i=\"45\" f=\"0\"/><s n=\"计时5\" d=\"\" i=\"60\" f=\"0\"/></udb></r>";
 
-        public static Settings Settings = new Settings();
+        public static Config Settings = new Config();
         public static bool SettingsChanged = false;
 
         private static Boss ActiveBoss;
@@ -49,7 +49,7 @@ namespace TimerUtility
                 }
 
                 var xmlRoot = XElement.Parse(InstancesXml);
-                Settings = xmlRoot.Deserialize<Settings>();
+                Settings = xmlRoot.Deserialize<Config>();
                 foreach (var instance in Settings.Instances)
                 {
                     foreach (var boss in instance.Bosses)
@@ -145,7 +145,7 @@ namespace TimerUtility
             btnReset.Checked = boss.Id == Settings.UserDefinedBoss.Id;
             SkillControls.Clear();
             panel2.Controls.Clear();
-            button1.Visible = boss.Skills.Any(s => s.Flag == 0);
+            button1.Visible = boss.Skills.Any(s => s.Flag);
 
             foreach (var skill in boss.Skills)
             {
@@ -197,7 +197,7 @@ namespace TimerUtility
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var skillControls = SkillControls.Where(s => s.Skill.Flag == 0);
+            var skillControls = SkillControls.Where(s => s.Skill.Flag);
             foreach (var skill in skillControls)
             {
                 skill.button1.PerformClick();

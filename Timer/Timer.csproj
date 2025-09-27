@@ -53,7 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Extensions.cs" />
-    <Compile Include="Models\Settings.cs" />
+    <Compile Include="Models\Config.cs" />
     <Compile Include="StopwatchDisplay.cs">
       <SubType>UserControl</SubType>
     </Compile>
