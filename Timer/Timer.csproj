@@ -99,6 +99,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="wmapp3.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="wmapp2.dat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
