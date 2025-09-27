@@ -1,11 +1,12 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace TimerUtility.Models
 {
-    public static class XElementExtensions
+    public static class Extensions
     {
         public static T Deserialize<T>(this XElement element)
         {
@@ -31,6 +32,16 @@ namespace TimerUtility.Models
                 serializer.Serialize(xmlWriter, obj, emptyNamespaces);
                 return writer.ToString();
             }
+        }
+
+        public static V GetValue<T, V>(this Dictionary<T, V> dic, T key)
+        {
+            if (dic != null && dic.ContainsKey(key))
+            {
+                return dic[key];
+            }
+
+            return default;
         }
     }
 }

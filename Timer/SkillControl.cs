@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Windows.Forms;
 using TimerUtility.Models;
 
@@ -11,10 +10,6 @@ namespace TimerUtility
     {
         public bool Enabled { get; set; }
         public Skill Skill { get; set; }
-        public int Interval { get; set; }
-        public string Description { get; set; }
-        public int Flag { get; set; }
-        public bool Clickable { get; set; }
         public Timer Timer1 { get; set; }
         public List<SkillControl> AffiliateSkills { get; set; } = new List<SkillControl>();
 
@@ -39,11 +34,6 @@ namespace TimerUtility
             button2.Text = skill.Reset;
             textBox1.Text = skill.Description;
             textBox2.Text = skill.Interval == 0 ? "" : $"{skill.Interval}";
-            Interval = skill.Interval;
-            Flag = skill.Flag;
-            Clickable = skill.Clickable;
-            Tag = skill.Interval;
-            Description = skill.Description;
 
             toolTip1.SetToolTip(button1, skill.Description);
 
@@ -52,10 +42,10 @@ namespace TimerUtility
 
         private void UpdateLabel()
         {
-            if (Enabled && Interval > 0)
+            if (Enabled && Skill.Interval > 0)
             {
                 var elapsedSeconds = _stopwatch.Elapsed.TotalSeconds - _offsetMilliseconds / 1000;
-                var remaining = Math.Max(0, Interval - (elapsedSeconds % Interval));
+                var remaining = Math.Max(0, Skill.Interval - (elapsedSeconds % Skill.Interval));
 
                 stopwatchDisplay1.Seconds = (int)remaining;
                 stopwatchDisplay1.Milliseconds = (int)(remaining * 10) % 10;
@@ -74,7 +64,7 @@ namespace TimerUtility
 
         public void Start()
         {
-            if (!Clickable || Interval <= 0) return;
+            if (!Skill.Clickable || Skill.Interval <= 0) return;
 
             Enabled = true;
             _stopwatch.Restart();
@@ -82,7 +72,7 @@ namespace TimerUtility
 
             textBox1.Visible = false;
             stopwatchDisplay1.Visible = true;
-            stopwatchDisplay1.Seconds = Interval;
+            stopwatchDisplay1.Seconds = Skill.Interval;
             label2.Visible = WanmeiTimer.Settings.Profile.PlusFlag;
             label3.Visible = WanmeiTimer.Settings.Profile.MinusFlag;
         }
@@ -92,7 +82,7 @@ namespace TimerUtility
             Enabled = false;
             stopwatchDisplay1.Visible = false;
             textBox1.Visible = true;
-            textBox1.Text = Description;
+            textBox1.Text = Skill.Description;
             label2.Visible = false;
             label3.Visible = false;
         }
@@ -104,10 +94,10 @@ namespace TimerUtility
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            Interval = ParseInterval(textBox2.Text);
-            if (targetSkill != null && targetSkill.Interval != Interval)
+            var interval = ParseInterval(textBox2.Text);
+            if (targetSkill != null && targetSkill.Interval != interval)
             {
-                targetSkill.Interval = Interval;
+                targetSkill.Interval = interval;
                 WanmeiTimer.SettingsChanged = true;
             }
         }
@@ -127,10 +117,8 @@ namespace TimerUtility
             }
         }
 
-        private Skill targetSkill =>
-            WanmeiTimer.Settings.Instances.FirstOrDefault(i => i.Name.Equals(Skill.InstanceName))
-            ?.Bosses.FirstOrDefault(b => b.Name.Equals(Skill.BossName))
-            ?.Skills.FirstOrDefault(s => s.Name.Equals(Skill.Name))
-            ?? WanmeiTimer.Settings.UserDefinedBoss.Skills.FirstOrDefault(s => s.Name.Equals(Skill.Name));
+        private Skill targetSkill => WanmeiTimer.Settings.UserDefinedBoss.SkillDic.GetValue(Skill.Id) ??
+            WanmeiTimer.Settings.InstanceDic.GetValue(Skill.InstanceId)
+            ?.BossDic.GetValue(Skill.BossId)?.SkillDic.GetValue(Skill.Id);
     }
 }
