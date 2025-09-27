@@ -36,7 +36,7 @@ namespace TimerUtility
         public static Settings Settings = new Settings();
         public static bool SettingsChanged = false;
 
-        private static Boss DefaultBoss;
+        private static Boss ActiveBoss;
         private static List<SkillControl> SkillControls { get; set; } = new List<SkillControl>();
 
         private static void InitInstances()
@@ -69,7 +69,7 @@ namespace TimerUtility
 
                         if (boss.Default)
                         {
-                            DefaultBoss = boss;
+                            ActiveBoss = boss;
                         }
 
                         boss.Skills.Reverse();
@@ -102,8 +102,8 @@ namespace TimerUtility
                 ClientSize = Settings.Preference.ClientSize.Value;
 
             LoadInstances();
-            var defaultInstance = Settings.InstanceDic.GetValue(DefaultBoss.InstanceId);
-            LoadBosses(defaultInstance);
+            var activeInstance = Settings.InstanceDic.GetValue(ActiveBoss.InstanceId);
+            LoadBosses(activeInstance);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -173,7 +173,6 @@ namespace TimerUtility
                 }
             }
 
-            DefaultBoss = boss;
             RegisterAllHotKeys();
         }
 
@@ -196,9 +195,7 @@ namespace TimerUtility
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var skillControls = SkillControls
-                .Where(s => s.Skill.Flag == 0);
-
+            var skillControls = SkillControls.Where(s => s.Skill.Flag == 0);
             foreach (var skill in skillControls)
             {
                 skill.button1.PerformClick();
@@ -231,8 +228,7 @@ namespace TimerUtility
 
         private void UnregisterAllHotKeys(IEnumerable<int> keys)
         {
-            if (!Settings.Profile.Shortcutable)
-                return;
+            if (!Settings.Profile.Shortcutable) return;
 
             foreach (var key in keys)
             {
@@ -246,8 +242,7 @@ namespace TimerUtility
 
         public void RegisterAllHotKeys()
         {
-            if (!Settings.Profile.Shortcutable)
-                return;
+            if (!Settings.Profile.Shortcutable) return;
 
             var keys = SkillControls.Select(s => s.Skill.Key);
             UnregisterAllHotKeys(keys);
