@@ -55,6 +55,7 @@ namespace TimerUtility
                     foreach (var boss in instance.Bosses)
                     {
                         boss.InstanceId = instance.Id;
+                        boss.InstanceName = instance.Name;
                         int vkIndex = 0;
                         foreach (var skill in boss.Skills)
                         {
@@ -140,6 +141,7 @@ namespace TimerUtility
 
         public void LoadSkills(Boss boss)
         {
+            Text = string.IsNullOrWhiteSpace(boss.InstanceName) ? boss.Name : $"{boss.InstanceName} - {boss.Name}";
             btnReset.Checked = boss.Id == Settings.UserDefinedBoss.Id;
             SkillControls.Clear();
             panel2.Controls.Clear();
