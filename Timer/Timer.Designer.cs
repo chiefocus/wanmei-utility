@@ -33,7 +33,7 @@
             timer1 = new System.Windows.Forms.Timer(components);
             panel1 = new System.Windows.Forms.Panel();
             button1 = new System.Windows.Forms.Button();
-            btnReset = new System.Windows.Forms.Button();
+            btnReset = new System.Windows.Forms.RadioButton();
             textBox1 = new System.Windows.Forms.TextBox();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -74,6 +74,7 @@
             // 
             // btnReset
             // 
+            btnReset.Appearance = System.Windows.Forms.Appearance.Button;
             btnReset.Font = new System.Drawing.Font("SimHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             btnReset.Location = new System.Drawing.Point(110, 2);
             btnReset.Margin = new System.Windows.Forms.Padding(0);
@@ -167,7 +168,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.RadioButton btnReset;
         public System.Windows.Forms.Button button1;
     }
 }

@@ -140,6 +140,7 @@ namespace TimerUtility
 
         public void LoadSkills(Boss boss)
         {
+            btnReset.Checked = boss.Id == Settings.UserDefinedBoss.Id;
             SkillControls.Clear();
             panel2.Controls.Clear();
             button1.Visible = boss.Skills.Any(s => s.Flag == 0);
