@@ -1,22 +1,230 @@
 ﻿<Config>
   <Style>
-    <CategoryButton Width="100" Height="40" BackColor="#87CEEB" FontName="Arial" FontSize="10" />
-    <GroupButton Width="120" Height="35" BackColor="#90EE90" FontName="微软雅黑" FontSize="9" />
-    <TimerButton Width="80" Height="30" BackColor="#FFD700" FontName="Consolas" FontSize="9" />
+    <CategoryButton Width="100" Height="40" BackColor="#87CEEB" FontName="Arial" FontSize="10"/>
+    <GroupButton Width="120" Height="35" BackColor="#90EE90" FontName="微软雅黑" FontSize="9"/>
+    <TimerButton Width="80" Height="30" BackColor="#FFD700" FontName="Consolas" FontSize="9"/>
   </Style>
-
-  <Category Name="运动">
-    <Group Name="跑步训练">
-      <Timer ButtonText="热身" CountdownSeconds="300" Description="慢跑热身 5 分钟" StartWith="加速" />
-      <Timer ButtonText="加速" CountdownSeconds="600" Description="快速跑 10 分钟" />
-      <Timer ButtonText="放松" CountdownSeconds="300" Description="放松拉伸 5 分钟" />
+  <Category Name="黄3">
+    <Group Name="圣母">
+      <Timer ButtonText="减攻速" CountdownSeconds="30" Description="280 仙224 魔235.2"/>
+      <Timer ButtonText="减吟唱" CountdownSeconds="20" Description="175 仙140 魔147" StartWith="群攻"/>
+      <Timer ButtonText="群攻" CountdownSeconds="20" Description="175 仙140 魔147" StartWith="减吟唱"/>
+    </Group>
+    <Group Name="小铁">
+      <Timer ButtonText="破甲" CountdownSeconds="20" Description="320 仙256 魔268.8"/>
+      <Timer ButtonText="巨力" CountdownSeconds="30" Description="200 仙160 魔168"/>
+      <Timer ButtonText="大群" CountdownSeconds="20" Description="120 仙96 魔100.8"/>
+    </Group>
+    <Group Name="子纯">
+      <Timer ButtonText="封印" CountdownSeconds="20" Description="450 仙360 魔378"/>
+      <Timer ButtonText="群晕" CountdownSeconds="20" Description="300 仙240 魔252"/>
+      <Timer ButtonText="流血" CountdownSeconds="20" Description="150 仙120 魔126"/>
+    </Group>
+    <Group Name="仓力">
+      <Timer ButtonText="流血" CountdownSeconds="30" Description="450 仙360 魔378"/>
+      <Timer ButtonText="群晕" CountdownSeconds="20" Description="250 仙200 魔210" StartWith="清仇恨"/>
+      <Timer ButtonText="清仇恨" CountdownSeconds="90" Description="250 仙200 魔210" StartWith="群晕"/>
+      <Timer ButtonText="大群1" CountdownSeconds="20" Description="150 仙120 魔126"/>
+      <Timer ButtonText="大群2" CountdownSeconds="20" Description="125 仙100 魔105"/>
+    </Group>
+    <Group Name="天地">
+      <Timer ButtonText="驱逐" CountdownSeconds="60" Description="540 仙432 魔453.6"/>
+      <Timer ButtonText="吸元" CountdownSeconds="45" Description="420 仙336 魔352.8"/>
+      <Timer ButtonText="木毒" CountdownSeconds="35" Description="300 仙240 魔252"/>
+      <Timer ButtonText="群晕" CountdownSeconds="30" Description="180 仙144 魔151.2"/>
+      <Timer ButtonText="大群" CountdownSeconds="55" Description="150 仙120 魔126"/>
+    </Group>
+    <Group Name="堕落">
+      <Timer ButtonText="雷+减血" CountdownSeconds="15" Description="开打计时 概率晕"/>
+      <Timer ButtonText="狂暴" CountdownSeconds="25" Description="开打计时"/>
+      <Timer ButtonText="大群" CountdownSeconds="35" Description="开打计时"/>
+    </Group>
+    <Group Name="幽冥">
+      <Timer ButtonText="范围群攻" CountdownSeconds="15" Description="开打计时 概率晕"/>
+      <Timer ButtonText="炸弹" CountdownSeconds="25" Description="开打计时"/>
+      <Timer ButtonText="凤凰展翅" CountdownSeconds="55" Description="50%血"/>
     </Group>
   </Category>
-
-  <Category Name="工作">
-    <Group Name="番茄钟">
-      <Timer ButtonText="专注" CountdownSeconds="1500" Description="专注工作 25 分钟" />
-      <Timer ButtonText="休息" CountdownSeconds="300" Description="休息 5 分钟" />
+  <Category Name="黄2">
+    <Group Name="神武罗">
+      <Timer ButtonText="固伤" CountdownSeconds="30" Description="开打计时"/>
+    </Group>
+    <Group Name="猴子">
+      <Timer ButtonText="扇形大" CountdownSeconds="45" Description="开打计时"/>
+      <Timer ButtonText="巨力" CountdownSeconds="60" Description="开打计时"/>
+    </Group>
+    <Group Name="狗">
+      <Timer ButtonText="群晕" CountdownSeconds="0" Description="每掉25%血群晕"/>
+      <Timer ButtonText="吸蓝" CountdownSeconds="20" Description="开打计时"/>
+    </Group>
+    <Group Name="十方">
+      <Timer ButtonText="流血" CountdownSeconds="45" Description="250 仙200 魔210"/>
+      <Timer ButtonText="群减血" CountdownSeconds="30" Description="开打计时"/>
+    </Group>
+    <Group Name="罗刹">
+      <Timer ButtonText="单体封印" CountdownSeconds="45" Description="50%血开始计时"/>
+      <Timer ButtonText="单体落雷" CountdownSeconds="35" Description="开打计时"/>
+      <Timer ButtonText="金系群攻" CountdownSeconds="15" Description="开打计时"/>
+    </Group>
+  </Category>
+  <Category Name="黄1">
+    <Group Name="鼓神">
+      <Timer ButtonText="封印" CountdownSeconds="0" Description="身上有减唱可立马T封印"/>
+      <Timer ButtonText="全屏攻击" CountdownSeconds="600" Description="开打计时，每600秒"/>
+      <Timer ButtonText="近战群晕" CountdownSeconds="20" Description="开打计时"/>
+    </Group>
+    <Group Name="古蛇">
+      <Timer ButtonText="单大毒" CountdownSeconds="20" Description="开打计时"/>
+      <Timer ButtonText="群小毒" CountdownSeconds="15" Description="开打计时"/>
+    </Group>
+    <Group Name="圣金甲">
+      <Timer ButtonText="6000固伤" CountdownSeconds="60" Description="开打计时"/>
+      <Timer ButtonText="乱仇恨" CountdownSeconds="15" Description="开打计时"/>
+    </Group>
+    <Group Name="怒目">
+      <Timer ButtonText="狂暴" CountdownSeconds="30" Description="50%血开始计时"/>
+      <Timer ButtonText="近战群晕" CountdownSeconds="35" Description="开打计时"/>
+      <Timer ButtonText="扇形攻击" CountdownSeconds="15" Description="开打计时"/>
+    </Group>
+  </Category>
+  <Category Name="封1">
+    <Group Name="神使">
+      <Timer ButtonText="高伤群攻" CountdownSeconds="20" Description="开打计时，开场扑断"/>
+      <Timer ButtonText="群攻" CountdownSeconds="10" Description="开打计时"/>
+      <Timer ButtonText="封印" CountdownSeconds="15" Description="开打计时"/>
+    </Group>
+    <Group Name="古蛇">
+      <Timer ButtonText="二仇木毒" CountdownSeconds="26" Description="开打计时"/>
+      <Timer ButtonText="群木毒" CountdownSeconds="19" Description="开打计时"/>
+      <Timer ButtonText="水毒" CountdownSeconds="31" Description="开打计时"/>
+      <Timer ButtonText="近身群晕毒" CountdownSeconds="11" Description="开打计时"/>
+    </Group>
+    <Group Name="盘古">
+      <Timer ButtonText="龙飞击" CountdownSeconds="5" Description="开打计时，四次龙飞击后一次大群"/>
+      <Timer ButtonText="大群" CountdownSeconds="25" Description="开打计时"/>
+      <Timer ButtonText="坚甲" CountdownSeconds="75" Description="开打计时"/>
+    </Group>
+  </Category>
+  <Category Name="封2">
+    <Group Name="狗">
+      <Timer ButtonText="吸蓝" CountdownSeconds="16" Description="开打计时"/>
+      <Timer ButtonText="木系群攻" CountdownSeconds="14" Description="开打计时"/>
+      <Timer ButtonText="单体攻击" CountdownSeconds="20" Description="开打计时"/>
+    </Group>
+    <Group Name="光辉">
+      <Timer ButtonText="单体伤害" CountdownSeconds="10" Description="开打计时，随机单体80%伤害"/>
+      <Timer ButtonText="近身晕毒" CountdownSeconds="20" Description="开打计时"/>
+      <Timer ButtonText="大群" CountdownSeconds="30" Description="开打计时，SS上去扑开场大群"/>
+    </Group>
+    <Group Name="十方">
+      <Timer ButtonText="扇形群大" CountdownSeconds="120" Description="开打计时，开场扑群"/>
+      <Timer ButtonText="单体流血" CountdownSeconds="15" Description="开打计时"/>
+    </Group>
+  </Category>
+  <Category Name="封3">
+    <Group Name="子纯">
+      <Timer ButtonText="单体流血" CountdownSeconds="5" Description="开打计时"/>
+      <Timer ButtonText="暴走 " CountdownSeconds="15" Description="开打计时"/>
+      <Timer ButtonText="大群" CountdownSeconds="25" Description="开打计时，技能重叠时，先流血再暴走后大群"/>
+    </Group>
+    <Group Name="仓力">
+      <Timer ButtonText="喷火" CountdownSeconds="5" Description="开打计时"/>
+      <Timer ButtonText="狂暴" CountdownSeconds="15" Description="开打计时"/>
+      <Timer ButtonText="大群" CountdownSeconds="25" Description="开打计时，技能重叠时先喷火狂暴再大群"/>
+      <Timer ButtonText="无敌" CountdownSeconds="0" Description="3次，分别在75%/50%/25%持续25秒"/>
+      <Timer ButtonText="说明" CountdownSeconds="0" Description="645.69/430.46/215.23,可爆元、乌龟躲大群"/>
+    </Group>
+    <Group Name="天地">
+      <Timer ButtonText="雷击" CountdownSeconds="5" Description="开打计时，概率晕人"/>
+      <Timer ButtonText="封印" CountdownSeconds="15" Description="开打计时"/>
+      <Timer ButtonText="大群" CountdownSeconds="25" Description="开打计时"/>
+      <Timer ButtonText="无敌" CountdownSeconds="60" Description="开打计时"/>
+    </Group>
+  </Category>
+  <Category Name="覆霜">
+    <Group Name="乌龟">
+      <Timer ButtonText="减吟唱" CountdownSeconds="12" Description="开打计时"/>
+      <Timer ButtonText="乱跑" CountdownSeconds="0" Description="133 仙106.4 魔111.72"/>
+      <Timer ButtonText="坚甲" CountdownSeconds="0" Description="79.8 仙63.84 魔67"/>
+    </Group>
+    <Group Name="冰魅">
+      <Timer ButtonText="单体封印" CountdownSeconds="15" Description="开打计时"/>
+      <Timer ButtonText="群驱状态" CountdownSeconds="60" Description="开打计时"/>
+    </Group>
+    <Group Name="小怒">
+      <Timer ButtonText="出护法" CountdownSeconds="0" Description="80%/60%/40%/20% 322W/241.8W/161W/80W各出一个护法"/>
+      <Timer ButtonText="巨力" CountdownSeconds="0" Description="322"/>
+      <Timer ButtonText="迅捷" CountdownSeconds="0" Description="241.8"/>
+      <Timer ButtonText="群晕" CountdownSeconds="20" Description="241.8"/>
+      <Timer ButtonText="龙飞击" CountdownSeconds="27" Description="241.8"/>
+    </Group>
+    <Group Name="睡秋">
+      <Timer ButtonText="减吟唱" CountdownSeconds="10" Description="开打计时"/>
+      <Timer ButtonText="群晕" CountdownSeconds="20" Description="开打计时"/>
+    </Group>
+    <Group Name="站秋">
+      <Timer ButtonText="驱逐" CountdownSeconds="0" Description="338.6"/>
+      <Timer ButtonText="群毒" CountdownSeconds="17" Description="338.6"/>
+      <Timer ButtonText="群晕" CountdownSeconds="30" Description="282.2 "/>
+    </Group>
+  </Category>
+  <Category Name="神月">
+    <Group Name="啸">
+      <Timer ButtonText="大群" CountdownSeconds="30" Description="开打计时"/>
+      <Timer ButtonText="技能" CountdownSeconds="23" Description="开打计时"/>
+    </Group>
+    <Group Name="大力">
+      <Timer ButtonText="群晕" CountdownSeconds="25" Description="开打计时"/>
+      <Timer ButtonText="破甲" CountdownSeconds="23" Description="开打计时"/>
+      <Timer ButtonText="出小怪" CountdownSeconds="30" Description="开打计时 30 120秒时"/>
+    </Group>
+    <Group Name="虚（塔）">
+      <Timer ButtonText="吸蓝" CountdownSeconds="35" Description="开打计时"/>
+      <Timer ButtonText="群晕" CountdownSeconds="0" Description="50%血 群晕4秒"/>
+      <Timer ButtonText="坚甲" CountdownSeconds="0" Description="25%血 加魔防"/>
+    </Group>
+    <Group Name="桃花">
+      <Timer ButtonText="封印二仇" CountdownSeconds="25" Description="开打计时"/>
+      <Timer ButtonText="重置仇恨" CountdownSeconds="30" Description="开打计时"/>
+      <Timer ButtonText="群减命中" CountdownSeconds="23" Description="开打计时"/>
+    </Group>
+    <Group Name="破">
+      <Timer ButtonText="随机大毒" CountdownSeconds="20" Description="开打计时"/>
+    </Group>
+    <Group Name="轰">
+      <Timer ButtonText="固伤6000" CountdownSeconds="30" Description="开打计时"/>
+      <Timer ButtonText="秒人流血" CountdownSeconds="23" Description="50%血 死人回血100W"/>
+      <Timer ButtonText="召唤小怪" CountdownSeconds="0" Description="血量75% 50% 25%出"/>
+    </Group>
+    <Group Name="嗜天">
+      <Timer ButtonText="加双防" CountdownSeconds="30" Description="开打计时"/>
+      <Timer ButtonText="秒人流血" CountdownSeconds="23" Description="50%血 死人回血100W"/>
+      <Timer ButtonText="召唤小怪" CountdownSeconds="0" Description="血量75% 50% 25%出"/>
+      <Timer ButtonText="说明" CountdownSeconds="0" Description="舞干戚和零寒BOSS同样"/>
+    </Group>
+    <Group Name="灼炎">
+      <Timer ButtonText="加双防" CountdownSeconds="30" Description="开打计时"/>
+      <Timer ButtonText="吸蓝群攻" CountdownSeconds="23" Description="开打计时"/>
+      <Timer ButtonText="秒人" CountdownSeconds="32" Description="血量50%计时"/>
+      <Timer ButtonText="说明" CountdownSeconds="0" Description="50%血 25%血 逃跑自己回"/>
+    </Group>
+    <Group Name="元素">
+      <Timer ButtonText="减血" CountdownSeconds="30" Description="开打计时"/>
+      <Timer ButtonText="驱逐" CountdownSeconds="90" Description="开打计时"/>
+      <Timer ButtonText="说明" CountdownSeconds="0" Description="重叠时先减血再群驱"/>
+    </Group>
+    <Group Name="堕">
+      <Timer ButtonText="封印" CountdownSeconds="12" Description="开打计时"/>
+      <Timer ButtonText="群减血1" CountdownSeconds="22" Description="群减血50%"/>
+      <Timer ButtonText="群减血2" CountdownSeconds="32" Description="群减血50%"/>
+      <Timer ButtonText="大群" CountdownSeconds="0" Description="连续8次普攻之后大群"/>
+    </Group>
+    <Group Name="灭">
+      <Timer ButtonText="6000固伤" CountdownSeconds="30" Description="开打计时 几率封印二仇"/>
+      <Timer ButtonText="群减唱" CountdownSeconds="15" Description="开打计时"/>
+      <Timer ButtonText="2000固伤" CountdownSeconds="20" Description="开打计时 群体伤害"/>
+      <Timer ButtonText="出小怪" CountdownSeconds="0" Description="25%血出小怪"/>
+      <Timer ButtonText="狂暴" CountdownSeconds="0" Description="5%血狂暴"/>
     </Group>
   </Category>
 </Config>

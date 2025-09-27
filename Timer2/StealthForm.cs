@@ -32,6 +32,58 @@ namespace TimerUtility2
         //        GetWindowLong(Handle, GWL_EXSTYLE) | WS_EX_TOOLWINDOW);
         //}
 
+        protected override void WndProc(ref Message m)
+        {
+            const int WM_NCHITTEST = 0x84;
+            const int HTLEFT = 10;
+            const int HTRIGHT = 11;
+            const int HTTOP = 12;
+            const int HTTOPLEFT = 13;
+            const int HTTOPRIGHT = 14;
+            const int HTBOTTOM = 15;
+            const int HTBOTTOMLEFT = 16;
+            const int HTBOTTOMRIGHT = 17;
+
+            if (m.Msg == WM_NCHITTEST)
+            {
+                base.WndProc(ref m);
+
+                Point pos = PointToClient(new Point(m.LParam.ToInt32()));
+                int grip = 5;
+
+                if (pos.X <= grip)
+                {
+                    if (pos.Y <= grip)
+                        m.Result = (IntPtr)HTTOPLEFT;
+                    else if (pos.Y >= ClientSize.Height - grip)
+                        m.Result = (IntPtr)HTBOTTOMLEFT;
+                    else
+                        m.Result = (IntPtr)HTLEFT;
+                }
+                else if (pos.X >= ClientSize.Width - grip)
+                {
+                    if (pos.Y <= grip)
+                        m.Result = (IntPtr)HTTOPRIGHT;
+                    else if (pos.Y >= ClientSize.Height - grip)
+                        m.Result = (IntPtr)HTBOTTOMRIGHT;
+                    else
+                        m.Result = (IntPtr)HTRIGHT;
+                }
+                else if (pos.Y <= grip)
+                {
+                    m.Result = (IntPtr)HTTOP;
+                }
+                else if (pos.Y >= ClientSize.Height - grip)
+                {
+                    m.Result = (IntPtr)HTBOTTOM;
+                }
+
+                return;
+            }
+
+            base.WndProc(ref m);
+        }
+
         protected override CreateParams CreateParams
         {
             get
@@ -56,7 +108,7 @@ namespace TimerUtility2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            label1.Text = DateTime.Now.ToString();
+            //label1.Text = DateTime.Now.ToString();
         }
     }
 }
