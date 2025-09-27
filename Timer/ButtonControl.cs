@@ -82,6 +82,20 @@ namespace TimerUtility
                 WanmeiTimer.SkillControls.Add(skillControl);
             }
 
+            foreach (var skillControl in WanmeiTimer.SkillControls)
+            {
+                skillControl.AffiliateSkills.Add(skillControl);
+                if (!string.IsNullOrEmpty(skillControl.Skill.Affiliate))
+                {
+                    foreach (var affiliate in skillControl.Skill.Affiliate.Split(','))
+                    {
+                        var affiliateControl = WanmeiTimer.SkillControls.FirstOrDefault(s => s.Skill.Name.Equals(affiliate));
+                        skillControl.AffiliateSkills.Add(affiliateControl);
+                    }
+                }
+            }
+
+
             RootForm.RegisterAllHotKeys();
         }
     }

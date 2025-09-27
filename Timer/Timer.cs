@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using TimerUtility.Models;
@@ -92,38 +93,35 @@ namespace TimerUtility
             catch { }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private async void Form1_Load(object sender, EventArgs e)
         {
+            await Task.Run(() => { InitInstances(); });
+
             timer1.Start();
 
-            BeginInvoke(new Action(() =>
+            if (Settings.Preference.Location != null)
+                Location = Settings.Preference.Location.Value;
+
+            if (Settings.Preference.ClientSize != null)
+                ClientSize = Settings.Preference.ClientSize.Value;
+
+            foreach (var instance in Settings.Instances)
             {
-                InitInstances();
-
-                if (Settings.Preference.Location != null)
-                    Location = Settings.Preference.Location.Value;
-
-                if (Settings.Preference.ClientSize != null)
-                    ClientSize = Settings.Preference.ClientSize.Value;
-
-                foreach (var instance in Settings.Instances)
+                var instanceBtn = new ButtonControl($"{instance.Name}")
                 {
-                    var instanceBtn = new ButtonControl($"{instance.Name}")
-                    {
-                        Type = ButtonType.Instance,
-                        Bosses = flowLayoutPanel2,
-                        Instance = instance,
-                        Skills = panel2,
-                        Timer = timer1,
-                        RootForm = this,
-                        ForeColor = Color.DarkMagenta,
-                    };
-                    flowLayoutPanel1.Controls.Add(instanceBtn);
-                }
+                    Type = ButtonType.Instance,
+                    Bosses = flowLayoutPanel2,
+                    Instance = instance,
+                    Skills = panel2,
+                    Timer = timer1,
+                    RootForm = this,
+                    ForeColor = Color.DarkMagenta,
+                };
+                flowLayoutPanel1.Controls.Add(instanceBtn);
+            }
 
-                var defaultInstanceButton = flowLayoutPanel1.Controls.OfType<ButtonControl>().FirstOrDefault(i => i.Instance.Id == DefaultInstance.Id);
-                defaultInstanceButton?.PerformClick();
-            }));
+            var defaultInstanceButton = flowLayoutPanel1.Controls.OfType<ButtonControl>().FirstOrDefault(i => i.Instance.Id == DefaultInstance.Id);
+            defaultInstanceButton?.PerformClick();
         }
 
         private void timer1_Tick(object sender, EventArgs e)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
@@ -15,6 +16,7 @@ namespace TimerUtility
         public int Flag { get; set; }
         public bool Clickable { get; set; }
         public Timer Timer1 { get; set; }
+        public List<SkillControl> AffiliateSkills { get; set; } = new List<SkillControl>();
 
         private Stopwatch _stopwatch;
         private double _offsetMilliseconds = 0.0;
@@ -48,7 +50,7 @@ namespace TimerUtility
             _stopwatch = new Stopwatch();
         }
 
-        public void UpdateLabel()
+        private void UpdateLabel()
         {
             if (Enabled && Interval > 0)
             {
@@ -64,22 +66,17 @@ namespace TimerUtility
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (Clickable && Interval > 0) OnClick();
+            foreach (var skill in AffiliateSkills)
+            {
+                skill.Start();
+            }
         }
 
-        private void OnClick()
+        public void Start()
         {
+            if (!Clickable || Interval <= 0) return;
+
             Enabled = true;
-
-            if (!string.IsNullOrEmpty(Skill.Affiliate))
-            {
-                var affiliate = WanmeiTimer.SkillControls.FirstOrDefault(s => s.Skill.Name.Equals(Skill.Affiliate));
-                if (affiliate != null && !affiliate.Enabled)
-                {
-                    affiliate.BeginInvoke(new Action(() => affiliate.button1.PerformClick()));
-                }
-            }
-
             _stopwatch.Restart();
             _offsetMilliseconds = 0.0;
 
