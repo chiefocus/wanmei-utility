@@ -200,7 +200,7 @@ namespace TimerUtility
             var skillControls = SkillControls.Where(s => s.Skill.Flag);
             foreach (var skill in skillControls)
             {
-                skill.button1.PerformClick();
+                skill.Start();
             }
         }
 
