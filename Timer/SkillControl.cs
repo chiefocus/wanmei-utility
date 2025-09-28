@@ -21,6 +21,7 @@ namespace TimerUtility
             InitializeComponent();
 
             Dock = DockStyle.Top;
+            stopwatchDisplay1.Skill = skill;
             stopwatchDisplay1.Visible = false;
 
             label2.Visible = false; //Plus

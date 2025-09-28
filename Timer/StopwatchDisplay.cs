@@ -1,16 +1,30 @@
 ﻿using System.Drawing;
+using System.Media;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using TimerUtility.Models;
 
 namespace TimerUtility
 {
     public class StopwatchDisplay : UserControl
     {
+        public Color ForeColorMain { get; set; }
+        public Font FontMain { get; set; }
+        public Font FontSub { get; set; }
         public int Seconds
         {
             set
             {
                 mainText = $"{value}";
                 ForeColorMain = value > 5 ? Color.Blue : Color.Red;
+
+                if (value == 5 && !isPlaying)
+                {
+                    isPlaying = true;
+                    Task.Run(() => soundPlayer.Play());
+                }
+
+                if (value > 5) isPlaying = false;
             }
         }
 
@@ -23,13 +37,23 @@ namespace TimerUtility
             }
         }
 
+        public Skill Skill
+        {
+            set
+            {
+                skill = value;
+                if (!string.IsNullOrEmpty(skill?.Voice))
+                {
+                    soundPlayer = new SoundPlayer(skill.Voice);
+                }
+            }
+        }
+
+        private Skill skill;
         private string mainText;
-
         private string subText;
-
-        public Color ForeColorMain { get; set; } = Color.Red;
-        public Font FontMain { get; set; } = Control.DefaultFont;
-        public Font FontSub { get; set; } = Control.DefaultFont;
+        private SoundPlayer soundPlayer;
+        private bool isPlaying = false;
 
         public StopwatchDisplay()
         {

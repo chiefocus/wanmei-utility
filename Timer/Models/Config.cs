@@ -216,5 +216,9 @@ namespace TimerUtility.Models
         [XmlAttribute("a")]
         [DefaultValue("")]
         public string Affiliate { get; set; } = "";
+
+        [XmlAttribute("v")]
+        [DefaultValue("")]
+        public string Voice { get; set; } = "";
     }
 }
