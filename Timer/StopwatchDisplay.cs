@@ -21,7 +21,7 @@ namespace TimerUtility
                 if (value == 5 && !isPlaying)
                 {
                     isPlaying = true;
-                    Task.Run(() => soundPlayer.Play());
+                    Task.Run(() => soundPlayer?.Play());
                 }
 
                 if (value > 5) isPlaying = false;

@@ -152,6 +152,11 @@ namespace TimerUtility
             Text = string.IsNullOrWhiteSpace(boss.InstanceName) ? boss.Name : $"{boss.InstanceName} - {boss.Name}";
             btnReset.Checked = boss.Id == Settings.UserDefinedBoss.Id;
             skillControls.Clear();
+            foreach (SkillControl skillControl in panel2.Controls)
+            {
+                skillControl.button2.PerformClick();
+                skillControl.Dispose();
+            }
             panel2.Controls.Clear();
             button1.Visible = boss.Skills.Any(s => s.Flag);
 
