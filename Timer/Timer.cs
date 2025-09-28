@@ -38,10 +38,10 @@ namespace TimerUtility
         public static Config Settings = new Config();
         public static bool SettingsChanged = false;
 
-        private static Boss ActiveBoss;
-        private static List<SkillControl> SkillControls { get; set; } = new List<SkillControl>();
+        private List<SkillControl> skillControls = new List<SkillControl>();
+        private Boss activeBoss;
 
-        private static void InitInstances(string file)
+        private void InitInstances(string file)
         {
             try
             {
@@ -75,7 +75,7 @@ namespace TimerUtility
 
                     if (boss.Default)
                     {
-                        ActiveBoss = boss;
+                        activeBoss = boss;
                     }
 
                     boss.Skills.Reverse();
@@ -111,7 +111,7 @@ namespace TimerUtility
                 ClientSize = Settings.Preference.ClientSize.Value;
 
             LoadInstances();
-            var activeInstance = Settings.InstanceDic.GetValue(ActiveBoss.InstanceId);
+            var activeInstance = Settings.InstanceDic.GetValue(activeBoss.InstanceId);
             LoadBosses(activeInstance);
         }
 
@@ -151,7 +151,7 @@ namespace TimerUtility
         {
             Text = string.IsNullOrWhiteSpace(boss.InstanceName) ? boss.Name : $"{boss.InstanceName} - {boss.Name}";
             btnReset.Checked = boss.Id == Settings.UserDefinedBoss.Id;
-            SkillControls.Clear();
+            skillControls.Clear();
             panel2.Controls.Clear();
             button1.Visible = boss.Skills.Any(s => s.Flag);
 
@@ -161,7 +161,7 @@ namespace TimerUtility
                 skill.BossName = boss.Name;
                 var skillControl = new SkillControl(skill, timer1);
                 panel2.Controls.Add(skillControl);
-                SkillControls.Add(skillControl);
+                skillControls.Add(skillControl);
             }
 
             var checkedBoss = flowLayoutPanel2.Controls.OfType<ButtonControl<Boss>>().FirstOrDefault(i => i.Data.Id == boss.Id);
@@ -170,14 +170,14 @@ namespace TimerUtility
             var checkedInstance = flowLayoutPanel1.Controls.OfType<ButtonControl<Instance>>().FirstOrDefault(i => i.Data.Id == boss.InstanceId);
             if (checkedInstance != null) { checkedInstance.Checked = true; }
 
-            foreach (var skillControl in SkillControls)
+            foreach (var skillControl in skillControls)
             {
                 skillControl.AffiliateSkills.Add(skillControl);
                 if (!string.IsNullOrEmpty(skillControl.Skill.Affiliate))
                 {
                     foreach (var affiliate in skillControl.Skill.Affiliate.Split(','))
                     {
-                        var affiliateControl = WanmeiTimer.SkillControls.FirstOrDefault(s => s.Skill.Name.Equals(affiliate));
+                        var affiliateControl = skillControls.FirstOrDefault(s => s.Skill.Name.Equals(affiliate));
                         skillControl.AffiliateSkills.Add(affiliateControl);
                     }
                 }
@@ -205,7 +205,7 @@ namespace TimerUtility
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var skillControls = SkillControls.Where(s => s.Skill.Flag);
+            var skillControls = this.skillControls.Where(s => s.Skill.Flag);
             foreach (var skill in skillControls)
             {
                 skill.Start();
@@ -214,7 +214,7 @@ namespace TimerUtility
 
         private void OnAppExit(object sender, EventArgs e)
         {
-            var keys = SkillControls.Select(s => s.Skill.Key);
+            var keys = skillControls.Select(s => s.Skill.Key);
             UnregisterAllHotKeys(keys);
             SaveSettings();
         }
@@ -254,7 +254,7 @@ namespace TimerUtility
         {
             if (!Settings.Profile.Shortcutable) return;
 
-            var keys = SkillControls.Select(s => s.Skill.Key);
+            var keys = skillControls.Select(s => s.Skill.Key);
             UnregisterAllHotKeys(keys);
             foreach (var key in keys)
             {
@@ -275,7 +275,7 @@ namespace TimerUtility
             if (m.Msg == WM_HOTKEY && Settings.Profile.Shortcutable)
             {
                 int id = m.WParam.ToInt32();
-                var skillControl = SkillControls.FirstOrDefault(s => s.Skill.Key == id);
+                var skillControl = skillControls.FirstOrDefault(s => s.Skill.Key == id);
                 skillControl?.button1.PerformClick();
             }
 
@@ -302,21 +302,6 @@ namespace TimerUtility
             Settings.Preference.Location = Location;
             Settings.Preference.ClientSize = ClientSize;
             SettingsChanged = true;
-        }
-
-        private async void link_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            var openFileDialog = new OpenFileDialog
-            {
-                Filter = "所有文件 (*.*)|*.*",
-                RestoreDirectory = true
-            };
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                var file = openFileDialog.FileName;
-                await Init(file);
-            }
         }
 
         private async void panel1_DoubleClick(object sender, EventArgs e)
