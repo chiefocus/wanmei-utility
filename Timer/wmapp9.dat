@@ -1,0 +1,233 @@
+﻿<Config>
+  <Profile PlusEnable="1" MinusEnable="1" MillisecondEnable="0" Offset="1000" Savable="1" HotkeyEnable="1"/>
+  <Instance Name="黄3">
+    <Boss Name="圣母" Default="1">
+      <Skill Name="减攻速" Description="280 仙224 魔235.2" Interval="30"/>
+      <Skill Name="减吟唱" Description="175 仙140 魔147" Interval="20" Affiliate="群攻"/>
+      <Skill Name="群攻" Description="175 仙140 魔147" Interval="20" Affiliate="减吟唱"/>
+    </Boss>
+    <Boss Name="小铁">
+      <Skill Name="破甲" Description="320 仙256 魔268.8" Interval="20"/>
+      <Skill Name="巨力" Description="200 仙160 魔168" Interval="30"/>
+      <Skill Name="大群" Description="120 仙96 魔100.8" Interval="20"/>
+    </Boss>
+    <Boss Name="子纯">
+      <Skill Name="封印" Description="450 仙360 魔378" Interval="20"/>
+      <Skill Name="群晕" Description="300 仙240 魔252" Interval="20"/>
+      <Skill Name="流血" Description="150 仙120 魔126" Interval="20"/>
+    </Boss>
+    <Boss Name="仓力">
+      <Skill Name="流血" Description="450 仙360 魔378" Interval="30"/>
+      <Skill Name="群晕" Description="250 仙200 魔210" Interval="20" Affiliate="清仇恨"/>
+      <Skill Name="清仇恨" Description="250 仙200 魔210" Interval="90" Affiliate="群晕"/>
+      <Skill Name="大群1" Description="150 仙120 魔126" Interval="20"/>
+      <Skill Name="大群2" Description="125 仙100 魔105" Interval="20"/>
+    </Boss>
+    <Boss Name="天地">
+      <Skill Name="驱逐" Description="540 仙432 魔453.6" Interval="60"/>
+      <Skill Name="吸元" Description="420 仙336 魔352.8" Interval="45"/>
+      <Skill Name="木毒" Description="300 仙240 魔252" Interval="35"/>
+      <Skill Name="群晕" Description="180 仙144 魔151.2" Interval="30"/>
+      <Skill Name="大群" Description="150 仙120 魔126" Interval="55"/>
+    </Boss>
+    <Boss Name="堕落">
+      <Skill Name="雷+减血" Description="开打计时 概率晕" Interval="15" Kickoff="1"/>
+      <Skill Name="狂暴" Description="开打计时" Interval="25" Kickoff="1"/>
+      <Skill Name="大群" Description="开打计时" Interval="35" Kickoff="1"/>
+    </Boss>
+    <Boss Name="幽冥">
+      <Skill Name="范围群攻" Description="开打计时 概率晕" Interval="15" Kickoff="1"/>
+      <Skill Name="炸弹" Description="开打计时" Interval="25" Kickoff="1"/>
+      <Skill Name="凤凰展翅" Description="50%血" Interval="55"/>
+    </Boss>
+  </Instance>
+  <Instance Name="黄2">
+    <Boss Name="神武罗">
+      <Skill Name="固伤" Description="开打计时" Interval="30" Kickoff="1"/>
+    </Boss>
+    <Boss Name="猴子">
+      <Skill Name="扇形大" Description="开打计时" Interval="45" Kickoff="1"/>
+      <Skill Name="巨力" Description="开打计时" Interval="60" Kickoff="1"/>
+    </Boss>
+    <Boss Name="狗">
+      <Skill Name="群晕" Description="每掉25%血群晕" Interval="0" Clickable="0"/>
+      <Skill Name="吸蓝" Description="开打计时" Interval="20" Kickoff="1"/>
+    </Boss>
+    <Boss Name="十方">
+      <Skill Name="流血" Description="250 仙200 魔210" Interval="45"/>
+      <Skill Name="群减血" Description="开打计时" Interval="30" Kickoff="1"/>
+    </Boss>
+    <Boss Name="罗刹">
+      <Skill Name="单体封印" Description="50%血开始计时" Interval="45"/>
+      <Skill Name="单体落雷" Description="开打计时" Interval="35" Kickoff="1"/>
+      <Skill Name="金系群攻" Description="开打计时" Interval="15" Kickoff="1"/>
+    </Boss>
+  </Instance>
+  <Instance Name="黄1">
+    <Boss Name="鼓神">
+      <Skill Name="封印" Description="身上有减唱可立马T封印" Interval="0" Clickable="0"/>
+      <Skill Name="全屏攻击" Description="开打计时，每600秒" Interval="600" Kickoff="1"/>
+      <Skill Name="近战群晕" Description="开打计时" Interval="20" Kickoff="1"/>
+    </Boss>
+    <Boss Name="古蛇">
+      <Skill Name="单大毒" Description="开打计时" Interval="20" Kickoff="1"/>
+      <Skill Name="群小毒" Description="开打计时" Interval="15" Kickoff="1"/>
+    </Boss>
+    <Boss Name="圣金甲">
+      <Skill Name="6000固伤" Description="开打计时" Interval="60" Kickoff="1"/>
+      <Skill Name="乱仇恨" Description="开打计时" Interval="15" Kickoff="1"/>
+    </Boss>
+    <Boss Name="怒目">
+      <Skill Name="狂暴" Description="50%血开始计时" Interval="30"/>
+      <Skill Name="近战群晕" Description="开打计时" Interval="35" Kickoff="1"/>
+      <Skill Name="扇形攻击" Description="开打计时" Interval="15" Kickoff="1"/>
+    </Boss>
+  </Instance>
+  <Instance Name="封1">
+    <Boss Name="神使">
+      <Skill Name="高伤群攻" Interval="20" Description="开打计时，开场扑断" Kickoff="1"/>
+      <Skill Name="群攻" Interval="10" Description="开打计时" Kickoff="1"/>
+      <Skill Name="封印" Interval="15" Description="开打计时" Kickoff="1"/>
+    </Boss>
+    <Boss Name="古蛇">
+      <Skill Name="二仇木毒" Interval="26" Description="开打计时" Kickoff="1"/>
+      <Skill Name="群木毒" Interval="19" Description="开打计时" Kickoff="1"/>
+      <Skill Name="水毒" Interval="31" Description="开打计时" Kickoff="1"/>
+      <Skill Name="近身群晕毒" Interval="11" Description="开打计时" Kickoff="1"/>
+    </Boss>
+    <Boss Name="盘古">
+      <Skill Name="龙飞击" Interval="5" Description="开打计时，四次龙飞击后一次大群" Kickoff="1"/>
+      <Skill Name="大群" Interval="25" Description="开打计时" Kickoff="1"/>
+      <Skill Name="坚甲" Interval="75" Description="开打计时" Kickoff="1"/>
+    </Boss>
+  </Instance>
+  <Instance Name="封2">
+    <Boss Name="狗">
+      <Skill Name="吸蓝" Interval="16" Description="开打计时" Kickoff="1"/>
+      <Skill Name="木系群攻" Interval="14" Description="开打计时" Kickoff="1"/>
+      <Skill Name="单体攻击" Interval="20" Description="开打计时" Kickoff="1"/>
+    </Boss>
+    <Boss Name="光辉">
+      <Skill Name="单体伤害" Interval="10" Description="开打计时，随机单体80%伤害" Kickoff="1"/>
+      <Skill Name="近身晕毒" Interval="20" Description="开打计时" Kickoff="1"/>
+      <Skill Name="大群" Interval="30" Description="开打计时，SS上去扑开场大群" Kickoff="1"/>
+    </Boss>
+    <Boss Name="十方">
+      <Skill Name="扇形群大" Interval="120" Description="开打计时，开场扑群" Kickoff="1"/>
+      <Skill Name="单体流血" Interval="15" Description="开打计时" Kickoff="1"/>
+    </Boss>
+  </Instance>
+  <Instance Name="封3">
+    <Boss Name="子纯">
+      <Skill Name="单体流血" Interval="5" Description="开打计时" Kickoff="1"/>
+      <Skill Name="暴走 " Interval="15" Description="开打计时" Kickoff="1"/>
+      <Skill Name="大群" Interval="25" Description="开打计时，技能重叠时，先流血再暴走后大群" Kickoff="1"/>
+    </Boss>
+    <Boss Name="仓力">
+      <Skill Name="喷火" Interval="5" Description="开打计时" Kickoff="1"/>
+      <Skill Name="狂暴" Interval="15" Description="开打计时" Kickoff="1"/>
+      <Skill Name="大群" Interval="25" Description="开打计时，技能重叠时先喷火狂暴再大群" Kickoff="1"/>
+      <Skill Name="无敌" Interval="0" Description="3次，分别在75%/50%/25%持续25秒" Clickable="0"/>
+      <Skill Name="说明" Interval="0" Description="645.69/430.46/215.23,可爆元、乌龟躲大群" Clickable="0"/>
+    </Boss>
+    <Boss Name="天地">
+      <Skill Name="雷击" Interval="5" Description="开打计时，概率晕人" Kickoff="1"/>
+      <Skill Name="封印" Interval="15" Description="开打计时" Kickoff="1"/>
+      <Skill Name="大群" Interval="25" Description="开打计时" Kickoff="1"/>
+      <Skill Name="无敌" Interval="60" Description="开打计时" Kickoff="1"/>
+    </Boss>
+  </Instance>
+  <Instance Name="覆霜">
+    <Boss Name="乌龟">
+      <Skill Name="减吟唱" Interval="12" Description="开打计时" Kickoff="1"/>
+      <Skill Name="乱跑" Interval="0" Description="133 仙106.4 魔111.72" Clickable="0"/>
+      <Skill Name="坚甲" Interval="0" Description="79.8 仙63.84 魔67" Clickable="0"/>
+    </Boss>
+    <Boss Name="冰魅">
+      <Skill Name="单体封印" Interval="15" Description="开打计时" Kickoff="1"/>
+      <Skill Name="群驱状态" Interval="60" Description="开打计时" Kickoff="1"/>
+    </Boss>
+    <Boss Name="小怒">
+      <Skill Name="出护法" Interval="0" Description="80%/60%/40%/20% 322W/241.8W/161W/80W各出一个护法" Clickable="0"/>
+      <Skill Name="巨力" Interval="0" Description="322" Clickable="0"/>
+      <Skill Name="迅捷" Interval="0" Description="241.8" Clickable="0"/>
+      <Skill Name="群晕" Interval="20" Description="241.8"/>
+      <Skill Name="龙飞击" Interval="27" Description="241.8"/>
+    </Boss>
+    <Boss Name="睡秋">
+      <Skill Name="减吟唱" Interval="10" Description="开打计时" Kickoff="1"/>
+      <Skill Name="群晕" Interval="20" Description="开打计时" Kickoff="1"/>
+    </Boss>
+    <Boss Name="站秋">
+      <Skill Name="驱逐" Interval="0" Description="338.6" Clickable="0"/>
+      <Skill Name="群毒" Interval="17" Description="338.6"/>
+      <Skill Name="群晕" Interval="30" Description="282.2 "/>
+    </Boss>
+  </Instance>
+  <Instance Name="神月">
+    <Boss Name="啸">
+      <Skill Name="大群" Interval="30" Description="开打计时" Kickoff="1"/>
+      <Skill Name="技能" Interval="23" Description="开打计时" Kickoff="1"/>
+    </Boss>
+    <Boss Name="大力">
+      <Skill Name="群晕" Interval="25" Description="开打计时" Kickoff="1"/>
+      <Skill Name="破甲" Interval="23" Description="开打计时" Kickoff="1"/>
+      <Skill Name="出小怪" Interval="30" Description="开打计时 30 120秒时" Kickoff="1"/>
+    </Boss>
+    <Boss Name="虚（塔）">
+      <Skill Name="吸蓝" Interval="35" Description="开打计时" Kickoff="1"/>
+      <Skill Name="群晕" Interval="0" Description="50%血 群晕4秒" Clickable="0"/>
+      <Skill Name="坚甲" Interval="0" Description="25%血 加魔防" Clickable="0"/>
+    </Boss>
+    <Boss Name="桃花">
+      <Skill Name="封印二仇" Interval="25" Description="开打计时" Kickoff="1"/>
+      <Skill Name="重置仇恨" Interval="30" Description="开打计时" Kickoff="1"/>
+      <Skill Name="群减命中" Interval="23" Description="开打计时" Kickoff="1"/>
+    </Boss>
+    <Boss Name="破">
+      <Skill Name="随机大毒" Interval="20" Description="开打计时" Kickoff="1"/>
+    </Boss>
+    <Boss Name="轰">
+      <Skill Name="固伤6000" Interval="30" Description="开打计时" Kickoff="1"/>
+      <Skill Name="秒人流血" Interval="23" Description="50%血 死人回血100W"/>
+      <Skill Name="召唤小怪" Interval="0" Description="血量75% 50% 25%出" Clickable="0"/>
+    </Boss>
+    <Boss Name="嗜天">
+      <Skill Name="加双防" Interval="30" Description="开打计时" Kickoff="1"/>
+      <Skill Name="秒人流血" Interval="23" Description="50%血 死人回血100W"/>
+      <Skill Name="召唤小怪" Interval="0" Description="血量75% 50% 25%出" Clickable="0"/>
+      <Skill Name="说明" Interval="0" Description="舞干戚和零寒BOSS同样" Clickable="0"/>
+    </Boss>
+    <Boss Name="灼炎">
+      <Skill Name="加双防" Interval="30" Description="开打计时" Kickoff="1"/>
+      <Skill Name="吸蓝群攻" Interval="23" Description="开打计时" Kickoff="1"/>
+      <Skill Name="秒人" Interval="32" Description="血量50%计时"/>
+      <Skill Name="说明" Interval="0" Description="50%血 25%血 逃跑自己回" Clickable="0"/>
+    </Boss>
+    <Boss Name="元素">
+      <Skill Name="减血" Interval="30" Description="开打计时" Kickoff="1"/>
+      <Skill Name="驱逐" Interval="90" Description="开打计时" Kickoff="1"/>
+      <Skill Name="说明" Interval="0" Description="重叠时先减血再群驱" Clickable="0"/>
+    </Boss>
+    <Boss Name="堕">
+      <Skill Name="封印" Interval="12" Description="开打计时" Kickoff="1"/>
+      <Skill Name="群减血1" Interval="22" Description="群减血50%"/>
+      <Skill Name="群减血2" Interval="32" Description="群减血50%"/>
+      <Skill Name="大群" Interval="0" Description="连续8次普攻之后大群" Clickable="0"/>
+    </Boss>
+    <Boss Name="灭">
+      <Skill Name="6000固伤" Interval="30" Description="开打计时 几率封印二仇" Kickoff="1"/>
+      <Skill Name="群减唱" Interval="15" Description="开打计时" Kickoff="1"/>
+      <Skill Name="2000固伤" Interval="20" Description="开打计时 群体伤害" Kickoff="1"/>
+      <Skill Name="出小怪" Interval="0" Description="25%血出小怪" Clickable="0"/>
+      <Skill Name="狂暴" Interval="0" Description="5%血狂暴" Clickable="0"/>
+    </Boss>
+  </Instance>
+  <UserDefinedBoss Name="自定义">
+    <Skill Name="计时1" Description="" Interval="15" Kickoff="1"/>
+    <Skill Name="计时2" Description="" Interval="20" Kickoff="1"/>
+    <Skill Name="计时3" Description="" Interval="30" Kickoff="1"/>
+    <Skill Name="计时4" Description="" Interval="45" Kickoff="1"/>
+    <Skill Name="计时5" Description="" Interval="60" Kickoff="1"/>
+  </UserDefinedBoss>
+</Config>
