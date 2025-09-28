@@ -119,7 +119,6 @@ namespace TimerUtility
             // 
             this.stopwatchDisplay1.FontMain = new System.Drawing.Font("SimHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.stopwatchDisplay1.FontSub = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stopwatchDisplay1.ForeColorMain = System.Drawing.Color.Red;
             this.stopwatchDisplay1.Location = new System.Drawing.Point(165, 5);
             this.stopwatchDisplay1.Name = "stopwatchDisplay1";
             this.stopwatchDisplay1.Size = new System.Drawing.Size(45, 26);

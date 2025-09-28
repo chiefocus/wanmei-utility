@@ -10,6 +10,7 @@ namespace TimerUtility
             set
             {
                 mainText = $"{value}";
+                ForeColorMain = value > 5 ? Color.Blue : Color.Red;
             }
         }
 
