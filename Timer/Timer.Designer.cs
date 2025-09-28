@@ -57,6 +57,7 @@
             panel1.Name = "panel1";
             panel1.Size = new System.Drawing.Size(289, 32);
             panel1.TabIndex = 0;
+            panel1.DoubleClick += new System.EventHandler(panel1_DoubleClick);
             // 
             // button1
             // 
