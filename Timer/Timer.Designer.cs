@@ -145,7 +145,6 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            Icon = ((System.Drawing.Icon)(resources.GetObject("$Icon")));
             Margin = new System.Windows.Forms.Padding(2);
             MaximizeBox = false;
             Name = "WanmeiTimer";

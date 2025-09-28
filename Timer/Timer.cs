@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,9 +25,10 @@ namespace TimerUtility
         public WanmeiTimer()
         {
             InitializeComponent();
+            var exePath = Assembly.GetEntryAssembly().Location;
+            Icon = Icon.ExtractAssociatedIcon(exePath);
             MaximumSize = new Size(785, 480);
             MinimumSize = new Size(312, 310);
-
             Application.ApplicationExit += OnAppExit;
         }
 
