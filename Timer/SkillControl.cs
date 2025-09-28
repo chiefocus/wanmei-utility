@@ -36,8 +36,6 @@ namespace TimerUtility
             textBox1.Text = skill.Description;
             textBox2.Text = skill.Interval == 0 ? "" : $"{skill.Interval}";
 
-            toolTip1.SetToolTip(button1, skill.Description);
-
             stopwatch = new Stopwatch();
             intervalMilliseconds = Skill.Interval * 1000;
         }
@@ -46,8 +44,8 @@ namespace TimerUtility
         {
             if (IsRunning && Skill.Interval > 0)
             {
-                var elapsed = (int)(stopwatch.Elapsed.TotalMilliseconds - offsetMilliseconds);
-                var remaining = intervalMilliseconds - elapsed % intervalMilliseconds;
+                int elapsed = (int)(stopwatch.Elapsed.TotalMilliseconds - offsetMilliseconds);
+                int remaining = intervalMilliseconds - elapsed % intervalMilliseconds;
 
                 stopwatchDisplay1.Seconds = remaining / 1000;
                 stopwatchDisplay1.Milliseconds = remaining / 100 % 10;
