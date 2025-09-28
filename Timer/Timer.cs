@@ -321,6 +321,7 @@ namespace TimerUtility
             {
                 var file = openFileDialog.FileName;
                 await Init(file);
+                SettingsChanged = true;
             }
         }
     }
