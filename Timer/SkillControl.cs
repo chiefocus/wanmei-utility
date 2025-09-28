@@ -8,13 +8,14 @@ namespace TimerUtility
 {
     public partial class SkillControl : UserControl
     {
-        public bool Enabled { get; set; }
+        public bool IsRunning { get; set; }
         public Skill Skill { get; set; }
         public Timer Timer1 { get; set; }
         public List<SkillControl> AffiliateSkills { get; set; } = new List<SkillControl>();
 
-        private Stopwatch _stopwatch;
-        private double _offsetMilliseconds = 0.0;
+        private Stopwatch stopwatch;
+        private int offsetMilliseconds = 0;
+        private int intervalMilliseconds = 0;
 
         public SkillControl(Skill skill, Timer timer)
         {
@@ -37,22 +38,23 @@ namespace TimerUtility
 
             toolTip1.SetToolTip(button1, skill.Description);
 
-            _stopwatch = new Stopwatch();
+            stopwatch = new Stopwatch();
+            intervalMilliseconds = Skill.Interval * 1000;
         }
 
-        private void UpdateLabel()
+        private void RefreshDisplay()
         {
-            if (Enabled && Skill.Interval > 0)
+            if (IsRunning && Skill.Interval > 0)
             {
-                var elapsedSeconds = _stopwatch.Elapsed.TotalSeconds - _offsetMilliseconds / 1000;
-                var remaining = Math.Max(0, Skill.Interval - (elapsedSeconds % Skill.Interval));
+                var elapsed = (int)(stopwatch.Elapsed.TotalMilliseconds - offsetMilliseconds);
+                var remaining = intervalMilliseconds - elapsed % intervalMilliseconds;
 
-                stopwatchDisplay1.Seconds = (int)remaining;
-                stopwatchDisplay1.Milliseconds = (int)(remaining * 10) % 10;
+                stopwatchDisplay1.Seconds = remaining / 1000;
+                stopwatchDisplay1.Milliseconds = remaining / 100 % 10;
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e) => UpdateLabel();
+        private void timer1_Tick(object sender, EventArgs e) => RefreshDisplay();
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -66,9 +68,9 @@ namespace TimerUtility
         {
             if (!Skill.Clickable || Skill.Interval <= 0) return;
 
-            Enabled = true;
-            _stopwatch.Restart();
-            _offsetMilliseconds = 0.0;
+            IsRunning = true;
+            stopwatch.Restart();
+            offsetMilliseconds = 0;
 
             textBox1.Visible = false;
             stopwatchDisplay1.Visible = true;
@@ -79,7 +81,7 @@ namespace TimerUtility
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Enabled = false;
+            IsRunning = false;
             stopwatchDisplay1.Visible = false;
             textBox1.Visible = true;
             textBox1.Text = Skill.Description;
@@ -87,8 +89,8 @@ namespace TimerUtility
             label3.Visible = false;
         }
 
-        private void label2_Click(object sender, EventArgs e) => _offsetMilliseconds += WanmeiTimer.Settings.Profile.Offset;
-        private void label3_Click(object sender, EventArgs e) => _offsetMilliseconds -= WanmeiTimer.Settings.Profile.Offset;
+        private void label2_Click(object sender, EventArgs e) => offsetMilliseconds += WanmeiTimer.Settings.Profile.Offset;
+        private void label3_Click(object sender, EventArgs e) => offsetMilliseconds -= WanmeiTimer.Settings.Profile.Offset;
 
         private static int ParseInterval(string s) => int.TryParse(s, out var r) ? r : 0;
 
@@ -98,7 +100,10 @@ namespace TimerUtility
             if (targetSkill != null && targetSkill.Interval != interval)
             {
                 targetSkill.Interval = interval;
+                Skill.Interval = interval;
+                intervalMilliseconds = interval * 1000;
                 WanmeiTimer.SettingsChanged = true;
+                button2.PerformClick();
             }
         }
 
@@ -113,6 +118,7 @@ namespace TimerUtility
             if (targetSkill != null && targetSkill.Description != textBox1.Text)
             {
                 targetSkill.Description = textBox1.Text;
+                Skill.Description = textBox1.Text;
                 WanmeiTimer.SettingsChanged = true;
             }
         }
