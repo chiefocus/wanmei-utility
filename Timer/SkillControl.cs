@@ -8,12 +8,11 @@ namespace TimerUtility
 {
     public partial class SkillControl : UserControl
     {
-        public bool IsRunning { get; set; }
         public Skill Skill { get; set; }
-        public Timer Timer1 { get; set; }
         public List<SkillControl> AffiliateSkills { get; set; } = new List<SkillControl>();
 
-        private Stopwatch stopwatch;
+        private readonly Stopwatch stopwatch;
+        private bool isRunning;
         private int offsetMilliseconds = 0;
         private int intervalMilliseconds = 0;
 
@@ -27,11 +26,10 @@ namespace TimerUtility
             label2.Visible = false; //Plus
             label3.Visible = false; //Minus
 
-            Timer1 = timer;
-            Timer1.Tick += new EventHandler(timer1_Tick);
+            timer.Tick += new EventHandler(timer1_Tick);
 
             Skill = skill;
-            button1.Text = Skill.Interval == 0 ? Skill.Name : $"{Skill.Name}";
+            button1.Text = skill.Name;
             button2.Text = skill.Reset;
             textBox1.Text = skill.Description;
             textBox2.Text = skill.Interval == 0 ? "" : $"{skill.Interval}";
@@ -42,7 +40,7 @@ namespace TimerUtility
 
         private void RefreshDisplay()
         {
-            if (IsRunning && Skill.Interval > 0)
+            if (isRunning && Skill.Interval > 0)
             {
                 int elapsed = (int)(stopwatch.Elapsed.TotalMilliseconds - offsetMilliseconds);
                 int remaining = intervalMilliseconds - elapsed % intervalMilliseconds;
@@ -66,7 +64,7 @@ namespace TimerUtility
         {
             if (!Skill.Clickable || Skill.Interval <= 0) return;
 
-            IsRunning = true;
+            isRunning = true;
             stopwatch.Restart();
             offsetMilliseconds = 0;
 
@@ -79,7 +77,7 @@ namespace TimerUtility
 
         private void button2_Click(object sender, EventArgs e)
         {
-            IsRunning = false;
+            isRunning = false;
             stopwatchDisplay1.Visible = false;
             textBox1.Visible = true;
             textBox1.Text = Skill.Description;
@@ -90,11 +88,9 @@ namespace TimerUtility
         private void label2_Click(object sender, EventArgs e) => offsetMilliseconds += WanmeiTimer.Settings.Profile.Offset;
         private void label3_Click(object sender, EventArgs e) => offsetMilliseconds -= WanmeiTimer.Settings.Profile.Offset;
 
-        private static int ParseInterval(string s) => int.TryParse(s, out var r) ? r : 0;
-
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            var interval = ParseInterval(textBox2.Text);
+            int.TryParse(textBox2.Text.Trim(), out var interval);
             if (targetSkill != null && targetSkill.Interval != interval)
             {
                 targetSkill.Interval = interval;
