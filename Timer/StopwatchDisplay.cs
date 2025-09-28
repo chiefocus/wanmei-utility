@@ -21,7 +21,7 @@ namespace TimerUtility
                 if (value == 5 && !isPlaying)
                 {
                     isPlaying = true;
-                    Task.Run(() => soundPlayer?.Play());
+                    Task.Run(() => { try { soundPlayer?.Play(); } catch { } });
                 }
 
                 if (value > 5) isPlaying = false;
@@ -41,15 +41,13 @@ namespace TimerUtility
         {
             set
             {
-                skill = value;
-                if (!string.IsNullOrEmpty(skill?.Voice))
+                if (!string.IsNullOrEmpty(value?.Voice))
                 {
-                    soundPlayer = new SoundPlayer(skill.Voice);
+                    try { soundPlayer = new SoundPlayer(value.Voice); } catch { }
                 }
             }
         }
 
-        private Skill skill;
         private string mainText;
         private string subText;
         private SoundPlayer soundPlayer;
