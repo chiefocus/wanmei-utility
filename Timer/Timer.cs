@@ -149,6 +149,8 @@ namespace TimerUtility
 
         public void LoadSkills(Boss boss)
         {
+            UnregisterAllHotKeys();
+
             Text = string.IsNullOrWhiteSpace(boss.InstanceName) ? boss.Name : $"{boss.InstanceName} - {boss.Name}";
             btnReset.Checked = boss.Id == Settings.UserDefinedBoss.Id;
             skillControls.Clear();
@@ -219,8 +221,7 @@ namespace TimerUtility
 
         private void OnAppExit(object sender, EventArgs e)
         {
-            var keys = skillControls.Select(s => s.Skill.Key);
-            UnregisterAllHotKeys(keys);
+            UnregisterAllHotKeys();
             SaveSettings();
         }
 
@@ -241,15 +242,15 @@ namespace TimerUtility
             }
         }
 
-        private void UnregisterAllHotKeys(IEnumerable<int> keys)
+        private void UnregisterAllHotKeys()
         {
             if (!Settings.Profile.Shortcutable) return;
 
-            foreach (var key in keys)
+            foreach (var skillControl in skillControls)
             {
                 try
                 {
-                    UnregisterHotKey(Handle, key);
+                    UnregisterHotKey(Handle, skillControl.Skill.Key);
                 }
                 catch { }
             }
@@ -259,12 +260,11 @@ namespace TimerUtility
         {
             if (!Settings.Profile.Shortcutable) return;
 
-            var keys = skillControls.Select(s => s.Skill.Key);
-            UnregisterAllHotKeys(keys);
-            foreach (var key in keys)
+            foreach (var skillControl in skillControls)
             {
                 try
                 {
+                    var key = skillControl.Skill.Key;
                     RegisterHotKey(Handle, key, MOD_ALT, (uint)key);
                 }
                 catch { }
