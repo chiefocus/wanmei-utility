@@ -55,35 +55,43 @@ namespace TimerUtility
 
         private void button1_Click(object sender, EventArgs e)
         {
-            foreach (var skill in AffiliateSkills)
-            {
-                skill.Start();
-            }
-        }
-
-        public void Start()
-        {
-            if (!Skill.Clickable || Skill.Interval <= 0) return;
-
-            isRunning = true;
-            stopwatch.Restart();
-            offsetMilliseconds = 0;
-
-            textBox1.Visible = false;
-            stopwatchDisplay1.Visible = true;
-            stopwatchDisplay1.Seconds = Skill.Interval;
-            label2.Visible = WanmeiTimer.Settings.Profile.PlusFlag;
-            label3.Visible = WanmeiTimer.Settings.Profile.MinusFlag;
+            Start();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            isRunning = false;
-            stopwatchDisplay1.Visible = false;
-            textBox1.Visible = true;
-            textBox1.Text = Skill.Description;
-            label2.Visible = false;
-            label3.Visible = false;
+            Reset();
+        }
+
+        public void Start()
+        {
+            foreach (var skillControl in AffiliateSkills)
+            {
+                if (!skillControl.Skill.Clickable || skillControl.Skill.Interval <= 0) return;
+
+                skillControl.isRunning = true;
+                skillControl.stopwatch.Restart();
+                skillControl.offsetMilliseconds = 0;
+
+                skillControl.textBox1.Visible = false;
+                skillControl.stopwatchDisplay1.Visible = true;
+                skillControl.stopwatchDisplay1.Seconds = Skill.Interval;
+                skillControl.label2.Visible = WanmeiTimer.Settings.Profile.PlusFlag;
+                skillControl.label3.Visible = WanmeiTimer.Settings.Profile.MinusFlag;
+            }
+        }
+
+        public void Reset()
+        {
+            foreach (var skillControl in AffiliateSkills)
+            {
+                skillControl.isRunning = false;
+                skillControl.stopwatchDisplay1.Visible = false;
+                skillControl.textBox1.Visible = true;
+                skillControl.textBox1.Text = Skill.Description;
+                skillControl.label2.Visible = false;
+                skillControl.label3.Visible = false;
+            }
         }
 
         private void label2_Click(object sender, EventArgs e) => offsetMilliseconds += WanmeiTimer.Settings.Profile.Offset;
