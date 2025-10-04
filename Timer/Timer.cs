@@ -156,7 +156,7 @@ namespace TimerUtility
             skillControls.Clear();
             foreach (SkillControl skillControl in panel2.Controls)
             {
-                skillControl.Reset();
+                skillControl.button2.PerformClick();
                 skillControl.Dispose();
             }
             panel2.Controls.Clear();
@@ -281,7 +281,7 @@ namespace TimerUtility
             {
                 int id = m.WParam.ToInt32();
                 var skillControl = skillControls.FirstOrDefault(s => s.Skill.Key == id);
-                skillControl?.Start();
+                skillControl?.button1.PerformClick();
             }
 
             if (m.Msg == WM_NCLBUTTONDBLCLK)
