@@ -111,6 +111,7 @@ namespace TimerUtility
                 ClientSize = Settings.Preference.ClientSize.Value;
 
             LoadInstances();
+            activeBoss = activeBoss ?? Settings.Instances.FirstOrDefault().Bosses.FirstOrDefault();
             var activeInstance = Settings.InstanceDic.GetValue(activeBoss.InstanceId);
             LoadBosses(activeInstance);
         }
@@ -143,7 +144,7 @@ namespace TimerUtility
                 bossControl.ButtonClicked += b => LoadSkills(b);
                 flowLayoutPanel2.Controls.Add(bossControl);
             }
-            var loadingBoss = instance.Bosses.FirstOrDefault();
+            var loadingBoss = activeBoss ?? instance.Bosses.FirstOrDefault();
             LoadSkills(loadingBoss);
         }
 
