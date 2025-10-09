@@ -114,6 +114,7 @@ namespace TimerUtility
             activeBoss = activeBoss ?? Settings.Instances.FirstOrDefault().Bosses.FirstOrDefault();
             var activeInstance = Settings.InstanceDic.GetValue(activeBoss.InstanceId);
             LoadBosses(activeInstance);
+            activeBoss = null;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -137,6 +138,11 @@ namespace TimerUtility
 
         public void LoadBosses(Instance instance)
         {
+            var controls = new List<ButtonControl<Boss>>(flowLayoutPanel2.Controls.Cast<ButtonControl<Boss>>());
+            foreach (var control in controls)
+            {
+                control.Dispose();
+            }
             flowLayoutPanel2.Controls.Clear();
             foreach (var boss in instance.Bosses)
             {
@@ -154,12 +160,11 @@ namespace TimerUtility
 
             Text = string.IsNullOrWhiteSpace(boss.InstanceName) ? boss.Name : $"{boss.InstanceName} - {boss.Name}";
             btnReset.Checked = boss.Id == Settings.UserDefinedBoss.Id;
-            skillControls.Clear();
-            foreach (SkillControl skillControl in panel2.Controls)
+            foreach (var control in skillControls)
             {
-                skillControl.button2.PerformClick();
-                skillControl.Dispose();
+                control.Dispose();
             }
+            skillControls.Clear();
             panel2.Controls.Clear();
             button1.Visible = boss.Skills.Any(s => s.Flag);
 

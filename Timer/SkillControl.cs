@@ -11,6 +11,7 @@ namespace TimerUtility
         public Skill Skill { get; set; }
         public List<SkillControl> AffiliateSkills { get; set; } = new List<SkillControl>();
 
+        private Timer timer;
         private readonly Stopwatch stopwatch;
         private bool isRunning;
         private int offsetMilliseconds = 0;
@@ -27,6 +28,7 @@ namespace TimerUtility
             label2.Visible = false; //Plus
             label3.Visible = false; //Minus
 
+            this.timer = timer;
             timer.Tick += new EventHandler(timer1_Tick);
 
             Skill = skill;

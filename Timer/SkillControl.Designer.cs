@@ -19,6 +19,15 @@ namespace TimerUtility
             {
                 components.Dispose();
             }
+
+            if (timer != null)
+            {
+                timer.Tick -= timer1_Tick;
+            }
+
+            isRunning = false;
+            stopwatch?.Stop();
+            stopwatchDisplay1?.Dispose();
             base.Dispose(disposing);
         }
 
