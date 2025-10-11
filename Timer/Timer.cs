@@ -28,7 +28,7 @@ namespace TimerUtility
             var exePath = Assembly.GetEntryAssembly().Location;
             Icon = Icon.ExtractAssociatedIcon(exePath);
             MaximumSize = new Size(785, 515);
-            MinimumSize = new Size(312, 310);
+            MinimumSize = new Size(312, 345);
             Application.ApplicationExit += OnAppExit;
         }
 
@@ -90,7 +90,7 @@ namespace TimerUtility
             }
         }
 
-        private async void Form1_Load(object sender, EventArgs e)
+        private async void Form_Load(object sender, EventArgs e)
         {
             await Init(DataFile);
         }
@@ -99,7 +99,7 @@ namespace TimerUtility
         {
             await Task.Run(() => { InitInstances(file); });
 
-            timer1.Start();
+            timer.Start();
 
             if (Settings.Preference.Location != null)
                 Location = Settings.Preference.Location.Value;
@@ -114,14 +114,14 @@ namespace TimerUtility
             activeBoss = null;
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void timer_Tick(object sender, EventArgs e)
         {
-            textBox1.Text = DateTime.Now.ToString("HH:mm:ss");
+            nowText.Text = DateTime.Now.ToString("HH:mm:ss");
         }
 
         private void LoadInstances()
         {
-            flowLayoutPanel1.Controls.Clear();
+            instancePanel.Controls.Clear();
             foreach (var instance in Settings.Instances)
             {
                 var instanceControl = new ButtonControl<Instance>(instance, instance.Name)
@@ -129,23 +129,23 @@ namespace TimerUtility
                     ForeColor = Color.DarkMagenta,
                 };
                 instanceControl.ButtonClicked += i => LoadBosses(i);
-                flowLayoutPanel1.Controls.Add(instanceControl);
+                instancePanel.Controls.Add(instanceControl);
             }
         }
 
         public void LoadBosses(Instance instance)
         {
-            var controls = new List<ButtonControl<Boss>>(flowLayoutPanel2.Controls.Cast<ButtonControl<Boss>>());
+            var controls = new List<ButtonControl<Boss>>(bossPanel.Controls.Cast<ButtonControl<Boss>>());
             foreach (var control in controls)
             {
                 control.Dispose();
             }
-            flowLayoutPanel2.Controls.Clear();
+            bossPanel.Controls.Clear();
             foreach (var boss in instance.Bosses)
             {
                 var bossControl = new ButtonControl<Boss>(boss, boss.Name);
                 bossControl.ButtonClicked += b => LoadSkills(b);
-                flowLayoutPanel2.Controls.Add(bossControl);
+                bossPanel.Controls.Add(bossControl);
             }
             var loadingBoss = activeBoss ?? instance.Bosses.FirstOrDefault();
             LoadSkills(loadingBoss);
@@ -156,30 +156,28 @@ namespace TimerUtility
             UnregisterAllHotKeys();
 
             Text = string.IsNullOrEmpty(boss.InstanceName) ? boss.Name : $"{boss.InstanceName} - {boss.Name}";
-            btnReset.Checked = boss.Id == Settings.UserDefinedBoss.Id;
+            udfButton.Checked = boss.Id == Settings.UserDefinedBoss.Id;
 
             skillControls.ForEach(c => c.Dispose());
             skillControls.Clear();
-            panel2.Controls.Clear();
+            skillPanel.Controls.Clear();
 
             var hasFlag = false;
-            var skills = new List<Skill>(boss.Skills);
-            skills.Reverse();
-            foreach (var skill in skills)
+            foreach (var skill in boss.Skills)
             {
                 skill.InstanceName = boss.InstanceName;
                 skill.BossName = boss.Name;
-                var skillControl = new SkillControl(skill, timer1);
-                panel2.Controls.Add(skillControl);
+                var skillControl = new SkillControl(skill, timer);
+                skillPanel.Controls.Add(skillControl);
                 skillControls.Add(skillControl);
                 hasFlag |= skill.Flag;
             }
-            button1.Visible = hasFlag;
+            startButton.Visible = hasFlag;
 
-            foreach (var b in flowLayoutPanel2.Controls.OfType<ButtonControl<Boss>>())
+            foreach (var b in bossPanel.Controls.OfType<ButtonControl<Boss>>())
                 b.Checked = b.Data.Id == boss.Id;
 
-            foreach (var i in flowLayoutPanel1.Controls.OfType<ButtonControl<Instance>>())
+            foreach (var i in instancePanel.Controls.OfType<ButtonControl<Instance>>())
                 i.Checked = i.Data.Id == boss.InstanceId;
 
             LinkAffiliateSkills();
@@ -188,7 +186,6 @@ namespace TimerUtility
 
         private void LinkAffiliateSkills()
         {
-            var skillDict = skillControls.ToDictionary(s => s.Skill.Name);
             foreach (var control in skillControls)
             {
                 control.AffiliateSkills.Clear();
@@ -197,7 +194,7 @@ namespace TimerUtility
                 if (string.IsNullOrEmpty(control.Skill.Affiliate)) continue;
                 foreach (var name in control.Skill.Affiliate.Split(','))
                 {
-                    var aff = skillDict.GetValue(name);
+                    var aff = skillControls.FirstOrDefault(c => c.Skill.Name.Equals(name));
                     if (aff != null)
                         control.AffiliateSkills.Add(aff);
 
@@ -205,24 +202,24 @@ namespace TimerUtility
             }
         }
 
-        private void btnReset_Click(object sender, EventArgs e)
+        private void udfButton_Click(object sender, EventArgs e)
         {
             LoadSkills(Settings.UserDefinedBoss);
 
-            var checkedInstance = flowLayoutPanel1.Controls.OfType<ButtonControl<Instance>>().Where(c => c.Checked).FirstOrDefault();
+            var checkedInstance = instancePanel.Controls.OfType<ButtonControl<Instance>>().Where(c => c.Checked).FirstOrDefault();
             if (checkedInstance != null)
             {
                 checkedInstance.Checked = false;
             }
 
-            var checkedBoss = flowLayoutPanel2.Controls.OfType<ButtonControl<Boss>>().Where(c => c.Checked).FirstOrDefault();
+            var checkedBoss = bossPanel.Controls.OfType<ButtonControl<Boss>>().Where(c => c.Checked).FirstOrDefault();
             if (checkedBoss != null)
             {
                 checkedBoss.Checked = false;
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void startButton_Click(object sender, EventArgs e)
         {
             var skillControls = this.skillControls.Where(s => s.Skill.Flag);
             foreach (var skill in skillControls)

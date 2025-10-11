@@ -30,131 +30,130 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WanmeiTimer));
-            timer1 = new System.Windows.Forms.Timer(components);
-            panel1 = new System.Windows.Forms.Panel();
-            button1 = new System.Windows.Forms.Button();
-            btnReset = new System.Windows.Forms.RadioButton();
-            textBox1 = new System.Windows.Forms.TextBox();
-            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            panel2 = new System.Windows.Forms.Panel();
-            panel1.SuspendLayout();
+            timer = new System.Windows.Forms.Timer(components);
+            titlePanel = new System.Windows.Forms.Panel();
+            startButton = new System.Windows.Forms.Button();
+            udfButton = new System.Windows.Forms.RadioButton();
+            nowText = new System.Windows.Forms.TextBox();
+            instancePanel = new System.Windows.Forms.FlowLayoutPanel();
+            bossPanel = new System.Windows.Forms.FlowLayoutPanel();
+            skillPanel = new System.Windows.Forms.FlowLayoutPanel();
+            titlePanel.SuspendLayout();
             SuspendLayout();
             // 
-            // timer1
+            // timer
             // 
-            timer1.Tick += new System.EventHandler(timer1_Tick);
+            timer.Tick += new System.EventHandler(timer_Tick);
             // 
-            // panel1
+            // titlePanel
             // 
-            panel1.AutoScroll = true;
-            panel1.Controls.Add(button1);
-            panel1.Controls.Add(btnReset);
-            panel1.Controls.Add(textBox1);
-            panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            panel1.Location = new System.Drawing.Point(3, 3);
-            panel1.Margin = new System.Windows.Forms.Padding(2);
-            panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(289, 32);
-            panel1.TabIndex = 0;
-            panel1.DoubleClick += new System.EventHandler(panel1_DoubleClick);
+            titlePanel.AutoScroll = true;
+            titlePanel.Controls.Add(startButton);
+            titlePanel.Controls.Add(udfButton);
+            titlePanel.Controls.Add(nowText);
+            titlePanel.Dock = System.Windows.Forms.DockStyle.Top;
+            titlePanel.Location = new System.Drawing.Point(3, 3);
+            titlePanel.Margin = new System.Windows.Forms.Padding(2);
+            titlePanel.Name = "titlePanel";
+            titlePanel.Size = new System.Drawing.Size(289, 32);
+            titlePanel.TabIndex = 0;
+            titlePanel.DoubleClick += new System.EventHandler(panel1_DoubleClick);
             // 
-            // button1
+            // startButton
             // 
-            button1.Font = new System.Drawing.Font("SimHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            button1.Location = new System.Drawing.Point(162, 2);
-            button1.Margin = new System.Windows.Forms.Padding(0);
-            button1.Name = "button1";
-            button1.Size = new System.Drawing.Size(64, 30);
-            button1.TabIndex = 3;
-            button1.Text = "开打计时";
-            button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            button1.UseVisualStyleBackColor = true;
-            button1.Visible = false;
-            button1.Click += new System.EventHandler(button1_Click);
+            startButton.Font = new System.Drawing.Font("SimHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            startButton.Location = new System.Drawing.Point(162, 2);
+            startButton.Margin = new System.Windows.Forms.Padding(0);
+            startButton.Name = "startButton";
+            startButton.Size = new System.Drawing.Size(64, 30);
+            startButton.TabIndex = 3;
+            startButton.Text = "开打计时";
+            startButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            startButton.UseVisualStyleBackColor = true;
+            startButton.Visible = false;
+            startButton.Click += new System.EventHandler(startButton_Click);
             // 
-            // btnReset
+            // udfButton
             // 
-            btnReset.Appearance = System.Windows.Forms.Appearance.Button;
-            btnReset.Font = new System.Drawing.Font("SimHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            btnReset.Location = new System.Drawing.Point(110, 2);
-            btnReset.Margin = new System.Windows.Forms.Padding(0);
-            btnReset.Name = "btnReset";
-            btnReset.Size = new System.Drawing.Size(51, 30);
-            btnReset.TabIndex = 2;
-            btnReset.TabStop = false;
-            btnReset.Text = "自定义";
-            btnReset.UseVisualStyleBackColor = true;
-            btnReset.Click += new System.EventHandler(btnReset_Click);
+            udfButton.Appearance = System.Windows.Forms.Appearance.Button;
+            udfButton.Font = new System.Drawing.Font("SimHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            udfButton.Location = new System.Drawing.Point(110, 2);
+            udfButton.Margin = new System.Windows.Forms.Padding(0);
+            udfButton.Name = "udfButton";
+            udfButton.Size = new System.Drawing.Size(51, 30);
+            udfButton.TabIndex = 2;
+            udfButton.TabStop = false;
+            udfButton.Text = "自定义";
+            udfButton.UseVisualStyleBackColor = true;
+            udfButton.Click += new System.EventHandler(udfButton_Click);
             // 
-            // textBox1
+            // nowText
             // 
-            textBox1.BackColor = System.Drawing.SystemColors.Control;
-            textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            textBox1.Cursor = System.Windows.Forms.Cursors.No;
-            textBox1.Font = new System.Drawing.Font("SimHei", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            textBox1.ForeColor = System.Drawing.Color.Green;
-            textBox1.Location = new System.Drawing.Point(4, 7);
-            textBox1.Margin = new System.Windows.Forms.Padding(2);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            textBox1.Size = new System.Drawing.Size(85, 23);
-            textBox1.TabIndex = 9999;
-            textBox1.TabStop = false;
-            textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            nowText.BackColor = System.Drawing.SystemColors.Control;
+            nowText.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            nowText.Cursor = System.Windows.Forms.Cursors.No;
+            nowText.Font = new System.Drawing.Font("SimHei", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            nowText.ForeColor = System.Drawing.Color.Green;
+            nowText.Location = new System.Drawing.Point(4, 7);
+            nowText.Margin = new System.Windows.Forms.Padding(2);
+            nowText.Name = "nowText";
+            nowText.ReadOnly = true;
+            nowText.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            nowText.Size = new System.Drawing.Size(85, 23);
+            nowText.TabIndex = 9999;
+            nowText.TabStop = false;
+            nowText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // flowLayoutPanel1
+            // instancePanel
             // 
-            flowLayoutPanel1.AutoSize = true;
-            flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            flowLayoutPanel1.Location = new System.Drawing.Point(3, 198);
-            flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new System.Drawing.Size(289, 0);
-            flowLayoutPanel1.TabIndex = 10;
+            instancePanel.AutoSize = true;
+            instancePanel.Dock = System.Windows.Forms.DockStyle.Top;
+            instancePanel.Location = new System.Drawing.Point(3, 198);
+            instancePanel.Margin = new System.Windows.Forms.Padding(2);
+            instancePanel.Name = "instancePanel";
+            instancePanel.Size = new System.Drawing.Size(289, 0);
+            instancePanel.TabIndex = 10;
             // 
-            // flowLayoutPanel2
+            // bossPanel
             // 
-            flowLayoutPanel2.AutoSize = true;
-            flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            flowLayoutPanel2.Location = new System.Drawing.Point(3, 198);
-            flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new System.Drawing.Size(289, 0);
-            flowLayoutPanel2.TabIndex = 20;
+            bossPanel.AutoSize = true;
+            bossPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            bossPanel.Location = new System.Drawing.Point(3, 198);
+            bossPanel.Margin = new System.Windows.Forms.Padding(2);
+            bossPanel.Name = "bossPanel";
+            bossPanel.Size = new System.Drawing.Size(289, 0);
+            bossPanel.TabIndex = 20;
             // 
-            // panel2
+            // skillPanel
             // 
-            panel2.AutoScroll = true;
-            panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            panel2.Location = new System.Drawing.Point(3, 35);
-            panel2.Margin = new System.Windows.Forms.Padding(2);
-            panel2.Name = "panel2";
-            panel2.Size = new System.Drawing.Size(289, 163);
-            panel2.TabIndex = 0;
+            skillPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            skillPanel.Location = new System.Drawing.Point(3, 35);
+            skillPanel.Margin = new System.Windows.Forms.Padding(2);
+            skillPanel.Name = "skillPanel";
+            skillPanel.MinimumSize = new System.Drawing.Size(289, 163);
+            skillPanel.TabIndex = 0;
+            skillPanel.AutoSize = true;
             // 
             // WanmeiTimer
             // 
+            AutoSize = true;
             AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            AutoSize = true;
-            ClientSize = new System.Drawing.Size(295, 305);
-            Controls.Add(flowLayoutPanel2);
-            Controls.Add(flowLayoutPanel1);
-            Controls.Add(panel2);
-            Controls.Add(panel1);
+            Controls.Add(bossPanel);
+            Controls.Add(instancePanel);
+            Controls.Add(skillPanel);
+            Controls.Add(titlePanel);
             Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             Margin = new System.Windows.Forms.Padding(2);
             MaximizeBox = false;
             Name = "WanmeiTimer";
             Padding = new System.Windows.Forms.Padding(3);
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            Text = "计时器 - 后浪专用";
+            Text = "计时器";
             TopMost = true;
-            Load += new System.EventHandler(Form1_Load);
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            Load += new System.EventHandler(Form_Load);
+            titlePanel.ResumeLayout(false);
+            titlePanel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
 
@@ -162,14 +161,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Panel panel1;
-        public System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.RadioButton btnReset;
-        public System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Panel titlePanel;
+        public System.Windows.Forms.FlowLayoutPanel instancePanel;
+        private System.Windows.Forms.FlowLayoutPanel bossPanel;
+        private System.Windows.Forms.FlowLayoutPanel skillPanel;
+        private System.Windows.Forms.TextBox nowText;
+        private System.Windows.Forms.RadioButton udfButton;
+        public System.Windows.Forms.Button startButton;
     }
 }
 

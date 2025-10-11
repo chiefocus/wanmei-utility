@@ -48,15 +48,15 @@ namespace TimerUtility
             this.stopwatchDisplay1 = new TimerUtility.StopwatchDisplay();
             this.SuspendLayout();
             // 
-            // button1
+            // udfButton
             // 
             this.button1.Font = new System.Drawing.Font("SimHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button1.Location = new System.Drawing.Point(0, 1);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
+            this.button1.Name = "udfButton";
             this.button1.Size = new System.Drawing.Size(82, 32);
             this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
+            this.button1.Text = "udfButton";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -72,7 +72,7 @@ namespace TimerUtility
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // textBox1
+            // nowText
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.Control;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -80,7 +80,7 @@ namespace TimerUtility
             this.textBox1.ForeColor = System.Drawing.Color.DarkGreen;
             this.textBox1.Location = new System.Drawing.Point(165, 11);
             this.textBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox1.Name = "textBox1";
+            this.textBox1.Name = "nowText";
             this.textBox1.Size = new System.Drawing.Size(297, 15);
             this.textBox1.TabIndex = 3;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
