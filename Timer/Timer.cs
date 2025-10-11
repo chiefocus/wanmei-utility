@@ -163,7 +163,7 @@ namespace TimerUtility
             panel2.Controls.Clear();
 
             var hasFlag = false;
-            var skills =  new List<Skill>(boss.Skills);
+            var skills = new List<Skill>(boss.Skills);
             skills.Reverse();
             foreach (var skill in skills)
             {
