@@ -11,26 +11,24 @@ namespace TimerUtility
         public Skill Skill { get; set; }
         public List<SkillControl> AffiliateSkills { get; set; } = new List<SkillControl>();
 
-        private Timer timer;
+        private readonly Timer timer;
         private readonly Stopwatch stopwatch;
         private bool isRunning;
         private int offsetMilliseconds = 0;
-        private int intervalMilliseconds = 0;
+
+        private int IntervalMilliseconds => Skill.Interval * 1000;
 
         public SkillControl(Skill skill, Timer timer)
         {
             InitializeComponent();
 
             Dock = DockStyle.Top;
-            stopwatchDisplay1.Skill = skill;
             stopwatchDisplay1.Visible = false;
-
+            stopwatchDisplay1.Skill = skill;
             label2.Visible = false; //Plus
             label3.Visible = false; //Minus
 
             this.timer = timer;
-            timer.Tick += new EventHandler(timer1_Tick);
-
             Skill = skill;
             button1.Text = skill.Name;
             button2.Text = skill.Reset;
@@ -38,54 +36,82 @@ namespace TimerUtility
             textBox2.Text = skill.Interval == 0 ? "" : $"{skill.Interval}";
 
             stopwatch = new Stopwatch();
-            intervalMilliseconds = Skill.Interval * 1000;
         }
 
         private void RefreshDisplay()
         {
-            if (isRunning && Skill.Interval > 0)
-            {
-                int elapsed = (int)(stopwatch.Elapsed.TotalMilliseconds - offsetMilliseconds);
-                int remaining = intervalMilliseconds - elapsed % intervalMilliseconds;
+            if (!Skill.Clickable || Skill.Interval <= 0)
+                return;
 
-                stopwatchDisplay1.Seconds = remaining / 1000;
-                stopwatchDisplay1.Milliseconds = remaining / 100 % 10;
-            }
+            var elapsed = (int)(stopwatch.Elapsed.TotalMilliseconds - offsetMilliseconds);
+            var remaining = IntervalMilliseconds - elapsed % IntervalMilliseconds;
+
+            stopwatchDisplay1.Seconds = remaining / 1000;
+            stopwatchDisplay1.Milliseconds = remaining / 100 % 10;
         }
 
         private void timer1_Tick(object sender, EventArgs e) => RefreshDisplay();
 
         private void button1_Click(object sender, EventArgs e)
         {
-            foreach (var skill in AffiliateSkills)
-            {
-                skill.Start();
-            }
+            StartSkills();
+        }
+
+        public void StartSkills()
+        {
+            AffiliateSkills.ForEach(skill => skill.Start());
         }
 
         public void Start()
         {
-            if (!Skill.Clickable || Skill.Interval <= 0) return;
+            if (!Skill.Clickable || Skill.Interval <= 0)
+                return;
 
-            isRunning = true;
+            timer.Tick -= timer1_Tick;
+            timer.Tick += timer1_Tick;
             stopwatch.Restart();
+
+            UpdateControls(true);
+        }
+
+        private void ResetSkills()
+        {
+            AffiliateSkills.ForEach(skill => skill.Reset());
+        }
+
+        private void Reset()
+        {
+            timer.Tick -= timer1_Tick;
+
+            if (!isRunning)
+                return;
+
+            UpdateControls(false);
+        }
+
+        private void UpdateControls(bool isRunning)
+        {
             offsetMilliseconds = 0;
 
-            textBox1.Visible = false;
-            stopwatchDisplay1.Visible = true;
-            stopwatchDisplay1.Seconds = Skill.Interval;
-            label2.Visible = WanmeiTimer.Settings.Profile.PlusFlag;
-            label3.Visible = WanmeiTimer.Settings.Profile.MinusFlag;
+            this.isRunning = isRunning;
+            textBox1.Visible = !isRunning;
+            stopwatchDisplay1.Visible = isRunning;
+            label2.Visible = isRunning && WanmeiTimer.Settings.Profile.PlusFlag;
+            label3.Visible = isRunning && WanmeiTimer.Settings.Profile.MinusFlag;
+
+            if (isRunning)
+            {
+                stopwatchDisplay1.Seconds = Skill.Interval;
+            }
+            else
+            {
+                textBox1.Text = Skill.Description;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            isRunning = false;
-            stopwatchDisplay1.Visible = false;
-            textBox1.Visible = true;
-            textBox1.Text = Skill.Description;
-            label2.Visible = false;
-            label3.Visible = false;
+            ResetSkills();
         }
 
         private void label2_Click(object sender, EventArgs e) => offsetMilliseconds += WanmeiTimer.Settings.Profile.Offset;
@@ -94,13 +120,12 @@ namespace TimerUtility
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             int.TryParse(textBox2.Text.Trim(), out var interval);
-            if (targetSkill != null && targetSkill.Interval != interval)
+            if (TargetSkill != null && TargetSkill.Interval != interval)
             {
-                targetSkill.Interval = interval;
+                TargetSkill.Interval = interval;
                 Skill.Interval = interval;
-                intervalMilliseconds = interval * 1000;
                 WanmeiTimer.SettingsChanged = true;
-                button2.PerformClick();
+                Reset();
             }
         }
 
@@ -112,16 +137,16 @@ namespace TimerUtility
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (targetSkill != null && targetSkill.Description != textBox1.Text)
+            if (TargetSkill != null && TargetSkill.Description != textBox1.Text)
             {
-                targetSkill.Description = textBox1.Text;
+                TargetSkill.Description = textBox1.Text;
                 Skill.Description = textBox1.Text;
                 WanmeiTimer.SettingsChanged = true;
             }
         }
 
-        private Skill targetSkill => WanmeiTimer.Settings.UserDefinedBoss.SkillDic.GetValue(Skill.Id) ??
-            WanmeiTimer.Settings.InstanceDic.GetValue(Skill.InstanceId)
+        private Skill TargetSkill => WanmeiTimer.Settings.UserDefinedBoss.SkillDic.GetValue(Skill.Id)
+            ?? WanmeiTimer.Settings.InstanceDic.GetValue(Skill.InstanceId)
             ?.BossDic.GetValue(Skill.BossId)?.SkillDic.GetValue(Skill.Id);
     }
 }

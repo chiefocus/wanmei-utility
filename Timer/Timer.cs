@@ -38,7 +38,7 @@ namespace TimerUtility
         public static Config Settings = new Config();
         public static bool SettingsChanged = false;
 
-        private List<SkillControl> skillControls = new List<SkillControl>();
+        private readonly List<SkillControl> skillControls = new List<SkillControl>();
         private Boss activeBoss;
 
         private void InitInstances(string file)
@@ -77,8 +77,6 @@ namespace TimerUtility
                     {
                         activeBoss = boss;
                     }
-
-                    boss.Skills.Reverse();
                 }
 
                 int vki = 0;
@@ -89,7 +87,6 @@ namespace TimerUtility
                     skill.VirtualKey = (uint)key;
                     vki++;
                 }
-                Settings.UserDefinedBoss.Skills.Reverse();
             }
         }
 
@@ -158,45 +155,54 @@ namespace TimerUtility
         {
             UnregisterAllHotKeys();
 
-            Text = string.IsNullOrWhiteSpace(boss.InstanceName) ? boss.Name : $"{boss.InstanceName} - {boss.Name}";
+            Text = string.IsNullOrEmpty(boss.InstanceName) ? boss.Name : $"{boss.InstanceName} - {boss.Name}";
             btnReset.Checked = boss.Id == Settings.UserDefinedBoss.Id;
-            foreach (var control in skillControls)
-            {
-                control.Dispose();
-            }
+
+            skillControls.ForEach(c => c.Dispose());
             skillControls.Clear();
             panel2.Controls.Clear();
-            button1.Visible = boss.Skills.Any(s => s.Flag);
 
-            foreach (var skill in boss.Skills)
+            var hasFlag = false;
+            var skills =  new List<Skill>(boss.Skills);
+            skills.Reverse();
+            foreach (var skill in skills)
             {
                 skill.InstanceName = boss.InstanceName;
                 skill.BossName = boss.Name;
                 var skillControl = new SkillControl(skill, timer1);
                 panel2.Controls.Add(skillControl);
                 skillControls.Add(skillControl);
+                hasFlag |= skill.Flag;
             }
+            button1.Visible = hasFlag;
 
-            var checkedBoss = flowLayoutPanel2.Controls.OfType<ButtonControl<Boss>>().FirstOrDefault(i => i.Data.Id == boss.Id);
-            if (checkedBoss != null) { checkedBoss.Checked = true; }
+            foreach (var b in flowLayoutPanel2.Controls.OfType<ButtonControl<Boss>>())
+                b.Checked = b.Data.Id == boss.Id;
 
-            var checkedInstance = flowLayoutPanel1.Controls.OfType<ButtonControl<Instance>>().FirstOrDefault(i => i.Data.Id == boss.InstanceId);
-            if (checkedInstance != null) { checkedInstance.Checked = true; }
+            foreach (var i in flowLayoutPanel1.Controls.OfType<ButtonControl<Instance>>())
+                i.Checked = i.Data.Id == boss.InstanceId;
 
-            foreach (var skillControl in skillControls)
+            LinkAffiliateSkills();
+            RegisterAllHotKeys();
+        }
+
+        private void LinkAffiliateSkills()
+        {
+            var skillDict = skillControls.ToDictionary(s => s.Skill.Name);
+            foreach (var control in skillControls)
             {
-                skillControl.AffiliateSkills.Add(skillControl);
-                if (!string.IsNullOrEmpty(skillControl.Skill.Affiliate))
+                control.AffiliateSkills.Clear();
+                control.AffiliateSkills.Add(control);
+
+                if (string.IsNullOrEmpty(control.Skill.Affiliate)) continue;
+                foreach (var name in control.Skill.Affiliate.Split(','))
                 {
-                    foreach (var affiliate in skillControl.Skill.Affiliate.Split(','))
-                    {
-                        var affiliateControl = skillControls.FirstOrDefault(s => s.Skill.Name.Equals(affiliate));
-                        skillControl.AffiliateSkills.Add(affiliateControl);
-                    }
+                    var aff = skillDict.GetValue(name);
+                    if (aff != null)
+                        control.AffiliateSkills.Add(aff);
+
                 }
             }
-
-            RegisterAllHotKeys();
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -233,19 +239,10 @@ namespace TimerUtility
 
         private void SaveSettings()
         {
-            if (Settings.Profile.Preservable && SettingsChanged)
-            {
-                foreach (var instance in Settings.Instances)
-                {
-                    foreach (var boss in instance.Bosses)
-                    {
-                        boss.Skills.Reverse();
-                    }
-                }
-                Settings.UserDefinedBoss.Skills.Reverse();
-                var settingsXml = Settings.SerializeToString();
-                File.WriteAllText(DataFile, settingsXml);
-            }
+            if (!Settings.Profile.Preservable || !SettingsChanged)
+                return;
+            var settingsXml = Settings.SerializeToString();
+            File.WriteAllText(DataFile, settingsXml);
         }
 
         private void UnregisterAllHotKeys()
@@ -287,7 +284,7 @@ namespace TimerUtility
             {
                 int id = m.WParam.ToInt32();
                 var skillControl = skillControls.FirstOrDefault(s => s.Skill.Key == id);
-                skillControl?.button1.PerformClick();
+                skillControl?.StartSkills();
             }
 
             if (m.Msg == WM_NCLBUTTONDBLCLK)
