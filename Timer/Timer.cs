@@ -92,14 +92,13 @@ namespace TimerUtility
 
         private async void Form_Load(object sender, EventArgs e)
         {
+            timer.Start();
             await Init(DataFile);
         }
 
         private async Task Init(string file)
         {
             await Task.Run(() => { InitInstances(file); });
-
-            timer.Start();
 
             if (Settings.Preference.Location != null)
                 Location = Settings.Preference.Location.Value;
@@ -319,7 +318,7 @@ namespace TimerUtility
             SettingsChanged = true;
         }
 
-        private async void panel1_DoubleClick(object sender, EventArgs e)
+        private async void titlePanel_DoubleClick(object sender, EventArgs e)
         {
             var openFileDialog = new OpenFileDialog
             {

@@ -57,7 +57,7 @@
             titlePanel.Name = "titlePanel";
             titlePanel.Size = new System.Drawing.Size(289, 32);
             titlePanel.TabIndex = 0;
-            titlePanel.DoubleClick += new System.EventHandler(panel1_DoubleClick);
+            titlePanel.DoubleClick += new System.EventHandler(titlePanel_DoubleClick);
             // 
             // startButton
             // 
