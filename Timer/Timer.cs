@@ -193,7 +193,6 @@ namespace TimerUtility
                 if (control.Skill.Flag)
                 {
                     control.AffiliateSkills.AddRange(skillControls.Where(c => c.Skill.Flag));
-                    continue;
                 }
 
                 if (!string.IsNullOrEmpty(control.Skill.Affiliate))
