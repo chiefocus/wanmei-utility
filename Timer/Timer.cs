@@ -323,7 +323,7 @@ namespace TimerUtility
             var openFileDialog = new OpenFileDialog
             {
                 Filter = "所有文件 (*.*)|*.*",
-                RestoreDirectory = true
+                InitialDirectory = Application.StartupPath
             };
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
