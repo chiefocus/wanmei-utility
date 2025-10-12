@@ -189,15 +189,26 @@ namespace TimerUtility
             foreach (var control in skillControls)
             {
                 control.AffiliateSkills.Clear();
-                control.AffiliateSkills.Add(control);
 
-                if (string.IsNullOrEmpty(control.Skill.Affiliate)) continue;
-                foreach (var name in control.Skill.Affiliate.Split(','))
+                if (control.Skill.Flag)
                 {
-                    var aff = skillControls.FirstOrDefault(c => c.Skill.Name.Equals(name));
-                    if (aff != null)
-                        control.AffiliateSkills.Add(aff);
+                    control.AffiliateSkills.AddRange(skillControls.Where(c => c.Skill.Flag));
+                    continue;
+                }
 
+                if (!string.IsNullOrEmpty(control.Skill.Affiliate))
+                {
+                    foreach (var name in control.Skill.Affiliate.Split(','))
+                    {
+                        var aff = skillControls.FirstOrDefault(c => c.Skill.Name.Equals(name));
+                        if (aff != null)
+                            control.AffiliateSkills.Add(aff);
+                    }
+                }
+
+                if (!control.AffiliateSkills.Contains(control))
+                {
+                    control.AffiliateSkills.Add(control);
                 }
             }
         }
