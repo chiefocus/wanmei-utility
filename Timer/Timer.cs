@@ -161,7 +161,6 @@ namespace TimerUtility
             skillControls.Clear();
             skillPanel.Controls.Clear();
 
-            var hasFlag = false;
             foreach (var skill in boss.Skills)
             {
                 skill.InstanceName = boss.InstanceName;
@@ -169,9 +168,7 @@ namespace TimerUtility
                 var skillControl = new SkillControl(skill, timer);
                 skillPanel.Controls.Add(skillControl);
                 skillControls.Add(skillControl);
-                hasFlag |= skill.Flag;
             }
-            startButton.Visible = hasFlag;
 
             foreach (var b in bossPanel.Controls.OfType<ButtonControl<Boss>>())
                 b.Checked = b.Data.Id == boss.Id;
@@ -225,15 +222,6 @@ namespace TimerUtility
             if (checkedBoss != null)
             {
                 checkedBoss.Checked = false;
-            }
-        }
-
-        private void startButton_Click(object sender, EventArgs e)
-        {
-            var skillControls = this.skillControls.Where(s => s.Skill.Flag);
-            foreach (var skill in skillControls)
-            {
-                skill.Start();
             }
         }
 

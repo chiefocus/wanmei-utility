@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.titlePanel = new System.Windows.Forms.Panel();
-            this.startButton = new System.Windows.Forms.Button();
             this.udfButton = new System.Windows.Forms.RadioButton();
             this.nowText = new System.Windows.Forms.TextBox();
             this.instancePanel = new System.Windows.Forms.FlowLayoutPanel();
@@ -47,7 +46,6 @@
             // titlePanel
             // 
             this.titlePanel.AutoScroll = true;
-            this.titlePanel.Controls.Add(this.startButton);
             this.titlePanel.Controls.Add(this.udfButton);
             this.titlePanel.Controls.Add(this.nowText);
             this.titlePanel.Dock = System.Windows.Forms.DockStyle.Top;
@@ -57,20 +55,6 @@
             this.titlePanel.Size = new System.Drawing.Size(278, 32);
             this.titlePanel.TabIndex = 0;
             this.titlePanel.DoubleClick += new System.EventHandler(this.titlePanel_DoubleClick);
-            // 
-            // startButton
-            // 
-            this.startButton.Font = new System.Drawing.Font("SimHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.startButton.Location = new System.Drawing.Point(162, 2);
-            this.startButton.Margin = new System.Windows.Forms.Padding(0);
-            this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(64, 30);
-            this.startButton.TabIndex = 3;
-            this.startButton.Text = "开打计时";
-            this.startButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.startButton.UseVisualStyleBackColor = true;
-            this.startButton.Visible = false;
-            this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
             // udfButton
             // 
@@ -168,7 +152,6 @@
         private System.Windows.Forms.FlowLayoutPanel skillPanel;
         private System.Windows.Forms.TextBox nowText;
         private System.Windows.Forms.RadioButton udfButton;
-        public System.Windows.Forms.Button startButton;
     }
 }
 
