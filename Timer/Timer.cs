@@ -28,7 +28,7 @@ namespace TimerUtility
             var exePath = Assembly.GetEntryAssembly().Location;
             Icon = Icon.ExtractAssociatedIcon(exePath);
             MaximumSize = new Size(785, 515);
-            MinimumSize = new Size(312, 310);
+            MinimumSize = new Size(308, 310);
             Application.ApplicationExit += OnAppExit;
         }
 
