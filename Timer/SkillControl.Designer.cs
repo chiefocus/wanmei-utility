@@ -62,7 +62,7 @@ namespace TimerUtility
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("SimHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(106, 1);
+            this.button2.Location = new System.Drawing.Point(104, 1);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(51, 32);
@@ -77,7 +77,7 @@ namespace TimerUtility
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("SimHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox1.ForeColor = System.Drawing.Color.DarkGreen;
-            this.textBox1.Location = new System.Drawing.Point(161, 11);
+            this.textBox1.Location = new System.Drawing.Point(159, 11);
             this.textBox1.Margin = new System.Windows.Forms.Padding(0);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(310, 15);
@@ -90,7 +90,7 @@ namespace TimerUtility
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.Font = new System.Drawing.Font("SimHei", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox2.ForeColor = System.Drawing.Color.DarkGreen;
-            this.textBox2.Location = new System.Drawing.Point(83, 11);
+            this.textBox2.Location = new System.Drawing.Point(82, 11);
             this.textBox2.Margin = new System.Windows.Forms.Padding(1);
             this.textBox2.MaxLength = 3;
             this.textBox2.Name = "textBox2";
@@ -130,7 +130,7 @@ namespace TimerUtility
             this.stopwatchDisplay1.FontMain = new System.Drawing.Font("SimHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.stopwatchDisplay1.FontSub = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stopwatchDisplay1.ForeColorMain = System.Drawing.Color.Empty;
-            this.stopwatchDisplay1.Location = new System.Drawing.Point(161, 5);
+            this.stopwatchDisplay1.Location = new System.Drawing.Point(159, 5);
             this.stopwatchDisplay1.Name = "stopwatchDisplay1";
             this.stopwatchDisplay1.Size = new System.Drawing.Size(45, 26);
             this.stopwatchDisplay1.TabIndex = 8;

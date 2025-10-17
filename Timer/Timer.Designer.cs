@@ -60,7 +60,7 @@
             // 
             this.udfButton.Appearance = System.Windows.Forms.Appearance.Button;
             this.udfButton.Font = new System.Drawing.Font("SimHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.udfButton.Location = new System.Drawing.Point(106, 2);
+            this.udfButton.Location = new System.Drawing.Point(104, 2);
             this.udfButton.Margin = new System.Windows.Forms.Padding(0);
             this.udfButton.Name = "udfButton";
             this.udfButton.Size = new System.Drawing.Size(51, 30);
@@ -81,7 +81,7 @@
             this.nowText.Name = "nowText";
             this.nowText.ReadOnly = true;
             this.nowText.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.nowText.Size = new System.Drawing.Size(100, 23);
+            this.nowText.Size = new System.Drawing.Size(98, 23);
             this.nowText.TabIndex = 9999;
             this.nowText.TabStop = false;
             this.nowText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
