@@ -74,7 +74,7 @@ namespace TimerUtility
             {
                 Size subSize = TextRenderer.MeasureText(subText, FontSub, Size.Empty, TextFormatFlags.NoPadding);
                 int subX = mainSize.Width - subSize.Width / 3 - 5;
-                int subY = mainSize.Height - subSize.Height;
+                int subY = mainSize.Height - subSize.Height - 1;
                 TextRenderer.DrawText(e.Graphics, subText, FontSub, new Point(subX, subY), ForeColorMain,
                 TextFormatFlags.NoPadding | TextFormatFlags.NoClipping);
             }
