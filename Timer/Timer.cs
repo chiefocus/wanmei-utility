@@ -146,6 +146,11 @@ namespace TimerUtility
                 bossControl.ButtonClicked += b => LoadSkills(b);
                 bossPanel.Controls.Add(bossControl);
             }
+
+            var udfBossControl = new ButtonControl<Boss>(Settings.UserDefinedBoss, Settings.UserDefinedBoss.Name);
+            udfBossControl.ButtonClicked += b => LoadSkills(b);
+            bossPanel.Controls.Add(udfBossControl);
+
             var loadingBoss = activeBoss ?? instance.Bosses.FirstOrDefault();
             LoadSkills(loadingBoss);
         }
@@ -155,8 +160,6 @@ namespace TimerUtility
             UnregisterAllHotKeys();
 
             Text = string.IsNullOrEmpty(boss.InstanceName) ? boss.Name : $"{boss.InstanceName} - {boss.Name}";
-            udfButton.Checked = boss.Id == Settings.UserDefinedBoss.Id;
-
             skillControls.ForEach(c => c.Dispose());
             skillControls.Clear();
             skillPanel.Controls.Clear();
@@ -205,23 +208,6 @@ namespace TimerUtility
                 {
                     control.AffiliateSkills.Add(control);
                 }
-            }
-        }
-
-        private void udfButton_Click(object sender, EventArgs e)
-        {
-            LoadSkills(Settings.UserDefinedBoss);
-
-            var checkedInstance = instancePanel.Controls.OfType<ButtonControl<Instance>>().Where(c => c.Checked).FirstOrDefault();
-            if (checkedInstance != null)
-            {
-                checkedInstance.Checked = false;
-            }
-
-            var checkedBoss = bossPanel.Controls.OfType<ButtonControl<Boss>>().Where(c => c.Checked).FirstOrDefault();
-            if (checkedBoss != null)
-            {
-                checkedBoss.Checked = false;
             }
         }
 
