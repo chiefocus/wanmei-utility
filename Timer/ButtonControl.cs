@@ -18,7 +18,7 @@ namespace TimerUtility
             Appearance = Appearance.Button;
             Font = new Font("SimHei", 11.25F);
             Margin = new Padding(1);
-            Size = new Size(92, 32);
+            Size = new Size(93, 32);
             TextAlign = ContentAlignment.MiddleCenter;
 
             Click += Button_Click;
