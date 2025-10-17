@@ -74,7 +74,7 @@
             // instancePanel
             // 
             this.instancePanel.AutoSize = true;
-            this.instancePanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.instancePanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.instancePanel.Location = new System.Drawing.Point(3, 166);
             this.instancePanel.Margin = new System.Windows.Forms.Padding(2);
             this.instancePanel.Name = "instancePanel";
@@ -84,7 +84,7 @@
             // bossPanel
             // 
             this.bossPanel.AutoSize = true;
-            this.bossPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bossPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.bossPanel.Location = new System.Drawing.Point(3, 166);
             this.bossPanel.Margin = new System.Windows.Forms.Padding(2);
             this.bossPanel.Name = "bossPanel";
@@ -108,10 +108,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.Size = new System.Drawing.Size(308, 310);
-            this.Controls.Add(this.titlePanel);
-            this.Controls.Add(this.bossPanel);
-            this.Controls.Add(this.instancePanel);
             this.Controls.Add(this.skillPanel);
+            this.Controls.Add(this.instancePanel);
+            this.Controls.Add(this.bossPanel);
+            this.Controls.Add(this.titlePanel);
             this.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
