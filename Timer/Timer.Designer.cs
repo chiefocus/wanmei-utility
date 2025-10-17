@@ -60,7 +60,7 @@
             // 
             this.udfButton.Appearance = System.Windows.Forms.Appearance.Button;
             this.udfButton.Font = new System.Drawing.Font("SimHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.udfButton.Location = new System.Drawing.Point(110, 2);
+            this.udfButton.Location = new System.Drawing.Point(106, 2);
             this.udfButton.Margin = new System.Windows.Forms.Padding(0);
             this.udfButton.Name = "udfButton";
             this.udfButton.Size = new System.Drawing.Size(51, 30);
