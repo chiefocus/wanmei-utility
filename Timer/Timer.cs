@@ -185,11 +185,7 @@ namespace TimerUtility
 
             var newSkillPanelHeight = skillPanel.Height;
             if (newSkillPanelHeight != preSkillPanelHeight)
-            {
-                var height = this.Height - preSkillPanelHeight + newSkillPanelHeight;
-                this.MinimumSize = new Size(this.Width, height);
-                this.Height = height;
-            }
+                this.Height += newSkillPanelHeight - preSkillPanelHeight;
         }
 
         private void LinkAffiliateSkills()
