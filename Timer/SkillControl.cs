@@ -40,7 +40,7 @@ namespace TimerUtility
 
         private void RefreshDisplay()
         {
-            if (!Skill.Clickable || Skill.Interval <= 0)
+            if (!isRunning)
                 return;
 
             var elapsed = (int)(stopwatch.Elapsed.TotalMilliseconds - offsetMilliseconds);
@@ -62,16 +62,15 @@ namespace TimerUtility
             AffiliateSkills.ForEach(skill => skill.Start());
         }
 
-        public void Start()
+        private void Start()
         {
             if (!Skill.Clickable || Skill.Interval <= 0)
                 return;
 
+            UpdateControls(true);
             timer.Tick -= timer1_Tick;
             timer.Tick += timer1_Tick;
             stopwatch.Restart();
-
-            UpdateControls(true);
         }
 
         private void ResetSkills()
@@ -81,12 +80,8 @@ namespace TimerUtility
 
         private void Reset()
         {
-            timer.Tick -= timer1_Tick;
-
-            if (!isRunning)
-                return;
-
             UpdateControls(false);
+            timer.Tick -= timer1_Tick;
         }
 
         private void UpdateControls(bool isRunning)
