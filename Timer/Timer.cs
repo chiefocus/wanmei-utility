@@ -27,7 +27,7 @@ namespace TimerUtility
             InitializeComponent();
             var exePath = Assembly.GetEntryAssembly().Location;
             Icon = Icon.ExtractAssociatedIcon(exePath);
-            MaximumSize = new Size(785, 515);
+            MaximumSize = new Size(1000, 800);
             MinimumSize = new Size(308, 310);
             Application.ApplicationExit += OnAppExit;
         }
@@ -157,8 +157,7 @@ namespace TimerUtility
 
         public void LoadSkills(Boss boss)
         {
-            this.SuspendLayout();
-
+            var preSkillPanelHeight = skillPanel.Height;
             UnregisterAllHotKeys();
 
             Text = string.IsNullOrEmpty(boss.InstanceName) ? boss.Name : $"{boss.InstanceName} - {boss.Name}";
@@ -183,9 +182,8 @@ namespace TimerUtility
 
             LinkAffiliateSkills();
             RegisterAllHotKeys();
-
-            this.ResumeLayout();
-            this.Height = skillPanel.Height + bossPanel.Height + instancePanel.Height + titlePanel.Height + 48;
+            var newSkillPanelHeight = skillPanel.Height;
+            this.Height += newSkillPanelHeight - preSkillPanelHeight;
         }
 
         private void LinkAffiliateSkills()
