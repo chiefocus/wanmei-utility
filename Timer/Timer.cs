@@ -182,8 +182,14 @@ namespace TimerUtility
 
             LinkAffiliateSkills();
             RegisterAllHotKeys();
+
             var newSkillPanelHeight = skillPanel.Height;
-            this.Height += newSkillPanelHeight - preSkillPanelHeight;
+            if (newSkillPanelHeight != preSkillPanelHeight)
+            {
+                var height = this.Height - preSkillPanelHeight + newSkillPanelHeight;
+                this.MinimumSize = new Size(this.Width, height);
+                this.Height = height;
+            }
         }
 
         private void LinkAffiliateSkills()
