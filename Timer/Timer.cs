@@ -297,7 +297,7 @@ namespace TimerUtility
             SettingsChanged = true;
         }
 
-        private async void titlePanel_DoubleClick(object sender, EventArgs e)
+        private async void DoubleClick(object sender, EventArgs e)
         {
             var openFileDialog = new OpenFileDialog
             {

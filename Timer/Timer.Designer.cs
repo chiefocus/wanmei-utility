@@ -31,10 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.titlePanel = new System.Windows.Forms.Panel();
+            this.nowText = new System.Windows.Forms.TextBox();
             this.instancePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.bossPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.skillPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.nowText = new System.Windows.Forms.TextBox();
             this.titlePanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +52,24 @@
             this.titlePanel.Name = "titlePanel";
             this.titlePanel.Size = new System.Drawing.Size(286, 28);
             this.titlePanel.TabIndex = 0;
-            this.titlePanel.DoubleClick += new System.EventHandler(this.titlePanel_DoubleClick);
+            // 
+            // nowText
+            // 
+            this.nowText.BackColor = System.Drawing.SystemColors.Control;
+            this.nowText.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.nowText.Cursor = System.Windows.Forms.Cursors.No;
+            this.nowText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.nowText.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nowText.ForeColor = System.Drawing.Color.Green;
+            this.nowText.Location = new System.Drawing.Point(0, 0);
+            this.nowText.Margin = new System.Windows.Forms.Padding(0);
+            this.nowText.Name = "nowText";
+            this.nowText.ReadOnly = true;
+            this.nowText.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.nowText.Size = new System.Drawing.Size(286, 23);
+            this.nowText.TabIndex = 9999;
+            this.nowText.TabStop = false;
+            this.nowText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // instancePanel
             // 
@@ -84,24 +101,7 @@
             this.skillPanel.Name = "skillPanel";
             this.skillPanel.Size = new System.Drawing.Size(289, 163);
             this.skillPanel.TabIndex = 0;
-            // 
-            // nowText
-            // 
-            this.nowText.BackColor = System.Drawing.SystemColors.Control;
-            this.nowText.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.nowText.Cursor = System.Windows.Forms.Cursors.No;
-            this.nowText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.nowText.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nowText.ForeColor = System.Drawing.Color.Green;
-            this.nowText.Location = new System.Drawing.Point(0, 0);
-            this.nowText.Margin = new System.Windows.Forms.Padding(0);
-            this.nowText.Name = "nowText";
-            this.nowText.ReadOnly = true;
-            this.nowText.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.nowText.Size = new System.Drawing.Size(286, 23);
-            this.nowText.TabIndex = 9999;
-            this.nowText.TabStop = false;
-            this.nowText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.skillPanel.DoubleClick += new System.EventHandler(this.DoubleClick);
             // 
             // WanmeiTimer
             // 
