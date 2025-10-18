@@ -62,7 +62,7 @@ namespace TimerUtility
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("SimHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(104, 1);
+            this.button2.Location = new System.Drawing.Point(105, 1);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(51, 32);
@@ -88,7 +88,7 @@ namespace TimerUtility
             // 
             this.textBox2.BackColor = System.Drawing.SystemColors.Control;
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("SimHei", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox2.Font = new System.Drawing.Font("SimHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox2.ForeColor = System.Drawing.Color.DarkGreen;
             this.textBox2.Location = new System.Drawing.Point(82, 11);
             this.textBox2.Margin = new System.Windows.Forms.Padding(1);

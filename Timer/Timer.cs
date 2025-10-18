@@ -157,6 +157,8 @@ namespace TimerUtility
 
         public void LoadSkills(Boss boss)
         {
+            this.SuspendLayout();
+
             UnregisterAllHotKeys();
 
             Text = string.IsNullOrEmpty(boss.InstanceName) ? boss.Name : $"{boss.InstanceName} - {boss.Name}";
@@ -181,6 +183,9 @@ namespace TimerUtility
 
             LinkAffiliateSkills();
             RegisterAllHotKeys();
+
+            this.ResumeLayout();
+            this.Height = skillPanel.Height + bossPanel.Height + instancePanel.Height + titlePanel.Height + 48;
         }
 
         private void LinkAffiliateSkills()
