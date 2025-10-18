@@ -88,10 +88,11 @@ namespace TimerUtility
             // 
             // nowLabel
             // 
-            this.nowLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nowLabel.Font = new System.Drawing.Font("SimHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.nowLabel.ForeColor = System.Drawing.Color.Green;
             this.nowLabel.Margin = new System.Windows.Forms.Padding(0);
             this.nowLabel.Name = "nowLabel";
-            this.nowLabel.Size = new System.Drawing.Size(271, 22);
+            this.nowLabel.Size = new System.Drawing.Size(240, 22);
             this.nowLabel.Spring = true;
             this.nowLabel.Text = "{now}";
             // 
