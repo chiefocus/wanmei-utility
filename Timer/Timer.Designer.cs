@@ -47,10 +47,10 @@
             this.titlePanel.AutoScroll = true;
             this.titlePanel.Controls.Add(this.nowText);
             this.titlePanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.titlePanel.Location = new System.Drawing.Point(3, 270);
+            this.titlePanel.Location = new System.Drawing.Point(3, 240);
             this.titlePanel.Margin = new System.Windows.Forms.Padding(2);
             this.titlePanel.Name = "titlePanel";
-            this.titlePanel.Size = new System.Drawing.Size(278, 32);
+            this.titlePanel.Size = new System.Drawing.Size(286, 28);
             this.titlePanel.TabIndex = 0;
             this.titlePanel.DoubleClick += new System.EventHandler(this.titlePanel_DoubleClick);
             // 
@@ -61,7 +61,7 @@
             this.nowText.Cursor = System.Windows.Forms.Cursors.No;
             this.nowText.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nowText.ForeColor = System.Drawing.Color.Green;
-            this.nowText.Location = new System.Drawing.Point(3, 5);
+            this.nowText.Location = new System.Drawing.Point(3, 3);
             this.nowText.Margin = new System.Windows.Forms.Padding(0);
             this.nowText.Name = "nowText";
             this.nowText.ReadOnly = true;
@@ -75,20 +75,20 @@
             // 
             this.instancePanel.AutoSize = true;
             this.instancePanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.instancePanel.Location = new System.Drawing.Point(3, 166);
+            this.instancePanel.Location = new System.Drawing.Point(3, 240);
             this.instancePanel.Margin = new System.Windows.Forms.Padding(2);
             this.instancePanel.Name = "instancePanel";
-            this.instancePanel.Size = new System.Drawing.Size(278, 0);
+            this.instancePanel.Size = new System.Drawing.Size(286, 0);
             this.instancePanel.TabIndex = 10;
             // 
             // bossPanel
             // 
             this.bossPanel.AutoSize = true;
             this.bossPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.bossPanel.Location = new System.Drawing.Point(3, 166);
+            this.bossPanel.Location = new System.Drawing.Point(3, 240);
             this.bossPanel.Margin = new System.Windows.Forms.Padding(2);
             this.bossPanel.Name = "bossPanel";
-            this.bossPanel.Size = new System.Drawing.Size(278, 0);
+            this.bossPanel.Size = new System.Drawing.Size(286, 0);
             this.bossPanel.TabIndex = 20;
             // 
             // skillPanel
@@ -107,7 +107,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.Size = new System.Drawing.Size(308, 310);
+            this.ClientSize = new System.Drawing.Size(292, 271);
             this.Controls.Add(this.skillPanel);
             this.Controls.Add(this.instancePanel);
             this.Controls.Add(this.bossPanel);
