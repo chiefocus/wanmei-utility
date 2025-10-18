@@ -115,7 +115,7 @@ namespace TimerUtility
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            nowLabel.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss dddd");
+            nowLabel.Text = DateTime.Now.ToString("HH:mm:ss");
         }
 
         private void LoadInstances()
