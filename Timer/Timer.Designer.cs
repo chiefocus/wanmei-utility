@@ -47,8 +47,9 @@ namespace TimerUtility
             // instancePanel
             // 
             this.instancePanel.AutoSize = true;
-            this.instancePanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.instancePanel.Location = new System.Drawing.Point(3, 246);
+            this.instancePanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.instancePanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.instancePanel.Location = new System.Drawing.Point(3, 163);
             this.instancePanel.Margin = new System.Windows.Forms.Padding(2);
             this.instancePanel.Name = "instancePanel";
             this.instancePanel.Size = new System.Drawing.Size(286, 0);
@@ -57,8 +58,9 @@ namespace TimerUtility
             // bossPanel
             // 
             this.bossPanel.AutoSize = true;
-            this.bossPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.bossPanel.Location = new System.Drawing.Point(3, 246);
+            this.bossPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.bossPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bossPanel.Location = new System.Drawing.Point(3, 163);
             this.bossPanel.Margin = new System.Windows.Forms.Padding(2);
             this.bossPanel.Name = "bossPanel";
             this.bossPanel.Size = new System.Drawing.Size(286, 0);
@@ -67,12 +69,13 @@ namespace TimerUtility
             // skillPanel
             // 
             this.skillPanel.AutoSize = true;
+            this.skillPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.skillPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.skillPanel.Location = new System.Drawing.Point(3, 3);
             this.skillPanel.Margin = new System.Windows.Forms.Padding(2);
-            this.skillPanel.MinimumSize = new System.Drawing.Size(289, 163);
+            this.skillPanel.MinimumSize = new System.Drawing.Size(289, 160);
             this.skillPanel.Name = "skillPanel";
-            this.skillPanel.Size = new System.Drawing.Size(289, 163);
+            this.skillPanel.Size = new System.Drawing.Size(289, 160);
             this.skillPanel.TabIndex = 0;
             // 
             // statusStrip1
@@ -101,9 +104,9 @@ namespace TimerUtility
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(292, 271);
-            this.Controls.Add(this.skillPanel);
-            this.Controls.Add(this.instancePanel);
             this.Controls.Add(this.bossPanel);
+            this.Controls.Add(this.instancePanel);
+            this.Controls.Add(this.skillPanel);
             this.Controls.Add(this.statusStrip1);
             this.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -114,6 +117,7 @@ namespace TimerUtility
             this.Text = "计时器";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Form_Load);
+            this.Resize += new System.EventHandler(this.WanmeiTimer_Resize);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
