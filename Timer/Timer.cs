@@ -181,8 +181,6 @@ namespace TimerUtility
 
             LinkAffiliateSkills();
             RegisterAllHotKeys();
-
-            ResizeForm();
         }
 
         private void LinkAffiliateSkills()
@@ -308,20 +306,6 @@ namespace TimerUtility
                 await Init(file);
                 SettingsChanged = true;
             }
-        }
-
-        private void ResizeForm()
-        {
-            var panelsTotalHeight = bossPanel.Bottom;
-            var statusBarHeight = statusStrip1.Height;
-            var borderCorrection = this.Height - this.ClientSize.Height;
-            var totalHeight = panelsTotalHeight + statusBarHeight + borderCorrection + 6;
-            this.Height = Math.Max(totalHeight, this.MinimumSize.Height);
-        }
-
-        private void WanmeiTimer_Resize(object sender, EventArgs e)
-        {
-            ResizeForm();
         }
     }
 }

@@ -117,18 +117,16 @@ namespace TimerUtility
             this.Text = "计时器";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Form_Load);
-            this.Resize += new System.EventHandler(this.WanmeiTimer_Resize);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
 
         private System.Windows.Forms.Timer timer;
-        public System.Windows.Forms.FlowLayoutPanel instancePanel;
+        private System.Windows.Forms.FlowLayoutPanel instancePanel;
         private System.Windows.Forms.FlowLayoutPanel bossPanel;
         private System.Windows.Forms.FlowLayoutPanel skillPanel;
         private System.Windows.Forms.StatusStrip statusStrip1;
