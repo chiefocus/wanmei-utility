@@ -121,6 +121,7 @@ namespace TimerUtility
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
