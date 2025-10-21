@@ -94,7 +94,6 @@ namespace TimerUtility
         {
             timer.Start();
             await Init(DataFile);
-            ResizeForm();
         }
 
         private void ResizeForm()
