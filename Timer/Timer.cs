@@ -94,6 +94,19 @@ namespace TimerUtility
         {
             timer.Start();
             await Init(DataFile);
+            ResizeForm();
+        }
+
+        private void ResizeForm()
+        {
+            var totalHeight = 0;
+            foreach (Control c in this.Controls)
+            {
+                if (c.Visible)
+                    totalHeight += c.Height + c.Margin.Horizontal;
+            }
+            var borderHeight = this.Height - this.ClientSize.Height;
+            this.Height = totalHeight + borderHeight;
         }
 
         private async Task Init(string file)
@@ -181,6 +194,7 @@ namespace TimerUtility
 
             LinkAffiliateSkills();
             RegisterAllHotKeys();
+            ResizeForm();
         }
 
         private void LinkAffiliateSkills()
