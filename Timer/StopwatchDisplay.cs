@@ -26,27 +26,16 @@ namespace TimerUtility
                     Task.Run(() => { try { soundPlayer?.Play(); } catch { } });
                 }
 
-                if (value <= WARNING_SECONDS)
+                if (value > WARNING_SECONDS)
                 {
-                    ForeColorMain = Color.Red;
+                    ForeColorMain = Color.Blue;
+                    isPlaying = false;
                 }
                 else
                 {
-                    isPlaying = false;
-                    float progress = (totalSeconds - value) / (float)(totalSeconds - WARNING_SECONDS);
-                    progress = Math.Max(0, Math.Min(1, progress)); // 安全 clamp
-                    ForeColorMain = InterpolateColor(Color.Blue, Color.Red, progress);
+                    ForeColorMain = Color.Red;
                 }
             }
-        }
-
-        private static Color InterpolateColor(Color start, Color end, float t)
-        {
-            return Color.FromArgb(
-                (int)(start.R + t * (end.R - start.R)),
-                (int)(start.G + t * (end.G - start.G)),
-                (int)(start.B + t * (end.B - start.B))
-            );
         }
 
         public int Milliseconds
@@ -66,7 +55,6 @@ namespace TimerUtility
                 {
                     try { soundPlayer = new SoundPlayer(value.Voice); } catch { }
                 }
-                totalSeconds = value?.Interval ?? 0;
             }
         }
 
@@ -74,7 +62,6 @@ namespace TimerUtility
         private string subText;
         private SoundPlayer soundPlayer;
         private bool isPlaying = false;
-        private int totalSeconds;
 
         public StopwatchDisplay()
         {
