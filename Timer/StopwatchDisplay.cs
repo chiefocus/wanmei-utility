@@ -23,7 +23,7 @@ namespace TimerUtility
                 if (value == WARNING_SECONDS && !isPlaying)
                 {
                     isPlaying = true;
-                    Task.Run(() => { try { soundPlayer?.Play(); } catch { } });
+                    try { soundPlayer?.Play(); } catch { }
                 }
 
                 if (value > WARNING_SECONDS)
@@ -53,7 +53,12 @@ namespace TimerUtility
             {
                 if (!string.IsNullOrEmpty(value?.Voice))
                 {
-                    try { soundPlayer = new SoundPlayer(value.Voice); } catch { }
+                    try
+                    {
+                        soundPlayer = new SoundPlayer(value.Voice);
+                        soundPlayer.LoadAsync();
+                    }
+                    catch { }
                 }
             }
         }
@@ -75,19 +80,26 @@ namespace TimerUtility
             base.OnPaint(e);
             e.Graphics.Clear(BackColor);
 
-            Size mainSize = TextRenderer.MeasureText(mainText, FontMain, Size.Empty, TextFormatFlags.NoPadding);
-            TextRenderer.DrawText(e.Graphics, mainText, FontMain, new Point(0, 0), ForeColorMain,
-                TextFormatFlags.NoPadding | TextFormatFlags.NoClipping);
+            Size mainSize = TextRenderer.MeasureText(mainText, FontMain);
+            TextRenderer.DrawText(e.Graphics, mainText, FontMain, new Point(0, 0), ForeColorMain, TextFormatFlags.NoPadding);
 
-            var millisecondsFlag = WanmeiTimer.Settings?.Profile?.MillisecondsFlag;
-            if (millisecondsFlag.HasValue && millisecondsFlag.Value)
+            var millisecondsFlag = WanmeiTimer.Settings?.Profile?.MillisecondsFlag ?? false;
+            if (millisecondsFlag && !string.IsNullOrEmpty(subText))
             {
-                Size subSize = TextRenderer.MeasureText(subText, FontSub, Size.Empty, TextFormatFlags.NoPadding);
+                Size subSize = TextRenderer.MeasureText(subText, FontSub);
                 int subX = mainSize.Width - subSize.Width / 3 - 5;
                 int subY = mainSize.Height - subSize.Height - 1;
-                TextRenderer.DrawText(e.Graphics, subText, FontSub, new Point(subX, subY), ForeColorMain,
-                TextFormatFlags.NoPadding | TextFormatFlags.NoClipping);
+                TextRenderer.DrawText(e.Graphics, subText, FontSub, new Point(subX, subY), ForeColorMain, TextFormatFlags.NoPadding);
             }
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                soundPlayer?.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }
