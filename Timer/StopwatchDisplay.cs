@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Media;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -8,6 +9,8 @@ namespace TimerUtility
 {
     public class StopwatchDisplay : UserControl
     {
+        private const int WARNING_SECONDS = 5;
+
         public Color ForeColorMain { get; set; }
         public Font FontMain { get; set; }
         public Font FontSub { get; set; }
@@ -16,16 +19,34 @@ namespace TimerUtility
             set
             {
                 mainText = $"{value}";
-                ForeColorMain = value > 5 ? Color.Blue : Color.Red;
 
-                if (value == 5 && !isPlaying)
+                if (value == WARNING_SECONDS && !isPlaying)
                 {
                     isPlaying = true;
                     Task.Run(() => { try { soundPlayer?.Play(); } catch { } });
                 }
 
-                if (value > 5) isPlaying = false;
+                if (value <= WARNING_SECONDS)
+                {
+                    ForeColorMain = Color.Red;
+                }
+                else
+                {
+                    isPlaying = false;
+                    float progress = (totalSeconds - value) / (float)(totalSeconds - WARNING_SECONDS);
+                    progress = Math.Max(0, Math.Min(1, progress)); // 安全 clamp
+                    ForeColorMain = InterpolateColor(Color.Blue, Color.Red, progress);
+                }
             }
+        }
+
+        private static Color InterpolateColor(Color start, Color end, float t)
+        {
+            return Color.FromArgb(
+                (int)(start.R + t * (end.R - start.R)),
+                (int)(start.G + t * (end.G - start.G)),
+                (int)(start.B + t * (end.B - start.B))
+            );
         }
 
         public int Milliseconds
@@ -45,6 +66,7 @@ namespace TimerUtility
                 {
                     try { soundPlayer = new SoundPlayer(value.Voice); } catch { }
                 }
+                totalSeconds = value?.Interval ?? 0;
             }
         }
 
@@ -52,6 +74,7 @@ namespace TimerUtility
         private string subText;
         private SoundPlayer soundPlayer;
         private bool isPlaying = false;
+        private int totalSeconds;
 
         public StopwatchDisplay()
         {

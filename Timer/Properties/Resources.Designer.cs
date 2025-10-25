@@ -59,5 +59,29 @@ namespace TimerUtility.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;r&gt;
+        ///  &lt;u p=&quot;1&quot; m=&quot;1&quot; ms=&quot;0&quot; o=&quot;1000&quot; s=&quot;1&quot; k=&quot;1&quot;/&gt;
+        ///  &lt;h n=&quot;黄3&quot;&gt;
+        ///    &lt;b n=&quot;圣母&quot; df=&quot;1&quot;&gt;
+        ///      &lt;s n=&quot;减攻速&quot; d=&quot;280 仙224 魔235.2&quot; i=&quot;30&quot;/&gt;
+        ///      &lt;s n=&quot;减吟唱&quot; d=&quot;175 仙140 魔147&quot; i=&quot;20&quot; a=&quot;群攻&quot;/&gt;
+        ///      &lt;s n=&quot;群攻&quot; d=&quot;175 仙140 魔147&quot; i=&quot;20&quot; a=&quot;减吟唱&quot;/&gt;
+        ///    &lt;/b&gt;
+        ///    &lt;b n=&quot;小铁&quot;&gt;
+        ///      &lt;s n=&quot;破甲&quot; d=&quot;320 仙256 魔268.8&quot; i=&quot;20&quot;/&gt;
+        ///      &lt;s n=&quot;巨力&quot; d=&quot;200 仙160 魔168&quot; i=&quot;30&quot;/&gt;
+        ///      &lt;s n=&quot;大群&quot; d=&quot;120 仙96 魔100.8&quot; i=&quot;20&quot;/&gt;
+        ///    &lt;/b&gt;
+        ///    &lt;b n=&quot;子纯&quot;&gt;
+        ///      &lt;s n=&quot;封印&quot; d=&quot;450 仙360 魔378&quot; i=&quot;20&quot;/&gt;
+        ///      &lt;s n=&quot;群晕&quot; d=&quot;300 仙240 魔252&quot; i=&quot;20&quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string wmappdata {
+            get {
+                return ResourceManager.GetString("wmappdata", resourceCulture);
+            }
+        }
     }
 }
