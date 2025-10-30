@@ -101,11 +101,11 @@ namespace TimerUtility
             // 
             // nowLabel
             // 
-            this.nowLabel.Font = new System.Drawing.Font("SimHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.nowLabel.Font = new System.Drawing.Font("SimHei", 10.85F);
             this.nowLabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.nowLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.nowLabel.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.nowLabel.Name = "nowLabel";
-            this.nowLabel.Size = new System.Drawing.Size(47, 22);
+            this.nowLabel.Size = new System.Drawing.Size(47, 19);
             this.nowLabel.Text = "{now}";
             // 
             // WanmeiTimer
