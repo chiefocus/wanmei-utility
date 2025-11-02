@@ -217,9 +217,9 @@ namespace TimerUtility
                     }
                 }
 
-                if (!control.AffiliateSkills.Contains(control))
+                if (control.AffiliateSkills.Contains(control))
                 {
-                    control.AffiliateSkills.Add(control);
+                    control.AffiliateSkills.Remove(control);
                 }
             }
         }

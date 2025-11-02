@@ -59,7 +59,8 @@ namespace TimerUtility
 
         public void StartSkills()
         {
-            AffiliateSkills.ForEach(skill => skill.Start());
+            Start();
+            AffiliateSkills.ForEach(skill => { if (!skill.isRunning) skill.Start(); });
         }
 
         private void Start()
@@ -71,11 +72,6 @@ namespace TimerUtility
             timer.Tick -= timer1_Tick;
             timer.Tick += timer1_Tick;
             stopwatch.Restart();
-        }
-
-        private void ResetSkills()
-        {
-            AffiliateSkills.ForEach(skill => skill.Reset());
         }
 
         private void Reset()
@@ -106,7 +102,7 @@ namespace TimerUtility
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ResetSkills();
+            Reset();
         }
 
         private void label2_Click(object sender, EventArgs e) => offsetMilliseconds += WanmeiTimer.Settings.Profile.Offset;
