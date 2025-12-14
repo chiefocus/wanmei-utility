@@ -97,7 +97,7 @@ namespace TimerUtility
             this.statusStrip1.Size = new System.Drawing.Size(278, 22);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
-            this.statusStrip1.DoubleClick += new System.EventHandler(this.DoubleClick);
+            this.statusStrip1.DoubleClick += new System.EventHandler(this.statusStrip1_DoubleClick);
             // 
             // nowLabel
             // 
