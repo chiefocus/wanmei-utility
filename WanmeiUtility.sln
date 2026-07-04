@@ -1,15 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.3.32825.248
+# Visual Studio Version 18
+VisualStudioVersion = 18.6.11822.322 stable
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stopwatch", "Stopwatch\Stopwatch.csproj", "{F2CA3133-071D-4ACE-94F3-C41D5950D4CE}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timer", "Timer\Timer.csproj", "{1902AAD1-E50D-43AE-A7C3-9C3D9B068200}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timer2", "Timer2\Timer2.csproj", "{C5C862EC-A122-4119-A472-424EA36463AF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinformTimerGroups", "WinformTimerGroups\WinformTimerGroups.csproj", "{A18C2A44-5657-4879-947A-D2314472A62F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,22 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F2CA3133-071D-4ACE-94F3-C41D5950D4CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F2CA3133-071D-4ACE-94F3-C41D5950D4CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F2CA3133-071D-4ACE-94F3-C41D5950D4CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F2CA3133-071D-4ACE-94F3-C41D5950D4CE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1902AAD1-E50D-43AE-A7C3-9C3D9B068200}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1902AAD1-E50D-43AE-A7C3-9C3D9B068200}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1902AAD1-E50D-43AE-A7C3-9C3D9B068200}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1902AAD1-E50D-43AE-A7C3-9C3D9B068200}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C5C862EC-A122-4119-A472-424EA36463AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C5C862EC-A122-4119-A472-424EA36463AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C5C862EC-A122-4119-A472-424EA36463AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C5C862EC-A122-4119-A472-424EA36463AF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A18C2A44-5657-4879-947A-D2314472A62F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A18C2A44-5657-4879-947A-D2314472A62F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A18C2A44-5657-4879-947A-D2314472A62F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A18C2A44-5657-4879-947A-D2314472A62F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
