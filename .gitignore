@@ -9,6 +9,7 @@ packages
 NuGet.exe
 _[Ss]cripts
 *.exe
+!Timer.exe
 *.dll
 *.nupkg
 *.dot[Cc]over
