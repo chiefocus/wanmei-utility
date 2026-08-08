@@ -101,8 +101,8 @@ namespace TimerUtility
             // 
             // nowLabel
             // 
-            this.nowLabel.Font = new System.Drawing.Font("SimHei", 10.85F);
-            this.nowLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.nowLabel.Font = new System.Drawing.Font("SimHei", 15.75F);
+            this.nowLabel.ForeColor = System.Drawing.Color.Blue;
             this.nowLabel.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.nowLabel.Name = "nowLabel";
             this.nowLabel.Size = new System.Drawing.Size(47, 19);
